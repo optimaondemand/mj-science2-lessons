@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>M/J Comprehensive Science 2 &mdash; Lesson 1.1</title>
+<style>
+    body { margin: 0; padding: 0; font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f4f6fa; }
+    .canvas-frame { max-width: 1100px; margin: 0 auto; background: #ffffff; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+
+    .optima-widget { background: linear-gradient(135deg, #E8F6FB 0%, #F4F9FC 100%); border: 1px solid #C5DCE5; border-left: 5px solid #2196D0; border-radius: 8px; padding: 18px 22px; margin: 18px 0; }
+    .widget-kicker { font-size: 11px; color: #1B6A94; margin-bottom: 10px; letter-spacing: 0.4px; }
+    .widget-question { font-size: 17px; color: #0E1C42; margin-bottom: 14px; line-height: 1.55; }
+    .widget-row { background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 6px; padding: 12px 14px; margin-bottom: 10px; }
+    .widget-row-prompt { font-size: 15px; color: #0E1C42; margin-bottom: 8px; line-height: 1.5; font-style: italic; }
+    .widget-options { display: flex; flex-wrap: wrap; gap: 8px; }
+    .widget-options button { background: #FFFFFF; border: 1.5px solid #D0D9E8; border-radius: 8px; padding: 8px 14px; font-size: 14px; color: #0E1C42; cursor: pointer; transition: all 0.15s; font-family: inherit; }
+    .widget-options button:hover { background: #F4F6FA; border-color: #55C8E8; }
+    .widget-options button.selected { background: #0E1C42; color: #FFFFFF; border-color: #0E1C42; }
+    .widget-options button.correct { background: #D8F0DD; border-color: #2A9D5C; color: #1A6B3D; }
+    .widget-options button.incorrect { background: #FDECEC; border-color: #C0392B; color: #8A1F16; }
+    .widget-feedback { background: #FFFFFF; border-left: 3px solid #C7922C; padding: 10px 14px; font-size: 15px; color: #1a2340; line-height: 1.55; margin: 10px 0; display: none; border-radius: 4px; }
+    .widget-feedback.show { display: block; }
+    .row-feedback { padding: 8px 12px; margin-top: 8px; font-size: 14px; border-radius: 4px; line-height: 1.5; }
+    .row-feedback.correct { background: #D8F0DD; border-left: 3px solid #2A9D5C; color: #1A6B3D; }
+    .row-feedback.incorrect { background: #FDECEC; border-left: 3px solid #C0392B; color: #8A1F16; }
+    .widget-reset { background: transparent; border: 1px solid #C7922C; color: #C7922C; border-radius: 6px; padding: 6px 12px; font-size: 12px; cursor: pointer; font-family: inherit; margin-top: 6px; }
+    .widget-reset:hover { background: #FDF3E3; }
+    .ow-scale .widget-options { justify-content: space-between; }
+    .ow-scale .widget-options button { flex: 1; text-align: center; }
+    .ow-flip { background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 18px 20px; cursor: pointer; text-align: center; }
+    .ow-flip .ow-flip-back { display: none; color: #1a2340; }
+    .ow-flip.flipped .ow-flip-front { display: none; }
+    .ow-flip.flipped .ow-flip-back { display: block; }
+
+    .sort-grid { display: flex; gap: 14px; flex-wrap: wrap; margin: 14px 0; }
+    .sort-col { flex: 1; min-width: 220px; border-radius: 8px; padding: 14px 16px; }
+    .sort-col.obs { background: #EEF1F8; border-top: 4px solid #0E1C42; }
+    .sort-col.inf { background: #FDF3E3; border-top: 4px solid #C7922C; }
+    .sort-col h4 { font-size: 14px; color: #0E1C42; margin: 0 0 10px 0; }
+    .sort-item { background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 6px; padding: 8px 12px; margin-bottom: 8px; font-size: 15px; color: #1a2340; }
+</style>
+</head>
+<body>
+<div class="canvas-frame">
+
+<div style="background: #0E1C42; border-bottom: 5px solid #55C8E8; padding: 22px 34px;">
+    <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 10px;">
+        <div style="width: 52px; height: 52px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt="Optima Academy" style="width: 50px; height: 40px; object-fit: contain;" /></div>
+        <div>
+            <div style="font-size: 28px; color: #ffffff; line-height: 1.2;">Optima Academy Online</div>
+            <div style="font-size: 12px; color: #55c8e8;">An Education Experience Company</div>
+        </div>
+    </div>
+    <div style="font-size: 36px; color: #ffffff; margin-bottom: 6px;">M/J COMPREHENSIVE SCIENCE 2</div>
+</div>
+
+<div style="background: #FFFFFF; border-bottom: 2px solid #D0D9E8; display: flex; flex-wrap: wrap;">
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Quarter / Unit</div>
+        <div style="font-size: 17px; color: #0e1c42;">Q1 &middot; Unit 1 &middot; Week 1</div>
+        <div style="font-size: 12px; color: #666;">Nature of Science</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Lesson</div>
+        <div style="font-size: 17px; color: #0e1c42;">Lesson 1.1</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Topic</div>
+        <div style="font-size: 17px; color: #0e1c42; font-style: italic;">Observation, Inference &amp; the Birth of a Discipline</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Unit Theme</div>
+        <div style="font-size: 16px; color: #0e1c42;">Nature of Science</div>
+    </div>
+</div>
+
+<div style="padding: 24px 34px;">
+
+    <div style="background: #EEF1F8; border-left: 5px solid #0E1C42; border-radius: 7px; padding: 18px 22px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #0e1c42; margin-bottom: 6px;">Lesson 1.1</div>
+        <div style="font-size: 22px; color: #0e1c42; margin-bottom: 4px;">What Counts as Knowing? Observation, Inference, and the Birth of a Discipline</div>
+        <div style="font-size: 16px; color: #666;">Lesson</div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128214; TODAY'S FOCUS</div>
+        <div style="font-size: 20px; color: #0e1c42; font-style: italic; margin-bottom: 10px;">A locked room, a puddle on the floor, and a knocked-over houseplant &mdash; what actually happened?</div>
+        <div style="font-size: 18px; color: #1a2340; line-height: 1.65;">Welcome to your first week of Comprehensive Science 2. Before you can reason well about rocks, cells, or energy this year, you need one habit of mind first: telling the difference between what you actually observed and what you're inferring from it. That habit is the toolkit every unit this semester depends on.</div>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#127919; BY THE END OF THIS LESSON YOU WILL BE ABLE TO&hellip;</div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> tell an observation (something I directly detect) apart from an inference (an explanation I build from evidence).</div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> explain the difference between a scientific theory and a scientific law, and explain why "just a theory" misunderstands what a theory actually is.</div>
+        </div>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128203; WHAT YOU NEED FOR THIS LESSON</div>
+        <div style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 8px; border-left: 3px solid #D0D9E8; padding-left: 14px;"><span style="color: #c7922c; font-size: 18px; flex-shrink: 0;">&#9654;</span>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.6;">Your science notebook (digital or paper)</div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 10px; border-left: 3px solid #D0D9E8; padding-left: 14px;"><span style="color: #c7922c; font-size: 18px; flex-shrink: 0;">&#9654;</span>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.6;">Your VR headset, charged and signed in (for this week's VR activity, assigned separately in Canvas)</div>
+        </div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128218; PART 1 &middot; OBSERVATION VS. INFERENCE</div>
+
+        <div class="optima-widget ow-reflect">
+          <div class="widget-kicker">&#9889; QUICK CHECK-IN</div>
+          <div class="widget-question">Right now, before we teach any of this: how sure are you that you could explain the difference between an observation and an inference to a friend? (No wrong answer &mdash; just check in with yourself.)</div>
+          <div class="widget-options">
+            <button data-response="Good to know. By the end of this lesson, watch for the moment that changes.">&#128522; Pretty sure already</button>
+            <button data-response="That is exactly the right place to start a science course. You will have a clear answer by the end of this page.">&#129300; Not sure yet</button>
+            <button data-response="Fair enough. Pay close attention to the locked-room story below, then try it in your own words.">&#128533; I've never thought about it</button>
+          </div>
+          <div class="widget-feedback"></div>
+          <button class="widget-reset">Reset</button>
+        </div>
+
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">The Locked Room</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Picture a locked room: a puddle of water on the floor, an open window, and a houseplant that has clearly been knocked over. What happened? You don't know &mdash; you weren't there. But you can look at the room and build a story that fits everything you see. That story is an <strong>inference</strong>: a reasonable explanation built from evidence, not a guess pulled from nowhere. The puddle, the open window, and the toppled plant are <strong>observations</strong> &mdash; things you directly detected with your senses or a tool.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Confusing the two is one of the most common mistakes in science, and in life: people report an inference ("the cat did it") as if it were an observation ("I saw the cat do it"). Sort the room below into what you actually observed and what you're only explaining:</p>
+
+        <div class="sort-grid">
+          <div class="sort-col obs">
+            <h4>&#128065;&#65039; I CAN DIRECTLY DETECT THIS (Observation)</h4>
+            <div class="sort-item">The floor is wet</div>
+            <div class="sort-item">The window is open</div>
+            <div class="sort-item">The plant is on its side, soil scattered nearby</div>
+          </div>
+          <div class="sort-col inf">
+            <h4>&#128173; I AM EXPLAINING THIS (Inference)</h4>
+            <div class="sort-item">Rain blew in through the window</div>
+            <div class="sort-item">The cat knocked the plant over</div>
+            <div class="sort-item">Someone left in a hurry and forgot to close the window</div>
+          </div>
+        </div>
+
+        <div style="background: #E8F6FB; border-left: 5px solid #2196D0; border-top: 3px solid #55C8E8; border-radius: 6px; padding: 14px 20px; margin: 14px 0;">
+            <div style="font-size: 11px; color: #1B6A94; margin-bottom: 8px;">&#128161; TRY IT IN YOUR NOTEBOOK</div>
+            <div style="font-size: 17px; color: #0E1C42; line-height: 1.6;">Before moving on, jot down one more possible inference that would also fit these three observations. There's more than one story that fits the same evidence &mdash; that's exactly why scientists have to keep testing.</div>
+        </div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128218; PART 2 &middot; THEORY VS. LAW</div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 0 0 8px 0;">Two words people mix up constantly</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Science runs on the observation/inference distinction at a much larger scale. A scientific <strong>law</strong> describes a pattern that always happens under certain conditions. The <span style="border-bottom: 1.5px dotted #C7922C; cursor: help; color: #0E1C42;" title="A principle stating that in an undisturbed sequence of sedimentary rock layers, older layers are generally below younger ones.">Law of Superposition</span> (you'll meet it again in Week 9) is a law: it describes <em>what</em> happens.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">A scientific <strong>theory</strong> is a well-supported explanation for <em>why</em> it happens, built from a large body of evidence, tested repeatedly, and revised when new evidence demands it. In everyday speech "theory" means a hunch. In science, a theory is closer to the strongest, most tested kind of explanation there is &mdash; germ theory, atomic theory, and the theory of plate tectonics are not shaky guesses. They are ideas that have survived a great deal of attempted disproof.</p>
+
+        <div class="optima-widget ow-select">
+          <div class="widget-kicker">&#9889; TRY IT &middot; LAW OR THEORY?</div>
+          <div class="widget-question">For each statement, decide whether it's describing a scientific law or a scientific theory.</div>
+
+          <div class="widget-row" data-correct="1" data-fb="Right. This names a repeating pattern, which is exactly what a law does." data-hint="Look again: does this describe a repeating pattern (law), or does it explain why something happens (theory)?">
+            <div class="widget-row-prompt">1. "In an undisturbed rock sequence, older layers sit below younger ones."</div>
+            <div class="widget-options">
+              <button data-choice="0">Theory</button>
+              <button data-choice="1">Law</button>
+            </div>
+          </div>
+
+          <div class="widget-row" data-correct="0" data-fb="Right. This is an explanation for why matter behaves as it does, built from a huge body of evidence &mdash; that's a theory." data-hint="This statement is explaining a mechanism, not just describing a repeating pattern. That's the mark of a theory.">
+            <div class="widget-row-prompt">2. "All matter is made of atoms, and this explains why substances combine in fixed proportions."</div>
+            <div class="widget-options">
+              <button data-choice="0">Theory</button>
+              <button data-choice="1">Law</button>
+            </div>
+          </div>
+
+          <div class="widget-row" data-correct="1" data-fb="Right. This is a simple, always-true description of a pattern &mdash; a law, not an explanation of a mechanism." data-hint="Does this explain WHY something happens, or does it just describe WHAT always happens?">
+            <div class="widget-row-prompt">3. "Objects fall toward Earth at the same rate regardless of their mass (ignoring air resistance)."</div>
+            <div class="widget-options">
+              <button data-choice="0">Theory</button>
+              <button data-choice="1">Law</button>
+            </div>
+          </div>
+
+          <button class="widget-reset">Reset</button>
+        </div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128218; PART 3 &middot; A CASE FROM HISTORY</div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 0 0 8px 0;">The map that beat the microscope</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">For most of human history, people explained disease with "bad air" (miasma). It was a reasonable inference from the available evidence &mdash; disease often followed foul-smelling swamps and sickrooms. It took John Snow, in 1854 London, mapping cholera deaths street by street, to show the pattern actually pointed to a single contaminated water pump, not the air at all.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Snow didn't have a microscope powerful enough to see the cholera bacterium. He had something almost as powerful: a map, careful observation, and the discipline to let the evidence overturn a comfortable old idea. That discipline is what this whole unit is about.</p>
+        <div style="background: #FDECEC; border-left: 5px solid #C0392B; border-top: 3px solid #E74C3C; border-radius: 6px; padding: 14px 20px; margin: 14px 0;">
+            <div style="font-size: 11px; color: #8A1F16; margin-bottom: 8px;">&#9888;&#65039; COMMON MISTAKE</div>
+            <div style="font-size: 17px; color: #0E1C42; line-height: 1.6;">Aristotle believed the senses, carefully used, could disclose the truth of nature. He was also confident, on the strength of pure reasoning alone, that heavier objects fall faster than light ones &mdash; a claim nobody tested for nearly two thousand years, until Galileo tested it directly. Reasoning without testing is exactly the trap this course is training you to avoid.</div>
+        </div>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0;"><strong>So what?</strong> Every unit this semester will ask you to build explanations from evidence &mdash; about rocks, cells, energy, and matter. The habit you're building this week (name what you actually observed, then name what you're inferring from it, and don't blur the two) is the single most useful habit in this entire course.</p>
+    </div>
+
+    <div style="background: #FDF3E3; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128193; ONE-TIME SETUP &middot; YOUR DIGITAL BINDER</div>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Before your first document-based assignment this semester, complete this one-time setup task:</p>
+        <ul style="font-size: 17px; color: #1a2340; line-height: 1.8; margin: 0; padding-left: 22px;">
+            <li>Sign in to Microsoft 365 at office.com using your <strong>school</strong> account (not a personal Microsoft account).</li>
+            <li>In OneDrive, create the folder path: <code style="background: #F4F6FA; border: 1px solid #D0D9E8; border-radius: 4px; padding: 1px 6px; font-family: Consolas, Monaco, monospace; font-size: 0.92em; color: #0E1C42;">Optima &rarr; Science &rarr; CS2_Fall2026</code>.</li>
+            <li>Learn the Optima file-naming rule you'll use on every file this semester: <code style="background: #F4F6FA; border: 1px solid #D0D9E8; border-radius: 4px; padding: 1px 6px; font-family: Consolas, Monaco, monospace; font-size: 0.92em; color: #0E1C42;">LastName_FirstName_AssignmentName_CS2</code>.</li>
+        </ul>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #0E1C42; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 16px;">&#10145;&#65039; WHAT YOU'LL DO NEXT</div>
+        <div style="display: flex; align-items: flex-start; gap: 14px; margin-bottom: 16px;">
+            <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
+            <div>
+                <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Notebook Entry &mdash; The Locked Room</strong></div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">Sort the Locked Room details, then find observations and inferences in your own house.</div>
+            </div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 14px;">
+            <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
+            <div>
+                <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>VR Activity 1.1 &mdash; The Orientation Walk</strong></div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">Get comfortable moving, looking, and recording in VR before this course asks you to do real science work there.</div>
+            </div>
+        </div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128170; WELCOME TO THE HABIT OF A SCIENTIST</div>
+        <p style="font-size: 18px; color: #1a2340; line-height: 1.65; margin: 0;">Every scientist, from Aristotle to John Snow to whoever discovers the next big idea, starts here: looking carefully, naming what they actually see, and being honest about where the seeing stops and the explaining begins. You just started doing that too.</p>
+    </div>
+
+</div>
+
+<div style="background: #0E1C42; border-top: 3px solid #55C8E8; padding: 18px 34px; text-align: center;">
+    <div style="font-size: 18px; color: #ffffff; margin-bottom: 6px;"><span style="color: #55c8e8;">Optima Academy Online</span> &middot; M/J COMPREHENSIVE SCIENCE 2 &middot; Quarter 1 &middot; Student Lesson Page</div>
+    <div style="font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 4px;">Lesson 1.1 &middot; Observation, Inference &amp; the Birth of a Discipline</div>
+    <div style="font-size: 12px; color: rgba(255,255,255,0.4);">&copy; Optima Academy Online &middot; An Education Experience Company</div>
+</div>
+
+</div>
+
+<script>
+(function () {
+  document.addEventListener('click', function (e) {
+    var reset = e.target.closest('.widget-reset');
+    if (reset) {
+      var w = reset.closest('.optima-widget');
+      w.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected', 'correct', 'incorrect'); });
+      w.querySelectorAll('.widget-feedback').forEach(function (f) { f.classList.remove('show'); f.textContent = ''; });
+      w.querySelectorAll('.row-feedback').forEach(function (f) { f.remove(); });
+      w.querySelectorAll('.ow-flip.flipped').forEach(function (c) { c.classList.remove('flipped'); });
+      return;
+    }
+    var rBtn = e.target.closest('.ow-reflect .widget-options button');
+    if (rBtn) {
+      var rw = rBtn.closest('.optima-widget');
+      rw.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected'); });
+      rBtn.classList.add('selected');
+      var fb = rw.querySelector('.widget-feedback');
+      fb.textContent = rBtn.dataset.response || '';
+      fb.classList.add('show');
+      return;
+    }
+    var sBtn = e.target.closest('.ow-select .widget-row .widget-options button, .ow-scale .widget-row .widget-options button');
+    if (sBtn) {
+      var row = sBtn.closest('.widget-row');
+      var correct = row.dataset.correct;
+      row.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected', 'correct', 'incorrect'); });
+      var right = sBtn.dataset.choice === correct;
+      sBtn.classList.add(right ? 'correct' : 'incorrect');
+      var text = right ? (sBtn.dataset.fb || row.dataset.fb || 'Right.') : (sBtn.dataset.fb || row.dataset.hint || 'Not quite. Try again.');
+      var rf = row.querySelector('.row-feedback') || row.appendChild(document.createElement('div'));
+      rf.className = 'row-feedback ' + (right ? 'correct' : 'incorrect');
+      rf.textContent = text;
+      return;
+    }
+    var flip = e.target.closest('.ow-flip');
+    if (flip) { flip.classList.toggle('flipped'); return; }
+  });
+})();
+</script>
+
+</body>
+</html>
