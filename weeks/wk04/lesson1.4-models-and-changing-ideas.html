@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>M/J Comprehensive Science 2 &mdash; Lesson 1.4</title>
+<style>
+    body { margin: 0; padding: 0; font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f4f6fa; }
+    .canvas-frame { max-width: 1100px; margin: 0 auto; background: #ffffff; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+
+    .optima-widget { background: linear-gradient(135deg, #E8F6FB 0%, #F4F9FC 100%); border: 1px solid #C5DCE5; border-left: 5px solid #2196D0; border-radius: 8px; padding: 18px 22px; margin: 18px 0; }
+    .widget-kicker { font-size: 11px; color: #1B6A94; margin-bottom: 10px; letter-spacing: 0.4px; }
+    .widget-question { font-size: 17px; color: #0E1C42; margin-bottom: 14px; line-height: 1.55; }
+    .widget-options { display: flex; flex-wrap: wrap; gap: 8px; }
+    .widget-options button { background: #FFFFFF; border: 1.5px solid #D0D9E8; border-radius: 8px; padding: 8px 14px; font-size: 14px; color: #0E1C42; cursor: pointer; transition: all 0.15s; font-family: inherit; }
+    .widget-options button:hover { background: #F4F6FA; border-color: #55C8E8; }
+    .widget-options button.selected { background: #0E1C42; color: #FFFFFF; border-color: #0E1C42; }
+    .widget-feedback { background: #FFFFFF; border-left: 3px solid #C7922C; padding: 10px 14px; font-size: 15px; color: #1a2340; line-height: 1.55; margin: 10px 0; display: none; border-radius: 4px; }
+    .widget-feedback.show { display: block; }
+    .widget-reset { background: transparent; border: 1px solid #C7922C; color: #C7922C; border-radius: 6px; padding: 6px 12px; font-size: 12px; cursor: pointer; font-family: inherit; margin-top: 6px; }
+    .widget-reset:hover { background: #FDF3E3; }
+
+    .then-now { display: flex; gap: 14px; flex-wrap: wrap; margin: 14px 0; }
+    .tn-panel { flex: 1; min-width: 240px; border-radius: 8px; padding: 16px 18px; }
+    .tn-panel.then { background: #FDECEC; border-top: 4px solid #C0392B; }
+    .tn-panel.now { background: #D8F0DD; border-top: 4px solid #2A9D5C; }
+    .tn-panel h4 { font-size: 13px; color: #0E1C42; margin: 0 0 8px 0; }
+    .tn-panel p { font-size: 15px; color: #1a2340; line-height: 1.5; margin: 0; }
+</style>
+</head>
+<body>
+<div class="canvas-frame">
+
+<div style="background: #0E1C42; border-bottom: 5px solid #55C8E8; padding: 22px 34px;">
+    <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 10px;">
+        <div style="width: 52px; height: 52px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt="Optima Academy" style="width: 50px; height: 40px; object-fit: contain;" /></div>
+        <div>
+            <div style="font-size: 28px; color: #ffffff; line-height: 1.2;">Optima Academy Online</div>
+            <div style="font-size: 12px; color: #55c8e8;">An Education Experience Company</div>
+        </div>
+    </div>
+    <div style="font-size: 36px; color: #ffffff; margin-bottom: 6px;">M/J COMPREHENSIVE SCIENCE 2</div>
+</div>
+
+<div style="background: #FFFFFF; border-bottom: 2px solid #D0D9E8; display: flex; flex-wrap: wrap;">
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Quarter / Unit</div>
+        <div style="font-size: 17px; color: #0e1c42;">Q1 &middot; Unit 1 &middot; Week 4</div>
+        <div style="font-size: 12px; color: #666;">Nature of Science</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Lesson</div>
+        <div style="font-size: 17px; color: #0e1c42;">Lesson 1.4</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Topic</div>
+        <div style="font-size: 17px; color: #0e1c42; font-style: italic;">Models Are Useful Because They're Wrong (A Little)</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Unit Theme</div>
+        <div style="font-size: 16px; color: #0e1c42;">Nature of Science</div>
+    </div>
+</div>
+
+<div style="padding: 24px 34px;">
+
+    <div style="background: #EEF1F8; border-left: 5px solid #0E1C42; border-radius: 7px; padding: 18px 22px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #0e1c42; margin-bottom: 6px;">Lesson 1.4</div>
+        <div style="font-size: 22px; color: #0e1c42; margin-bottom: 4px;">Models Are Useful Because They're Wrong (A Little)</div>
+        <div style="font-size: 16px; color: #666;">Lesson</div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128214; TODAY'S FOCUS</div>
+        <div style="font-size: 20px; color: #0e1c42; font-style: italic; margin-bottom: 10px;">A subway map is not an accurate picture of a city. It's wrong on purpose. Why doesn't that make it a bad map?</div>
+        <div style="font-size: 18px; color: #1a2340; line-height: 1.65;">Scientific models work the same way: they leave things out and simplify others, and that's what makes them usable at all. This week you'll learn to ask two questions of any model, and meet a scientist who was right for decades before anyone believed him.</div>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#127919; BY THE END OF THIS LESSON YOU WILL BE ABLE TO&hellip;</div>
+        <div style="display: flex; align-items: flex-start; gap: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> explain a benefit and a limitation of a scientific model, and describe a real case where new evidence changed what scientists believed.</div>
+        </div>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128203; WHAT YOU NEED FOR THIS LESSON</div>
+        <div style="display: flex; align-items: flex-start; gap: 10px; padding-left: 14px; border-left: 3px solid #D0D9E8;"><span style="color: #c7922c; font-size: 18px; flex-shrink: 0;">&#9654;</span>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.6;">Your science notebook &middot; access to Excel (for this week's data table step)</div>
+        </div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128218; PART 1 &middot; EVERY MODEL LEAVES SOMETHING OUT</div>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">A subway map straightens curves, exaggerates distances, and doesn't care where north is. That's not a flaw &mdash; a map with every real detail would be useless for the one job it has: helping you get from one station to another. Scientific models work the same way. The skill this week is asking two questions of any model: <em>what does this model help me understand, and what does it leave out or get wrong?</em></p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Consider the atomic model you'll meet in Week 7: tiny colored balls representing protons, neutrons, and electrons orbiting like a mini solar system. That picture helps you understand charge, mass, and basic structure. It also completely misrepresents how electrons actually behave (they don't orbit in neat circles at all). Both things are true at once &mdash; knowing both is what makes you a sophisticated user of the model, rather than someone quietly misled by it.</p>
+
+        <div class="optima-widget">
+          <div class="widget-kicker">&#9889; TRY IT IN YOUR NOTEBOOK &middot; PREDICT, THEN CHECK</div>
+          <div class="widget-question">Before reading further: name one benefit and one limitation of a weather-forecast map (the kind with sun and cloud icons over a country map).</div>
+          <details style="background: #FFFFFF; border: 1px solid #D0D9E8; border-left: 4px solid #C7922C; border-radius: 6px; padding: 12px 18px; margin: 14px 0;">
+            <summary style="font-size: 16px; color: #0E1C42; cursor: pointer; list-style: none;"><span style="color: #C7922C;">&#9654;</span>&nbsp; Write your answer in your notebook, then click to compare</summary>
+            <div style="font-size: 16px; color: #1a2340; line-height: 1.6; margin-top: 10px; padding-top: 10px; border-top: 1px solid #EEF1F8;">One reasonable answer: <strong>Benefit</strong> &mdash; it quickly shows you the general pattern (a storm system moving east) without needing to understand raw atmospheric data. <strong>Limitation</strong> &mdash; it can't show you the exact minute rain starts on your street, because it's simplified down to icons over a whole region.</div>
+          </details>
+        </div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128218; PART 2 &middot; THE SCIENTIST WHO WAS RIGHT TOO EARLY</div>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Scientific knowledge is not a fixed list of facts handed down from on high. It's a living conversation, and it changes when new evidence forces a change. For decades, geologists dismissed Alfred Wegener's 1912 idea that continents had once been joined and drifted apart. The matching coastlines of South America and Africa looked like a coincidence to most of his peers, and Wegener couldn't explain <em>what force</em> could possibly move something as massive as a continent.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">He was mocked, and he died in 1930 on a Greenland expedition still convinced he was right and still unable to prove the mechanism. It took until the 1960s, and evidence from the ocean floor that Wegener never lived to see, before plate tectonics became one of the most solidly established theories in all of science.</p>
+
+        <div class="then-now">
+          <div class="tn-panel then">
+            <h4>1912</h4>
+            <p>Wegener's map of matching coastlines. A pattern, but no mechanism &mdash; and no one believed him.</p>
+          </div>
+          <div class="tn-panel now">
+            <h4>1960s ONWARD</h4>
+            <p>Seafloor spreading at a mid-ocean ridge: the mechanism, found decades later, on evidence Wegener never saw. You'll build on this exact story in Week 9.</p>
+          </div>
+        </div>
+
+        <div style="background: #E8F6FB; border-left: 5px solid #2196D0; border-top: 3px solid #55C8E8; border-radius: 6px; padding: 14px 20px; margin: 14px 0;">
+            <div style="font-size: 11px; color: #1B6A94; margin-bottom: 8px;">&#128161; GOING DEEPER</div>
+            <div style="font-size: 17px; color: #0E1C42; line-height: 1.6;">Being wrong about the mechanism did not make Wegener a bad scientist. Refusing to look at new evidence would have. Knowledge changing is not a weakness of science &mdash; it's science working exactly as it should.</div>
+        </div>
+
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0;"><strong>So what?</strong> When you meet a strange, half-formed, or downright wrong-sounding idea in science this year, your job isn't to dismiss it or accept it uncritically. It's to ask what evidence supports it, what evidence would change it, and whether the debate is actually still open.</p>
+    </div>
+
+    <div style="background: #FDF3E3; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128193; M365 SKILL STEP &middot; YOUR FIRST DATA TABLE IN EXCEL</div>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">This week you'll practice entering data and using a basic formula in Excel &mdash; a skill you'll use for real data all semester. Full instructions are on this week's Excel assignment in Canvas.</p>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #0E1C42; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 16px;">&#10145;&#65039; WHAT YOU'LL DO NEXT</div>
+        <div style="display: flex; align-items: flex-start; gap: 14px; margin-bottom: 16px;">
+            <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
+            <div>
+                <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>CER Notebook Entry &mdash; Defending a Model</strong></div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">Practice Claim-Evidence-Reasoning writing on a model of your choosing. Rubric-graded.</div>
+            </div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 14px; margin-bottom: 16px;">
+            <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
+            <div>
+                <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>M365 Skill Step &mdash; Excel Data Table</strong></div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">Build a data table and use a formula, saved to your OneDrive course folder.</div>
+            </div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 14px; margin-bottom: 16px;">
+            <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">3</div>
+            <div>
+                <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Discussion &mdash; Continental Drift Evidence Debate</strong></div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">Was the scientific community's initial skepticism of Wegener reasonable?</div>
+            </div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 14px;">
+            <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">4</div>
+            <div>
+                <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>VR Activity 1.4 &mdash; Wegener's Case File</strong></div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">Walk through Wegener's actual argument and its evidence gap.</div>
+            </div>
+        </div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128170; UNIT 1, ALMOST COMPLETE</div>
+        <p style="font-size: 18px; color: #1a2340; line-height: 1.65; margin: 0;">You now have every tool this unit set out to give you: observation vs. inference, testable questions, fair tests, and the honest, evolving nature of scientific models. Next week, you put it all together on the Unit 1 Test, then turn to matter itself.</p>
+    </div>
+
+</div>
+
+<div style="background: #0E1C42; border-top: 3px solid #55C8E8; padding: 18px 34px; text-align: center;">
+    <div style="font-size: 18px; color: #ffffff; margin-bottom: 6px;"><span style="color: #55c8e8;">Optima Academy Online</span> &middot; M/J COMPREHENSIVE SCIENCE 2 &middot; Quarter 1 &middot; Student Lesson Page</div>
+    <div style="font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 4px;">Lesson 1.4 &middot; Models Are Useful Because They're Wrong (A Little)</div>
+    <div style="font-size: 12px; color: rgba(255,255,255,0.4);">&copy; Optima Academy Online &middot; An Education Experience Company</div>
+</div>
+
+</div>
+
+</body>
+</html>
