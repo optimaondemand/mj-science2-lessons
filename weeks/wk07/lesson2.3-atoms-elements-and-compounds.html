@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>M/J Comprehensive Science 2 &mdash; Lesson 2.3</title>
+<style>
+    body { margin: 0; padding: 0; font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f4f6fa; }
+    .canvas-frame { max-width: 1100px; margin: 0 auto; background: #ffffff; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+
+    .optima-widget { background: linear-gradient(135deg, #E8F6FB 0%, #F4F9FC 100%); border: 1px solid #C5DCE5; border-left: 5px solid #2196D0; border-radius: 8px; padding: 18px 22px; margin: 18px 0; }
+    .widget-kicker { font-size: 11px; color: #1B6A94; margin-bottom: 10px; letter-spacing: 0.4px; }
+    .widget-question { font-size: 17px; color: #0E1C42; margin-bottom: 14px; line-height: 1.55; }
+    .widget-reset { background: transparent; border: 1px solid #C7922C; color: #C7922C; border-radius: 6px; padding: 6px 12px; font-size: 12px; cursor: pointer; font-family: inherit; margin-top: 10px; }
+    .widget-reset:hover { background: #FDF3E3; }
+    .ow-flip { background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 18px 20px; cursor: pointer; text-align: center; min-height: 90px; display: flex; align-items: center; justify-content: center; }
+    .ow-flip .ow-flip-back { display: none; color: #1a2340; }
+    .ow-flip.flipped .ow-flip-front { display: none; }
+    .ow-flip.flipped .ow-flip-back { display: block; }
+    .flip-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
+
+    /* Then/Now card */
+    .thennow { display: flex; gap: 18px; flex-wrap: wrap; margin: 16px 0; }
+    .thennow-panel { flex: 1; min-width: 220px; border-radius: 10px; padding: 16px; text-align: center; }
+    .thennow-panel.then { background: #FDF3E3; border: 2px dashed #C7922C; }
+    .thennow-panel.now { background: #E8F6FB; border: 2px solid #2196D0; }
+    .pudding { width: 130px; height: 130px; border-radius: 50%; background: radial-gradient(circle, #f0d98c 0%, #e6c675 100%); margin: 0 auto 10px; position: relative; }
+    .pudding .e { position: absolute; width: 10px; height: 10px; background: #0E1C42; border-radius: 50%; }
+    .nuclear { width: 130px; height: 130px; border-radius: 50%; background: #eef1f8; margin: 0 auto 10px; position: relative; border: 1px dashed #b9c4dd; }
+    .nuclear .nucleus { position: absolute; top: 50%; left: 50%; width: 22px; height: 22px; background: #C0392B; border-radius: 50%; transform: translate(-50%,-50%); }
+    .nuclear .orbit { position: absolute; top: 50%; left: 50%; width: 10px; height: 10px; background: #2196D0; border-radius: 50%; }
+
+    /* Build-an-Atom */
+    .counter-row { display: flex; align-items: center; gap: 12px; margin: 10px 0; }
+    .counter-row label { width: 90px; font-size: 15px; color: #0E1C42; }
+    .counter-btn { width: 34px; height: 34px; border-radius: 50%; border: 1.5px solid #0E1C42; background: #fff; color: #0E1C42; font-size: 18px; cursor: pointer; }
+    .counter-btn:hover { background: #EEF1F8; }
+    .counter-val { width: 36px; text-align: center; font-size: 18px; color: #0E1C42; font-weight: 700; }
+    .atom-result { display: flex; gap: 20px; flex-wrap: wrap; align-items: center; margin-top: 14px; }
+    .atom-badge { background: #0E1C42; color: #fff; border-radius: 10px; padding: 14px 20px; text-align: center; min-width: 110px; }
+    .atom-badge .sym { font-size: 30px; font-weight: 700; }
+    .atom-badge .name { font-size: 13px; color: #A8D8EC; }
+    .atom-tag { font-size: 14px; padding: 6px 12px; border-radius: 6px; }
+    .tag-stable { background: #D8F0DD; color: #1A6B3D; }
+    .tag-unstable { background: #FDECEC; color: #8A1F16; }
+    .tag-neutral { background: #EEF1F8; color: #0E1C42; }
+    .tag-ion { background: #FDF3E3; color: #7a5a10; }
+</style>
+</head>
+<body>
+<div class="canvas-frame">
+
+<div style="background: #0E1C42; border-bottom: 5px solid #55C8E8; padding: 22px 34px;">
+    <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 10px;">
+        <div style="width: 52px; height: 52px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt="Optima Academy" style="width: 50px; height: 40px; object-fit: contain;" /></div>
+        <div>
+            <div style="font-size: 28px; color: #ffffff; line-height: 1.2;">Optima Academy Online</div>
+            <div style="font-size: 12px; color: #55c8e8;">An Education Experience Company</div>
+        </div>
+    </div>
+    <div style="font-size: 36px; color: #ffffff; margin-bottom: 6px;">M/J COMPREHENSIVE SCIENCE 2</div>
+</div>
+
+<div style="background: #FFFFFF; border-bottom: 2px solid #D0D9E8; display: flex; flex-wrap: wrap;">
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Quarter / Unit</div>
+        <div style="font-size: 17px; color: #0e1c42;">Q1 &middot; Unit 2 &middot; Week 7</div>
+        <div style="font-size: 12px; color: #666;">Physical Science</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Lesson</div>
+        <div style="font-size: 17px; color: #0e1c42;">Lesson 2.3</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Topic</div>
+        <div style="font-size: 17px; color: #0e1c42; font-style: italic;">Rutherford's Surprise: What's Really Inside an Atom</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Unit Theme</div>
+        <div style="font-size: 16px; color: #0e1c42;">Physical Science</div>
+    </div>
+</div>
+
+<div style="padding: 24px 34px;">
+
+    <div style="background: #EEF1F8; border-left: 5px solid #0E1C42; border-radius: 7px; padding: 18px 22px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #0e1c42; margin-bottom: 6px;">Lesson 2.3</div>
+        <div style="font-size: 22px; color: #0e1c42; margin-bottom: 4px;">Rutherford's Surprise: What's Really Inside an Atom</div>
+        <div style="font-size: 16px; color: #666;">Lesson &middot; Atomic Structure, Elements, and Compounds</div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128214; TODAY'S FOCUS</div>
+        <div style="font-size: 20px; color: #0e1c42; font-style: italic; margin-bottom: 10px;">"As if you had fired a fifteen-inch shell at a piece of tissue paper and it came back and hit you."</div>
+        <div style="font-size: 18px; color: #1a2340; line-height: 1.65;">That's how Ernest Rutherford described the result that overturned everything scientists thought they knew about the atom. Today you'll find out what he actually did, what it proved, and what an atom is really built from.</div>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#127919; BY THE END OF THIS LESSON YOU WILL BE ABLE TO&hellip;</div>
+        <div style="display: flex; align-items: flex-start; gap: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> describe the basic structure of an atom (protons, neutrons, electrons) and explain the difference between an element and a compound.</div>
+        </div>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128203; WHAT YOU NEED FOR THIS LESSON</div>
+        <div style="display: flex; align-items: flex-start; gap: 10px; padding-left: 14px; border-left: 3px solid #D0D9E8;"><span style="color: #c7922c; font-size: 18px; flex-shrink: 0;">&#9654;</span>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.6;">Your science notebook</div>
+        </div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128218; PART 1 &middot; A BEAM, A FOIL, AND A SURPRISE</div>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">In 1909, Ernest Rutherford's team fired a beam of tiny, positively charged particles at an extremely thin sheet of gold foil, fully expecting them to sail straight through. The leading atomic model of the day pictured the atom as a soft, evenly spread blob of positive charge with electrons scattered through it, like fruit in a pudding. Almost all the particles did pass through undisturbed. But a small number bounced straight back &mdash; proof that something small, dense, and positively charged had to be concentrated at the atom's center.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">That "something" was the nucleus, and the gold-foil experiment overturned the pudding model in favor of the atom you learn today: a tiny, dense nucleus of protons and neutrons, surrounded by a much larger cloud of electrons.</p>
+
+        <div class="thennow">
+          <div class="thennow-panel then">
+            <div class="pudding">
+              <div class="e" style="top:20%;left:30%;"></div>
+              <div class="e" style="top:50%;left:60%;"></div>
+              <div class="e" style="top:70%;left:35%;"></div>
+              <div class="e" style="top:35%;left:70%;"></div>
+            </div>
+            <strong style="color:#7a5a10;">1904: Plum Pudding</strong>
+            <div style="font-size:13px;color:#555;">Positive charge spread evenly, electrons embedded throughout.</div>
+          </div>
+          <div class="thennow-panel now">
+            <div class="nuclear">
+              <div class="nucleus"></div>
+              <div class="orbit" style="top:10%;left:50%;"></div>
+              <div class="orbit" style="top:90%;left:50%;"></div>
+              <div class="orbit" style="top:50%;left:10%;"></div>
+              <div class="orbit" style="top:50%;left:90%;"></div>
+            </div>
+            <strong style="color:#1B6A94;">1911: Nuclear Atom</strong>
+            <div style="font-size:13px;color:#555;">Dense positive nucleus, electrons at a distance.</div>
+          </div>
+        </div>
+        <div style="font-size:13px;color:#555;text-align:center;margin-top:-6px;">One unexpected result (particles bouncing back) was enough to overturn a model everyone believed.</div>
+
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 14px 0 10px 0;">Protons carry positive charge, electrons carry negative charge, and neutrons carry none. The number of protons is what makes an atom the element it is: change the proton count and you have a genuinely different element, not just a different version of the same one.</p>
+
+        <div class="optima-widget">
+          <div class="widget-kicker">&#9889; TAP TO REVEAL &middot; KEY TERMS</div>
+          <div class="flip-grid">
+            <div class="ow-flip" tabindex="0"><div class="ow-flip-front" style="font-size:18px;color:#0E1C42;">Proton</div><div class="ow-flip-back" style="font-size:15px;line-height:1.5;">Positively charged particle in the nucleus. Its count determines the element.</div></div>
+            <div class="ow-flip" tabindex="0"><div class="ow-flip-front" style="font-size:18px;color:#0E1C42;">Neutron</div><div class="ow-flip-back" style="font-size:15px;line-height:1.5;">Uncharged particle in the nucleus. Changes affect the isotope, not the element.</div></div>
+            <div class="ow-flip" tabindex="0"><div class="ow-flip-front" style="font-size:18px;color:#0E1C42;">Electron</div><div class="ow-flip-back" style="font-size:15px;line-height:1.5;">Negatively charged particle in a cloud around the nucleus. Its balance with protons sets the atom's charge.</div></div>
+            <div class="ow-flip" tabindex="0"><div class="ow-flip-front" style="font-size:18px;color:#0E1C42;">Element</div><div class="ow-flip-back" style="font-size:15px;line-height:1.5;">A pure substance made of only one kind of atom (oxygen, gold, carbon).</div></div>
+            <div class="ow-flip" tabindex="0"><div class="ow-flip-front" style="font-size:18px;color:#0E1C42;">Compound</div><div class="ow-flip-back" style="font-size:15px;line-height:1.5;">Atoms of different elements bonded in a fixed ratio &mdash; a genuinely new substance (water is always two hydrogen, one oxygen, never any other ratio).</div></div>
+          </div>
+          <button class="widget-reset">Reset</button>
+        </div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128218; PART 2 &middot; BUILD-AN-ATOM</div>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 14px 0;">Use the counters below to change the number of protons, neutrons, and electrons. Watch what happens to the element name, whether it's a stable or unstable isotope, and whether the atom ends up neutral or charged.</p>
+
+        <div class="optima-widget ow-slider">
+          <div class="widget-kicker">&#9889; TRY IT &middot; BUILD-AN-ATOM</div>
+          <div class="widget-question">Changing what element you have is really just changing one number: the proton count.</div>
+
+          <div class="counter-row"><label>Protons</label><button class="counter-btn" id="ba-p-minus">&minus;</button><span class="counter-val" id="ba-p-val">1</span><button class="counter-btn" id="ba-p-plus">+</button></div>
+          <div class="counter-row"><label>Neutrons</label><button class="counter-btn" id="ba-n-minus">&minus;</button><span class="counter-val" id="ba-n-val">0</span><button class="counter-btn" id="ba-n-plus">+</button></div>
+          <div class="counter-row"><label>Electrons</label><button class="counter-btn" id="ba-e-minus">&minus;</button><span class="counter-val" id="ba-e-val">1</span><button class="counter-btn" id="ba-e-plus">+</button></div>
+
+          <div class="atom-result">
+            <div class="atom-badge"><div class="sym" id="ba-symbol">H</div><div class="name" id="ba-name">Hydrogen</div></div>
+            <span class="atom-tag tag-neutral" id="ba-isotope-tag">Stable isotope</span>
+            <span class="atom-tag tag-neutral" id="ba-charge-tag">Neutral atom</span>
+          </div>
+          <button class="widget-reset" id="ba-reset">Reset</button>
+
+          <script>
+          (function () {
+            var elements = ['','H','He','Li','Be','B','C','N','O','F','Ne','Na','Mg','Al','Si','P','S','Cl','Ar','K','Ca'];
+            var names = ['','Hydrogen','Helium','Lithium','Beryllium','Boron','Carbon','Nitrogen','Oxygen','Fluorine','Neon','Sodium','Magnesium','Aluminum','Silicon','Phosphorus','Sulfur','Chlorine','Argon','Potassium','Calcium'];
+            var p = 1, n = 0, e = 1;
+            var pVal = document.getElementById('ba-p-val'), nVal = document.getElementById('ba-n-val'), eVal = document.getElementById('ba-e-val');
+            var sym = document.getElementById('ba-symbol'), nameEl = document.getElementById('ba-name');
+            var isoTag = document.getElementById('ba-isotope-tag'), chgTag = document.getElementById('ba-charge-tag');
+            function render() {
+              pVal.textContent = p; nVal.textContent = n; eVal.textContent = e;
+              var idx = Math.max(1, Math.min(20, p));
+              sym.textContent = elements[idx]; nameEl.textContent = names[idx];
+              var diff = n - p;
+              if (Math.abs(diff) <= 1) { isoTag.textContent = 'Stable isotope'; isoTag.className = 'atom-tag tag-stable'; }
+              else { isoTag.textContent = 'Unstable isotope'; isoTag.className = 'atom-tag tag-unstable'; }
+              var charge = p - e;
+              if (charge === 0) { chgTag.textContent = 'Neutral atom'; chgTag.className = 'atom-tag tag-neutral'; }
+              else if (charge > 0) { chgTag.textContent = 'Positive ion (+' + charge + ')'; chgTag.className = 'atom-tag tag-ion'; }
+              else { chgTag.textContent = 'Negative ion (' + charge + ')'; chgTag.className = 'atom-tag tag-ion'; }
+            }
+            document.getElementById('ba-p-minus').addEventListener('click', function(){ if (p > 1) { p--; render(); } });
+            document.getElementById('ba-p-plus').addEventListener('click', function(){ if (p < 20) { p++; render(); } });
+            document.getElementById('ba-n-minus').addEventListener('click', function(){ if (n > 0) { n--; render(); } });
+            document.getElementById('ba-n-plus').addEventListener('click', function(){ if (n < 25) { n++; render(); } });
+            document.getElementById('ba-e-minus').addEventListener('click', function(){ if (e > 0) { e--; render(); } });
+            document.getElementById('ba-e-plus').addEventListener('click', function(){ if (e < 20) { e++; render(); } });
+            document.getElementById('ba-reset').addEventListener('click', function(){ p = 1; n = 0; e = 1; render(); });
+            render();
+          })();
+          </script>
+        </div>
+
+        <div style="background: #E8F6FB; border-left: 5px solid #2196D0; border-top: 3px solid #55C8E8; border-radius: 6px; padding: 14px 20px; margin: 14px 0;">
+            <div style="font-size: 11px; color: #1B6A94; margin-bottom: 8px;">&#128161; CONNECTION</div>
+            <div style="font-size: 17px; color: #0E1C42; line-height: 1.6;">Assignment 2.3 asks you to build three atoms of your choice with this widget, then classify five household substances as elements or compounds.</div>
+        </div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #0E1C42; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 16px;">&#10145;&#65039; WHAT YOU'LL DO NEXT</div>
+        <div style="display: flex; align-items: flex-start; gap: 14px; margin-bottom: 16px;">
+            <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
+            <div>
+                <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Assignment 2.3 &mdash; Notebook: Element or Compound?</strong></div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">Build three atoms and classify five household substances.</div>
+            </div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 14px;">
+            <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
+            <div>
+                <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>VR Activity 2.3 &mdash; Gold Foil, Recreated</strong></div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">Recreate the reasoning behind Rutherford's gold foil experiment at room scale.</div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div style="background: #0E1C42; border-top: 3px solid #55C8E8; padding: 18px 34px; text-align: center;">
+    <div style="font-size: 18px; color: #ffffff; margin-bottom: 6px;"><span style="color: #55c8e8;">Optima Academy Online</span> &middot; M/J COMPREHENSIVE SCIENCE 2 &middot; Quarter 1 &middot; Student Lesson Page</div>
+    <div style="font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 4px;">Lesson 2.3 &middot; Rutherford's Surprise: What's Really Inside an Atom</div>
+    <div style="font-size: 12px; color: rgba(255,255,255,0.4);">&copy; Optima Academy Online &middot; An Education Experience Company</div>
+</div>
+
+</div>
+
+<script>
+(function () {
+  document.addEventListener('click', function (e) {
+    var reset = e.target.closest('.widget-reset');
+    if (reset) {
+      var w = reset.closest('.optima-widget');
+      w.querySelectorAll('.ow-flip.flipped').forEach(function (c) { c.classList.remove('flipped'); });
+      return;
+    }
+    var flip = e.target.closest('.ow-flip');
+    if (flip) { flip.classList.toggle('flipped'); return; }
+  });
+})();
+</script>
+
+</body>
+</html>
