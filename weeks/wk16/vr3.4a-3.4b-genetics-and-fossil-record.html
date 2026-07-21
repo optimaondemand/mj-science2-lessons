@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>M/J Comprehensive Science 2 &mdash; VR Support 3.4a &amp; 3.4b</title>
+<style>
+    body { margin: 0; padding: 0; font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f4f6fa; }
+    .canvas-frame { max-width: 1100px; margin: 0 auto; background: #ffffff; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+
+    .optima-widget { background: linear-gradient(135deg, #E8F6FB 0%, #F4F9FC 100%); border: 1px solid #C5DCE5; border-left: 5px solid #2196D0; border-radius: 8px; padding: 18px 22px; margin: 18px 0; }
+    .widget-kicker { font-size: 11px; color: #1B6A94; margin-bottom: 10px; letter-spacing: 0.4px; }
+    .widget-question { font-size: 17px; color: #0E1C42; margin-bottom: 14px; line-height: 1.55; }
+    .widget-row { background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 6px; padding: 12px 14px; margin-bottom: 10px; }
+    .widget-row-prompt { font-size: 15px; color: #0E1C42; margin-bottom: 8px; line-height: 1.5; font-style: italic; }
+    .widget-options { display: flex; flex-wrap: wrap; gap: 8px; }
+    .widget-options button { background: #FFFFFF; border: 1.5px solid #D0D9E8; border-radius: 8px; padding: 8px 14px; font-size: 14px; color: #0E1C42; cursor: pointer; transition: all 0.15s; font-family: inherit; }
+    .widget-options button:hover { background: #F4F6FA; border-color: #55C8E8; }
+    .widget-options button.selected { background: #0E1C42; color: #FFFFFF; border-color: #0E1C42; }
+    .widget-options button.correct { background: #D8F0DD; border-color: #2A9D5C; color: #1A6B3D; }
+    .widget-options button.incorrect { background: #FDECEC; border-color: #C0392B; color: #8A1F16; }
+    .widget-feedback { background: #FFFFFF; border-left: 3px solid #C7922C; padding: 10px 14px; font-size: 15px; color: #1a2340; line-height: 1.55; margin: 10px 0; display: none; border-radius: 4px; }
+    .widget-feedback.show { display: block; }
+    .row-feedback { padding: 8px 12px; margin-top: 8px; font-size: 14px; border-radius: 4px; line-height: 1.5; }
+    .row-feedback.correct { background: #D8F0DD; border-left: 3px solid #2A9D5C; color: #1A6B3D; }
+    .row-feedback.incorrect { background: #FDECEC; border-left: 3px solid #C0392B; color: #8A1F16; }
+    .widget-reset { background: transparent; border: 1px solid #C7922C; color: #C7922C; border-radius: 6px; padding: 6px 12px; font-size: 12px; cursor: pointer; font-family: inherit; margin-top: 6px; }
+    .widget-reset:hover { background: #FDF3E3; }
+
+    /* Punnett Square Generator (named Engine 6 simulator) */
+    .punnett-controls { display: flex; gap: 24px; flex-wrap: wrap; margin-bottom: 16px; }
+    .punnett-controls label { font-size: 14px; color: #0E1C42; display: block; margin-bottom: 6px; }
+    .punnett-controls select { font-size: 15px; padding: 6px 10px; border: 1.5px solid #D0D9E8; border-radius: 6px; color: #0E1C42; font-family: inherit; background: #FFFFFF; }
+    .punnett-body { display: flex; gap: 28px; flex-wrap: wrap; align-items: flex-start; }
+    .punnett-grid { border-collapse: collapse; }
+    .punnett-grid th, .punnett-grid td { border: 2px solid #0E1C42; width: 74px; height: 60px; text-align: center; font-size: 16px; }
+    .punnett-grid th { background: #EEF1F8; color: #0E1C42; }
+    .punnett-grid td { background: #FFFFFF; color: #0E1C42; font-weight: 700; }
+    .punnett-corner { background: #0E1C42 !important; }
+    .punnett-ratios { flex: 1; min-width: 220px; }
+    .punnett-ratios .ratio-line { font-size: 16px; color: #0E1C42; margin-bottom: 10px; line-height: 1.5; }
+    .punnett-ratios .ratio-line strong { color: #0E1C42; }
+    .punnett-ratios .bar-wrap { display: flex; height: 20px; border-radius: 5px; overflow: hidden; border: 1px solid #D0D9E8; margin-top: 4px; }
+    .punnett-ratios .bar-round { background: #2A9D5C; }
+    .punnett-ratios .bar-wrinkled { background: #C7922C; }
+
+    /* Pedigree mini-diagram */
+    .pedigree-row { display: flex; justify-content: center; gap: 26px; margin: 10px 0; align-items: center; }
+    .pedigree-node { width: 34px; height: 34px; border: 2px solid #0E1C42; display: flex; align-items: center; justify-content: center; font-size: 11px; color: #0E1C42; }
+    .pedigree-node.circle { border-radius: 50%; }
+    .pedigree-node.affected { background: #0E1C42; color: #fff; }
+    .pedigree-node.carrier { background: #FDF3E3; border-color: #C7922C; }
+
+    /* Fossil rock-layer diagram */
+    .fossil-column { display: flex; flex-direction: column; border: 2px solid #0E1C42; border-radius: 8px; overflow: hidden; margin: 14px 0; }
+    .fossil-layer { padding: 10px 14px; font-size: 14px; color: #0E1C42; display: flex; justify-content: space-between; }
+    .fossil-layer .age-label { color: #6b7a99; font-style: italic; }
+</style>
+</head>
+<body>
+<div class="canvas-frame">
+
+<div style="background: #0E1C42; border-bottom: 5px solid #55C8E8; padding: 22px 34px;">
+    <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 10px;">
+        <div style="width: 52px; height: 52px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt="Optima Academy" style="width: 50px; height: 40px; object-fit: contain;" /></div>
+        <div>
+            <div style="font-size: 28px; color: #ffffff; line-height: 1.2;">Optima Academy Online</div>
+            <div style="font-size: 12px; color: #55c8e8;">An Education Experience Company</div>
+        </div>
+    </div>
+    <div style="font-size: 36px; color: #ffffff; margin-bottom: 6px;">M/J COMPREHENSIVE SCIENCE 2</div>
+</div>
+
+<div style="background: #FFFFFF; border-bottom: 2px solid #D0D9E8; display: flex; flex-wrap: wrap;">
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Quarter / Unit</div>
+        <div style="font-size: 17px; color: #0e1c42;">Q2 &middot; Unit 3 &middot; Week 16</div>
+        <div style="font-size: 12px; color: #666;">Life Science</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Supporting Notes</div>
+        <div style="font-size: 17px; color: #0e1c42;">VR 3.4a &amp; VR 3.4b</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 17px; color: #0e1c42; font-style: italic;">Mendel's Garden &amp; What the Rocks Remember</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Unit Theme</div>
+        <div style="font-size: 16px; color: #0e1c42;">Life Science</div>
+    </div>
+</div>
+
+<div style="padding: 24px 34px;">
+
+    <div style="background: #EEF1F8; border-left: 5px solid #0E1C42; border-radius: 7px; padding: 18px 22px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #0e1c42; margin-bottom: 6px;">Supporting Notes for VR 3.4a and VR 3.4b</div>
+        <div style="font-size: 22px; color: #0e1c42; margin-bottom: 4px;">Mendel's Garden &amp; What the Rocks Remember</div>
+        <div style="font-size: 16px; color: #666;">Read this before you join either VR session this week</div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128214; TODAY'S FOCUS</div>
+        <div style="font-size: 20px; color: #0e1c42; font-style: italic; margin-bottom: 10px;">Gregor Mendel grew nearly 30,000 pea plants over eight years and then watched his work go almost completely ignored for thirty-five years.</div>
+        <div style="font-size: 18px; color: #1a2340; line-height: 1.65;">This page gets you ready for two separate VR sessions: <strong>VR Activity 3.4a &mdash; Mendel's Garden</strong> (Punnett squares, pedigrees, mitosis, meiosis, and biotechnology) and <strong>VR Activity 3.4b &mdash; What the Rocks Remember</strong> (fossil evidence). Work through both parts below before you put on the headset.</div>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#127919; BY THE END OF THESE NOTES YOU WILL BE ABLE TO&hellip;</div>
+        <div style="display: flex; align-items: flex-start; gap: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> use a Punnett square to predict genotype and phenotype ratios, read a pedigree for carriers, distinguish mitosis from meiosis, describe biotechnology applications, and explain how a branching fossil record counts as evidence for change over time.</div>
+        </div>
+    </div>
+
+    <!-- ===================== PART 1: GENETICS (VR 3.4a support) ===================== -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128218; PART 1 &middot; MENDEL'S GARDEN (SUPPORTS VR ACTIVITY 3.4a)</div>
+
+        <div class="optima-widget" id="punnett-widget">
+          <div class="widget-kicker">&#9889; NAMED SIMULATOR &middot; PUNNETT SQUARE GENERATOR</div>
+          <div class="widget-question">Choose a genotype for each parent pea plant. Trait: seed shape, where <strong>R</strong> (round) is dominant and <strong>r</strong> (wrinkled) is recessive. The grid and the ratios below update the moment you change a genotype.</div>
+          <div class="punnett-controls">
+            <div>
+              <label for="punnett-p1">Parent 1 genotype</label>
+              <select id="punnett-p1">
+                <option value="RR">RR (homozygous round)</option>
+                <option value="Rr" selected>Rr (heterozygous round)</option>
+                <option value="rr">rr (homozygous wrinkled)</option>
+              </select>
+            </div>
+            <div>
+              <label for="punnett-p2">Parent 2 genotype</label>
+              <select id="punnett-p2">
+                <option value="RR">RR (homozygous round)</option>
+                <option value="Rr">Rr (heterozygous round)</option>
+                <option value="rr" selected>rr (homozygous wrinkled)</option>
+              </select>
+            </div>
+          </div>
+          <div class="punnett-body">
+            <div id="punnett-grid-wrap"></div>
+            <div class="punnett-ratios">
+              <div class="ratio-line"><strong>Genotype ratio:</strong> <span id="punnett-geno-ratio"></span></div>
+              <div class="ratio-line"><strong>Phenotype ratio:</strong> <span id="punnett-pheno-ratio"></span>
+                <div class="bar-wrap"><div class="bar-round" id="punnett-bar-round"></div><div class="bar-wrinkled" id="punnett-bar-wrinkled"></div></div>
+              </div>
+            </div>
+          </div>
+          <button class="widget-reset" id="punnett-reset">Reset</button>
+        </div>
+
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 4px 0 12px 0;">A Punnett square is a complete, checkable probability tool, not a guessing exercise. Each parent contributes one allele per box: line up Parent 1's alleles across the top and Parent 2's alleles down the side, and each of the four inside boxes shows one equally likely offspring genotype. Notice above that changing just one parent's genotype visibly changes every offspring probability at once.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 12px 0;">In the VR session, you'll work out this exact method by hand for a different trait: a cross between a heterozygous purple-flower plant (genotype <strong>Pp</strong>) and a white-flower plant (genotype <strong>pp</strong>). Use the same logic the generator above uses: line up each parent's two alleles, fill in all four boxes, then count. Make sure you use the specific genotypes, Pp and pp, and not just &ldquo;purple x white&rdquo; &mdash; a cross is only a determined probability problem once the genotypes are specified.</p>
+
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Reading a Pedigree Chart</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">A pedigree chart tracks a trait across generations using squares (males) and circles (females). A filled shape shows someone affected by the trait. For a <strong>recessive</strong> trait, a person can carry one copy of the recessive allele, pass it to a child, and never show the trait themselves, because their other allele is dominant. That person is a <strong>carrier</strong>. You can identify a likely carrier on a pedigree by finding an unaffected parent who nonetheless has an affected child: the only way that child got two recessive alleles is if the unaffected parent supplied one of them.</p>
+
+        <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 16px 18px; margin: 10px 0 14px 0;">
+          <div style="font-size:11px;color:#1B6A94;margin-bottom:10px;">&#128161; MINI PEDIGREE &middot; SPOTTING A CARRIER</div>
+          <div class="pedigree-row">
+            <div class="pedigree-node carrier">Unaff.</div>
+            <div style="font-size:14px;color:#6b7a99;">&mdash;</div>
+            <div class="pedigree-node circle carrier">Unaff.</div>
+          </div>
+          <div class="pedigree-row">
+            <div class="pedigree-node affected">Aff.</div>
+            <div class="pedigree-node circle">Unaff.</div>
+          </div>
+          <div style="font-size:13px;color:#1a2340;text-align:center;margin-top:8px;">Two unaffected parents produced an affected child, so both parents must be carriers of the recessive allele even though neither shows the trait.</div>
+        </div>
+
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Mitosis vs. Meiosis</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;"><strong>Mitosis</strong> takes one cell and produces two genetically identical cells; it's how your body grows and repairs damaged tissue. <strong>Meiosis</strong> takes one cell and produces four genetically varied sex cells (sperm or eggs); it's how organisms produce offspring that are similar to, but not identical to, either parent. The number of resulting cells (two vs. four) and whether those cells are identical or varied are the two differences to watch for in the VR session's looping animations.</p>
+
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 18px 0 8px 0;">Biotechnology: Humans Directing Heredity</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 12px 0;">Biotechnology is what happens when humans intentionally manipulate heredity instead of leaving it to chance. Selective breeding chooses which organisms reproduce based on a desired trait, generation after generation. Cloning (as with Dolly the sheep) produces a genetically identical copy of an existing organism. Genetic engineering directly edits an organism's genes, such as bacteria engineered to produce human insulin. All three are ways of steering heredity on purpose, at very different scales.</p>
+
+        <div class="optima-widget ow-select">
+          <div class="widget-kicker">&#9889; TRY IT &middot; CHECK YOUR UNDERSTANDING SO FAR</div>
+          <div class="widget-question">Answer each question about what you just read.</div>
+
+          <div class="widget-row" data-correct="1" data-fb="Right. An unaffected person who has an affected child for a recessive trait must be a carrier: they hold one recessive allele without showing the trait themselves." data-hint="If the trait is recessive and this person doesn't show it, but their child does, where did the child's second recessive allele come from?">
+            <div class="widget-row-prompt">1. In a three-generation pedigree for a recessive trait, a person who does NOT show the trait but has a child who does must be:</div>
+            <div class="widget-options">
+              <button data-choice="0">Definitely homozygous dominant</button>
+              <button data-choice="1">A carrier (heterozygous)</button>
+              <button data-choice="2">Definitely affected themselves</button>
+              <button data-choice="3">Impossible to determine from a pedigree</button>
+            </div>
+          </div>
+
+          <div class="widget-row" data-correct="2" data-fb="Right. Meiosis is the process that produces four genetically varied sex cells from one starting cell." data-hint="Which process produces sex cells rather than identical body cells, and how many cells does it end with?">
+            <div class="widget-row-prompt">2. Which process produces four genetically varied sex cells from one starting cell?</div>
+            <div class="widget-options">
+              <button data-choice="0">Mitosis</button>
+              <button data-choice="1">Fertilization</button>
+              <button data-choice="2">Meiosis</button>
+              <button data-choice="3">Decomposition</button>
+            </div>
+          </div>
+
+          <div class="widget-row" data-correct="0" data-fb="Right. Selective breeding, cloning, and genetic engineering are all examples of biotechnology: humans intentionally manipulating heredity rather than leaving it to chance." data-hint="What do selective breeding, cloning, and genetic engineering all have in common? Who is doing the manipulating in each case?">
+            <div class="widget-row-prompt">3. Selective breeding, cloning, and genetic engineering are all examples of:</div>
+            <div class="widget-options">
+              <button data-choice="0">Biotechnology: humans intentionally manipulating heredity</button>
+              <button data-choice="1">Natural selection acting without human input</button>
+              <button data-choice="2">Fossil evidence</button>
+              <button data-choice="3">Random genetic mutation with no human involvement</button>
+            </div>
+          </div>
+
+          <button class="widget-reset">Reset</button>
+        </div>
+    </div>
+
+    <!-- ===================== PART 2: FOSSILS (VR 3.4b support) ===================== -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128218; PART 2 &middot; WHAT THE ROCKS REMEMBER (SUPPORTS VR ACTIVITY 3.4b)</div>
+
+        <div class="optima-widget ow-reflect">
+          <div class="widget-kicker">&#9889; QUICK CHECK-IN</div>
+          <div class="widget-question">Picture opening a rock layer and finding a fossil unlike anything alive today. How would you feel about it? (No wrong answer &mdash; just check in with yourself.)</div>
+          <div class="widget-options">
+            <button data-response="That curiosity is exactly the right instinct for reading a fossil record. Today's activity gives you a real one to examine.">&#129504; Curious, I'd want to know what it was</button>
+            <button data-response="That's a fair reaction. Fossils of extinct relatives can look strange precisely because they didn't survive to today, which is itself part of the evidence.">&#128561; A little unsettled, it seems so different</button>
+            <button data-response="Good instinct: a single fossil raises a question rather than answering one. You'll see how a whole layered record starts answering it.">&#129300; Not sure what to make of just one fossil</button>
+          </div>
+          <div class="widget-feedback"></div>
+          <button class="widget-reset">Reset</button>
+        </div>
+
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 14px 0 12px 0;">The fossil record uses the same rock-layer reasoning you learned in Week 9: in an undisturbed sequence, older layers sit below younger ones. When you look at fossils across many layers of the same rock sequence, you're looking across time, oldest at the bottom, youngest at the top.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 12px 0;">The horse-family fossil record is a classic example, and it does <strong>not</strong> look like a straight ladder from small ancient horse to modern horse. It looks like a branching family tree: several coexisting, now-extinct horse-relative lineages (some multi-toed, some single-toed, of varying sizes) alongside the one line that led to the modern single-hoofed horse.</p>
+
+        <div class="fossil-column">
+          <div class="fossil-layer" style="background:#EEF1F8;"><span>Youngest layer &mdash; modern single-hoofed horse lineage continues</span><span class="age-label">top</span></div>
+          <div class="fossil-layer" style="background:#F4F6FA;"><span>Middle layers &mdash; several coexisting lineages: some multi-toed, some single-toed, varying sizes</span><span class="age-label">middle</span></div>
+          <div class="fossil-layer" style="background:#FDF3E3;"><span>Older layers &mdash; earliest small, multi-toed horse-relatives</span><span class="age-label">bottom, oldest</span></div>
+        </div>
+
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 4px 0 12px 0;">Several of those side-branch lineages went extinct instead of continuing. This branching pattern, and thousands like it across many species, is exactly what the scientific theory of evolution predicts: gradual change over deep time across multiple coexisting lineages, not a single species steadily transforming into the next one toward a predetermined goal. One fossil sequence by itself is evidence consistent with that prediction; it is one piece among many, not proof by itself.</p>
+
+        <div class="optima-widget ow-select">
+          <div class="widget-kicker">&#9889; TRY IT &middot; READING THE BRANCHING PATTERN</div>
+          <div class="widget-question">Answer each question about the fossil record pattern.</div>
+
+          <div class="widget-row" data-correct="1" data-fb="Right. The branching pattern, with several coexisting lineages and extinct side-branches, matches gradual change over deep time across multiple lineages, not a single fixed path." data-hint="Does a branching tree with extinct side-branches look like one species marching toward a goal, or something else?">
+            <div class="widget-row-prompt">1. The horse-family fossil record shows several coexisting lineages, some of which went extinct. This branching pattern is best explained by:</div>
+            <div class="widget-options">
+              <button data-choice="0">One species steadily transforming into the next, on a fixed path toward the modern horse</button>
+              <button data-choice="1">Evolution: gradual change over deep time across multiple coexisting lineages, not a straight line</button>
+              <button data-choice="2">Fossils forming in a random order with no pattern at all</button>
+              <button data-choice="3">All horse-relative species living at exactly the same time, in the same place</button>
+            </div>
+          </div>
+
+          <div class="widget-row" data-correct="2" data-fb="Right. A single fossil sequence is evidence consistent with evolution, one piece among many, not a stand-alone proof." data-hint="Is one fossil sequence, by itself, the same thing as final proof with nothing left to check? Or is it one supporting piece among many?">
+            <div class="widget-row-prompt">2. A single horse-fossil sequence, by itself, counts as:</div>
+            <div class="widget-options">
+              <button data-choice="0">Absolute proof of evolution, leaving nothing left to question</button>
+              <button data-choice="1">Proof that evolution is only a guess</button>
+              <button data-choice="2">Evidence consistent with evolution: one piece among many</button>
+              <button data-choice="3">Unrelated to the theory of evolution</button>
+            </div>
+          </div>
+
+          <button class="widget-reset">Reset</button>
+        </div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #0E1C42; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 16px;">&#10145;&#65039; WHAT YOU'LL DO NEXT</div>
+        <div style="display: flex; align-items: flex-start; gap: 14px; margin-bottom: 16px;">
+            <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
+            <div>
+                <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>VR Activity 3.4a &mdash; Mendel's Garden</strong></div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">Work the Pp &times; pp cross by hand, read a pedigree, compare mitosis and meiosis, and reflect on a biotechnology case.</div>
+            </div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 14px; margin-bottom: 16px;">
+            <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
+            <div>
+                <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Three notebook checks</strong></div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">Inheritance and pedigrees, mitosis vs. meiosis, and a biotechnology reflection.</div>
+            </div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 14px;">
+            <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">3</div>
+            <div>
+                <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>VR Activity 3.4b &mdash; What the Rocks Remember</strong></div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">Examine the branching horse-family fossil record and record a short reflection on what counts as evidence.</div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div style="background: #0E1C42; border-top: 3px solid #55C8E8; padding: 18px 34px; text-align: center;">
+    <div style="font-size: 18px; color: #ffffff; margin-bottom: 6px;"><span style="color: #55c8e8;">Optima Academy Online</span> &middot; M/J COMPREHENSIVE SCIENCE 2 &middot; Quarter 2 &middot; Student Lesson Page</div>
+    <div style="font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 4px;">Supporting Notes &middot; Mendel's Garden &amp; What the Rocks Remember</div>
+    <div style="font-size: 12px; color: rgba(255,255,255,0.4);">&copy; Optima Academy Online &middot; An Education Experience Company</div>
+</div>
+
+</div>
+
+<script>
+(function () {
+  document.addEventListener('click', function (e) {
+    var reset = e.target.closest('.widget-reset');
+    if (reset) {
+      var w = reset.closest('.optima-widget');
+      w.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected', 'correct', 'incorrect'); });
+      w.querySelectorAll('.widget-feedback').forEach(function (f) { f.classList.remove('show'); f.textContent = ''; });
+      w.querySelectorAll('.row-feedback').forEach(function (f) { f.remove(); });
+      return;
+    }
+    var rBtn = e.target.closest('.ow-reflect .widget-options button');
+    if (rBtn) {
+      var rw = rBtn.closest('.optima-widget');
+      rw.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected'); });
+      rBtn.classList.add('selected');
+      var fb = rw.querySelector('.widget-feedback');
+      fb.textContent = rBtn.dataset.response || '';
+      fb.classList.add('show');
+      return;
+    }
+    var sBtn = e.target.closest('.ow-select .widget-row .widget-options button');
+    if (sBtn) {
+      var row = sBtn.closest('.widget-row');
+      var correct = row.dataset.correct;
+      row.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected', 'correct', 'incorrect'); });
+      var right = sBtn.dataset.choice === correct;
+      sBtn.classList.add(right ? 'correct' : 'incorrect');
+      var text = right ? (sBtn.dataset.fb || row.dataset.fb || 'Right.') : (sBtn.dataset.fb || row.dataset.hint || 'Not quite. Try again.');
+      var rf = row.querySelector('.row-feedback') || row.appendChild(document.createElement('div'));
+      rf.className = 'row-feedback ' + (right ? 'correct' : 'incorrect');
+      rf.textContent = text;
+      return;
+    }
+  });
+})();
+</script>
+
+<!-- Punnett Square Generator logic -->
+<script>
+(function () {
+  var p1 = document.getElementById('punnett-p1');
+  var p2 = document.getElementById('punnett-p2');
+  var gridWrap = document.getElementById('punnett-grid-wrap');
+  var genoOut = document.getElementById('punnett-geno-ratio');
+  var phenoOut = document.getElementById('punnett-pheno-ratio');
+  var barRound = document.getElementById('punnett-bar-round');
+  var barWrinkled = document.getElementById('punnett-bar-wrinkled');
+  var resetBtn = document.getElementById('punnett-reset');
+
+  function alleles(genotype) {
+    return genotype.split('');
+  }
+
+  function combine(a, b) {
+    var pair = [a, b];
+    pair.sort(function (x, y) {
+      var xUpper = x === x.toUpperCase();
+      var yUpper = y === y.toUpperCase();
+      if (xUpper && !yUpper) return -1;
+      if (!xUpper && yUpper) return 1;
+      return 0;
+    });
+    return pair.join('');
+  }
+
+  function phenotypeOf(genotype) {
+    return genotype.indexOf('R') !== -1 ? 'Round' : 'Wrinkled';
+  }
+
+  function render() {
+    var a1 = alleles(p1.value);
+    var a2 = alleles(p2.value);
+
+    var offspring = [];
+    for (var i = 0; i < a1.length; i++) {
+      for (var j = 0; j < a2.length; j++) {
+        offspring.push(combine(a1[i], a2[j]));
+      }
+    }
+
+    var table = document.createElement('table');
+    table.className = 'punnett-grid';
+    var headRow = document.createElement('tr');
+    var corner = document.createElement('th');
+    corner.className = 'punnett-corner';
+    headRow.appendChild(corner);
+    a2.forEach(function (al) {
+      var th = document.createElement('th');
+      th.textContent = al;
+      headRow.appendChild(th);
+    });
+    table.appendChild(headRow);
+
+    a1.forEach(function (rowAllele, rIdx) {
+      var row = document.createElement('tr');
+      var rowHead = document.createElement('th');
+      rowHead.textContent = rowAllele;
+      row.appendChild(rowHead);
+      a2.forEach(function (colAllele) {
+        var td = document.createElement('td');
+        td.textContent = combine(rowAllele, colAllele);
+        row.appendChild(td);
+      });
+      table.appendChild(row);
+    });
+
+    gridWrap.innerHTML = '';
+    gridWrap.appendChild(table);
+
+    var genoCounts = {};
+    var phenoCounts = { Round: 0, Wrinkled: 0 };
+    offspring.forEach(function (g) {
+      genoCounts[g] = (genoCounts[g] || 0) + 1;
+      phenoCounts[phenotypeOf(g)] += 1;
+    });
+
+    var total = offspring.length;
+    var genoParts = Object.keys(genoCounts).map(function (g) {
+      var pct = Math.round((genoCounts[g] / total) * 100);
+      return g + ' (' + pct + '%)';
+    });
+    genoOut.textContent = genoParts.join(' : ');
+
+    var roundPct = Math.round((phenoCounts.Round / total) * 100);
+    var wrinkledPct = 100 - roundPct;
+    phenoOut.textContent = 'Round ' + roundPct + '% : Wrinkled ' + wrinkledPct + '%';
+    barRound.style.width = roundPct + '%';
+    barWrinkled.style.width = wrinkledPct + '%';
+  }
+
+  p1.addEventListener('change', render);
+  p2.addEventListener('change', render);
+  resetBtn.addEventListener('click', function () {
+    p1.value = 'Rr';
+    p2.value = 'rr';
+    render();
+  });
+
+  render();
+})();
+</script>
+
+</body>
+</html>
