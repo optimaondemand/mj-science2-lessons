@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>M/J Comprehensive Science 2 &mdash; Lesson 3.3</title>
+<style>
+    body { margin: 0; padding: 0; font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f4f6fa; }
+    .canvas-frame { max-width: 1100px; margin: 0 auto; background: #ffffff; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+
+    .optima-widget { background: linear-gradient(135deg, #E8F6FB 0%, #F4F9FC 100%); border: 1px solid #C5DCE5; border-left: 5px solid #2196D0; border-radius: 8px; padding: 18px 22px; margin: 18px 0; }
+    .widget-kicker { font-size: 11px; color: #1B6A94; margin-bottom: 10px; letter-spacing: 0.4px; }
+    .widget-question { font-size: 17px; color: #0E1C42; margin-bottom: 14px; line-height: 1.55; }
+    .widget-row { background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 6px; padding: 12px 14px; margin-bottom: 10px; }
+    .widget-row-prompt { font-size: 15px; color: #0E1C42; margin-bottom: 8px; line-height: 1.5; font-style: italic; }
+    .widget-options { display: flex; flex-wrap: wrap; gap: 8px; }
+    .widget-options button { background: #FFFFFF; border: 1.5px solid #D0D9E8; border-radius: 8px; padding: 8px 14px; font-size: 14px; color: #0E1C42; cursor: pointer; transition: all 0.15s; font-family: inherit; }
+    .widget-options button:hover { background: #F4F6FA; border-color: #55C8E8; }
+    .widget-options button.selected { background: #0E1C42; color: #FFFFFF; border-color: #0E1C42; }
+    .widget-options button.correct { background: #D8F0DD; border-color: #2A9D5C; color: #1A6B3D; }
+    .widget-options button.incorrect { background: #FDECEC; border-color: #C0392B; color: #8A1F16; }
+    .widget-feedback { background: #FFFFFF; border-left: 3px solid #C7922C; padding: 10px 14px; font-size: 15px; color: #1a2340; line-height: 1.55; margin: 10px 0; display: none; border-radius: 4px; }
+    .widget-feedback.show { display: block; }
+    .row-feedback { padding: 8px 12px; margin-top: 8px; font-size: 14px; border-radius: 4px; line-height: 1.5; }
+    .row-feedback.correct { background: #D8F0DD; border-left: 3px solid #2A9D5C; color: #1A6B3D; }
+    .row-feedback.incorrect { background: #FDECEC; border-left: 3px solid #C0392B; color: #8A1F16; }
+    .widget-reset { background: transparent; border: 1px solid #C7922C; color: #C7922C; border-radius: 6px; padding: 6px 12px; font-size: 12px; cursor: pointer; font-family: inherit; margin-top: 6px; }
+    .widget-reset:hover { background: #FDF3E3; }
+    .ow-scale .widget-options { justify-content: space-between; }
+    .ow-scale .widget-options button { flex: 1; text-align: center; }
+    .ow-flip { background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 18px 20px; cursor: pointer; text-align: center; min-height: 70px; display: flex; align-items: center; justify-content: center; }
+    .ow-flip .ow-flip-back { display: none; color: #1a2340; }
+    .ow-flip.flipped .ow-flip-front { display: none; }
+    .ow-flip.flipped .ow-flip-back { display: block; }
+    .flip-grid { display: flex; flex-wrap: wrap; gap: 14px; }
+    .flip-card-widget { flex: 1 1 210px; margin: 0; }
+</style>
+</head>
+<body>
+<div class="canvas-frame">
+
+<div style="background: #0E1C42; border-bottom: 5px solid #55C8E8; padding: 22px 34px;">
+    <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 10px;">
+        <div style="width: 52px; height: 52px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt="Optima Academy" style="width: 50px; height: 40px; object-fit: contain;" /></div>
+        <div>
+            <div style="font-size: 28px; color: #ffffff; line-height: 1.2;">Optima Academy Online</div>
+            <div style="font-size: 12px; color: #55c8e8;">An Education Experience Company</div>
+        </div>
+    </div>
+    <div style="font-size: 36px; color: #ffffff; margin-bottom: 6px;">M/J COMPREHENSIVE SCIENCE 2</div>
+</div>
+
+<div style="background: #FFFFFF; border-bottom: 2px solid #D0D9E8; display: flex; flex-wrap: wrap;">
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Quarter / Unit</div>
+        <div style="font-size: 17px; color: #0e1c42;">Q2 &middot; Unit 3 &middot; Week 15</div>
+        <div style="font-size: 12px; color: #666;">Life Science</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Lesson</div>
+        <div style="font-size: 17px; color: #0e1c42;">Lesson 3.3</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Topic</div>
+        <div style="font-size: 17px; color: #0e1c42; font-style: italic;">Respiration: Photosynthesis in Reverse, and Why Every Cell Needs It</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Unit Theme</div>
+        <div style="font-size: 16px; color: #0e1c42;">The Turn to Living Systems</div>
+    </div>
+</div>
+
+<div style="padding: 24px 34px;">
+
+    <div style="background: #EEF1F8; border-left: 5px solid #0E1C42; border-radius: 7px; padding: 18px 22px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #0e1c42; margin-bottom: 6px;">Lesson 3.3</div>
+        <div style="font-size: 22px; color: #0e1c42; margin-bottom: 4px;">Respiration: Photosynthesis in Reverse, and Why Every Cell Needs It</div>
+        <div style="font-size: 16px; color: #666;">Lesson &middot; Two Processes, One Matched Pair</div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128214; TODAY'S FOCUS</div>
+        <div style="font-size: 20px; color: #0e1c42; font-style: italic; margin-bottom: 10px;">Last week a plant turned light into sugar. This week, find out what every living cell, plant or animal, does with that sugar to actually put it to use.</div>
+        <div style="font-size: 18px; color: #1a2340; line-height: 1.65;">Photosynthesis and cellular respiration are a matched pair: one builds sugar, the other breaks it back down to release usable energy. Today you will compare the two processes side by side, clear up a common mix-up between "respiration" and "breathing," and see why matter keeps cycling between the two processes while energy does not.</div>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#127919; BY THE END OF THIS LESSON YOU WILL BE ABLE TO&hellip;</div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> compare the inputs, outputs, and energy source of photosynthesis and cellular respiration.</div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> explain why cellular respiration is not the same thing as breathing.</div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">3</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> explain why matter cycles between photosynthesis and respiration while energy, once released as heat, does not cycle the same way.</div>
+        </div>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128203; WHAT YOU NEED FOR THIS LESSON</div>
+        <div style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 8px; border-left: 3px solid #D0D9E8; padding-left: 14px;"><span style="color: #c7922c; font-size: 18px; flex-shrink: 0;">&#9654;</span>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.6;">Your science notebook, for the comparison table you will build in this week's assignment</div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 10px; border-left: 3px solid #D0D9E8; padding-left: 14px;"><span style="color: #c7922c; font-size: 18px; flex-shrink: 0;">&#9654;</span>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.6;">About 25 minutes to read, think, and try the widgets below</div>
+        </div>
+    </div>
+
+    <!-- PART 1 -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128218; PART 1 &middot; THE MATCHED PAIR</div>
+
+        <div class="optima-widget ow-reflect">
+            <div class="widget-kicker">&#9889; QUICK CHECK-IN</div>
+            <div class="widget-question">Before you read further: how sure are you that breathing and cellular respiration are the same thing? (No wrong answer, just check in with yourself.)</div>
+            <div class="widget-options">
+                <button data-response="Lots of people think this at first. Keep reading: there is an important difference between the two, and this lesson will make it clear.">&#129300; Pretty sure they're the same</button>
+                <button data-response="A reasonable place to start. This lesson draws a clear line between the two: watch for it as you read.">&#129335; Not sure</button>
+                <button data-response="You are onto something. Keep reading to see exactly how the two are related but different.">&#128161; Pretty sure they're different</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Look back at the photosynthesis equation from last week and notice something striking: cellular respiration's overall inputs and outputs are the complement of photosynthesis's &mdash; not a simple reversal of the same steps run backward, but a genuinely different set of chemical pathways that happens to start where photosynthesis ends and end where photosynthesis starts. Where photosynthesis uses light energy to build sugar from carbon dioxide and water, <strong>cellular respiration</strong> breaks sugar back down using oxygen, releasing usable energy (not sunlight this time, but energy the cell can actually run on) along with carbon dioxide and water as byproducts. Plants do both processes; animals, which cannot photosynthesize, rely entirely on respiration, using sugar they get by eating. This is the deepest reason a food web works the way it does: every organism, plant or animal, needs respiration to unlock the energy stored in sugar, whether that sugar was self-made or eaten.</p>
+
+        <div style="background: #E8F6FB; border-left: 5px solid #2196D0; border-top: 3px solid #55C8E8; border-radius: 6px; padding: 18px 22px; margin: 16px 0;">
+            <div style="font-size: 11px; color: #1B6A94; margin-bottom: 14px;">&#128161; VISUAL &middot; PHOTOSYNTHESIS AND RESPIRATION, A COMPLEMENTARY PAIR</div>
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 0;">
+                <div style="width: 100%; max-width: 580px; background: #FFFFFF; border: 2px solid #2A9D5C; border-radius: 10px; padding: 14px 18px; text-align: center;">
+                    <div style="font-size: 12px; color: #1A6B3D; margin-bottom: 6px; letter-spacing: 0.5px;">PHOTOSYNTHESIS</div>
+                    <div style="font-size: 16px; color: #0E1C42; line-height: 1.5;">carbon dioxide + water + light energy &rarr; sugar + oxygen</div>
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: center; margin: 6px 0;">
+                    <div style="width: 0; height: 0; border-left: 13px solid transparent; border-right: 13px solid transparent; border-bottom: 16px solid #0E1C42;"></div>
+                    <div style="width: 6px; height: 40px; background: #0E1C42;"></div>
+                    <div style="width: 0; height: 0; border-left: 13px solid transparent; border-right: 13px solid transparent; border-top: 16px solid #0E1C42;"></div>
+                </div>
+                <div style="width: 100%; max-width: 580px; background: #FFFFFF; border: 2px solid #2196D0; border-radius: 10px; padding: 14px 18px; text-align: center;">
+                    <div style="font-size: 12px; color: #1B6A94; margin-bottom: 6px; letter-spacing: 0.5px;">CELLULAR RESPIRATION</div>
+                    <div style="font-size: 16px; color: #0E1C42; line-height: 1.5;">sugar + oxygen &rarr; carbon dioxide + water + usable energy</div>
+                </div>
+            </div>
+            <div style="font-size: 13px; color: #555; text-align: center; margin-top: 14px;">The outputs of each process are the inputs of the other. These are complementary overall equations, not reverse steps of the same pathway.</div>
+        </div>
+
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">It's worth being precise about a common misconception: "respiration" is not the same as "breathing." Breathing moves oxygen into your body and carbon dioxide out of it; cellular respiration is what actually happens inside each individual cell, using that oxygen to release energy from sugar. You could say breathing is the delivery system, and cellular respiration is what the delivery is for.</p>
+
+        <div class="widget-kicker" style="margin-top: 20px; margin-bottom: 6px;">&#9889; TAP EACH CARD TO REVEAL</div>
+        <div class="flip-grid">
+            <div class="optima-widget flip-card-widget">
+                <div class="ow-flip" tabindex="0">
+                    <div class="ow-flip-front" style="font-size: 17px; color: #0E1C42;">Photosynthesis: Inputs</div>
+                    <div class="ow-flip-back" style="font-size: 15px; line-height: 1.55;">Carbon dioxide, water, and light energy. Light energy is the input that makes photosynthesis different from respiration.</div>
+                </div>
+                <button class="widget-reset">Reset</button>
+            </div>
+            <div class="optima-widget flip-card-widget">
+                <div class="ow-flip" tabindex="0">
+                    <div class="ow-flip-front" style="font-size: 17px; color: #0E1C42;">Photosynthesis: Outputs</div>
+                    <div class="ow-flip-back" style="font-size: 15px; line-height: 1.55;">Sugar and oxygen. These outputs become the inputs cellular respiration needs to run.</div>
+                </div>
+                <button class="widget-reset">Reset</button>
+            </div>
+            <div class="optima-widget flip-card-widget">
+                <div class="ow-flip" tabindex="0">
+                    <div class="ow-flip-front" style="font-size: 17px; color: #0E1C42;">Cellular Respiration: Inputs</div>
+                    <div class="ow-flip-back" style="font-size: 15px; line-height: 1.55;">Sugar and oxygen, the very outputs photosynthesis just produced.</div>
+                </div>
+                <button class="widget-reset">Reset</button>
+            </div>
+            <div class="optima-widget flip-card-widget">
+                <div class="ow-flip" tabindex="0">
+                    <div class="ow-flip-front" style="font-size: 17px; color: #0E1C42;">Cellular Respiration: Outputs</div>
+                    <div class="ow-flip-back" style="font-size: 15px; line-height: 1.55;">Carbon dioxide, water, and usable energy the cell can actually run on. Not sunlight this time.</div>
+                </div>
+                <button class="widget-reset">Reset</button>
+            </div>
+            <div class="optima-widget flip-card-widget">
+                <div class="ow-flip" tabindex="0">
+                    <div class="ow-flip-front" style="font-size: 17px; color: #0E1C42;">Breathing vs. Cellular Respiration</div>
+                    <div class="ow-flip-back" style="font-size: 15px; line-height: 1.55;">Breathing moves oxygen in and carbon dioxide out of your body. Cellular respiration is what happens inside each cell using that oxygen to release energy.</div>
+                </div>
+                <button class="widget-reset">Reset</button>
+            </div>
+            <div class="optima-widget flip-card-widget">
+                <div class="ow-flip" tabindex="0">
+                    <div class="ow-flip-front" style="font-size: 17px; color: #0E1C42;">Which organisms perform each process?</div>
+                    <div class="ow-flip-back" style="font-size: 15px; line-height: 1.55;">Plants perform both photosynthesis and respiration. Animals only perform respiration, using sugar they get by eating.</div>
+                </div>
+                <button class="widget-reset">Reset</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- PART 2 -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128218; PART 2 &middot; MATTER CYCLES, ENERGY DOESN'T</div>
+
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;"><strong>Cross-unit connection:</strong> This complementary pair is the same conservation-of-matter-and-energy story from Weeks 11 and 13, now running at the scale of a single cell &mdash; but matter and energy don't behave identically here. <strong>Matter</strong> genuinely cycles between the two processes: the same carbon atoms move from air to sugar to air again. <strong>Energy</strong> does not cycle the same way &mdash; it enters the system as light, gets transformed and transferred through photosynthesis and respiration, and is eventually released as heat that leaves the system for good. Next week's carbon cycle is really a story about matter cycling; energy, once it becomes heat, does not come back around to be used again.</p>
+
+        <div style="background: #EEF1F8; border-left: 5px solid #0E1C42; border-radius: 7px; padding: 16px 20px; margin: 14px 0 0 0;">
+            <div style="font-size: 11px; color: #0e1c42; margin-bottom: 10px;">&#127919; ONE RULE TO REMEMBER</div>
+            <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+                <div style="flex: 1 1 220px; background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 12px 16px;">
+                    <div style="font-size: 13px; color: #1A6B3D; margin-bottom: 4px;">MATTER</div>
+                    <div style="font-size: 16px; color: #1a2340; line-height: 1.5;">Cycles. The same carbon atoms travel: air &rarr; sugar &rarr; air, again and again.</div>
+                </div>
+                <div style="flex: 1 1 220px; background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 12px 16px;">
+                    <div style="font-size: 13px; color: #1B6A94; margin-bottom: 4px;">ENERGY</div>
+                    <div style="font-size: 16px; color: #1a2340; line-height: 1.5;">Flows one way. Light in, transformed through both processes, then released as heat and gone for good.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- VR ACTIVITY CARD -->
+    <div style="background: #FDF3E3; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 6px;">&#129516; VR ACTIVITY 3.3 &middot; THE INSTRUCTIONS INSIDE EVERY CELL</div>
+        <div style="font-size: 13px; color: #666; margin-bottom: 14px;">Solo VR &middot; About 25 minutes</div>
+
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;"><strong>What you're doing:</strong> The course map's Life Science unit is built entirely around bioenergetics, but CPALMS requires seventh graders to understand heredity: that every organism carries hereditary instructions (DNA) organized into genes on chromosomes, passed from parent to offspring. This activity, continuing across Week 16, covers that ground.</p>
+
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;"><strong>How to join:</strong> Join this week's VR session using code <code style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 4px; padding: 1px 6px;">CS2-DNA-15</code>, in the <em>Cellular Structures Hall &mdash; Nucleus Chamber</em> Location. You'll start at the nuclear membrane.</p>
+
+        <div style="font-size: 17px; color: #0e1c42; margin-bottom: 8px;"><strong>What to do, in order:</strong></div>
+        <ol style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 14px 0; padding-left: 24px;">
+            <li>Enter the room-scale nucleus and locate the coiled chromosome floating in the center.</li>
+            <li>Use the zoom-in interaction on one chromosome to reveal its DNA double-helix structure, and walk along its length to see individual gene segments highlighted and labeled (seed shape, flower color, pod color, and two others &mdash; the same simple, single-gene pea-plant traits Mendel studied).</li>
+            <li>At the Inheritance Table, examine the placed parent-and-offspring organism pair (a pea plant, matching the same species Mendel used) and match which parent trait appears in the offspring.</li>
+            <li>On the whiteboard, sketch a simple diagram showing the correct nesting: a chromosome is a tightly coiled package containing many genes; each gene is a specific instruction-carrying segment of DNA; DNA is the molecule genes are made of, and it carries the instructions passed from parent to offspring.</li>
+            <li>Record a 90-second recording explaining, in your own words, what DNA actually is, how it relates to genes and chromosomes, and how it connects a parent to its offspring.</li>
+        </ol>
+
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 6px 0;"><strong>What to submit:</strong> Your recording and a photo of your whiteboard diagram.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 14px 0;"><strong>Time:</strong> About 25 minutes.</p>
+
+        <div style="background: #E8F6FB; border-left: 5px solid #2196D0; border-top: 3px solid #55C8E8; border-radius: 6px; padding: 14px 20px; margin: 14px 0;">
+            <div style="font-size: 11px; color: #1B6A94; margin-bottom: 8px;">&#128161; FACILITATOR NOTE</div>
+            <div style="font-size: 16px; color: #0E1C42; line-height: 1.6;">Scholars often use "chromosome," "gene," and "DNA" interchangeably, and often get the nesting backward. The correct relationship: DNA is the molecule; a gene is a specific instruction-carrying segment of DNA; a chromosome is a tightly coiled package of many genes. Also watch for scholars treating eye color or height as single-gene traits &mdash; those are complex, multi-gene, environment-influenced traits, which is exactly why this activity uses simple single-gene pea-plant traits instead.</div>
+        </div>
+
+        <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 6px; padding: 14px 20px;">
+            <div style="font-size: 11px; color: #c7922c; margin-bottom: 8px;">&#9989; SUCCESS CRITERIA</div>
+            <div style="font-size: 16px; color: #1a2340; line-height: 1.6;">Diagram correctly nests genes within chromosomes and shows genes as segments of DNA (not DNA nested within genes); recording clearly explains inheritance in the scholar's own words using a single-gene trait example.</div>
+        </div>
+    </div>
+
+    <!-- WHAT YOU'LL DO NEXT -->
+    <div style="background: #FFFFFF; border-top: 3px solid #0E1C42; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 16px;">&#10145;&#65039; WHAT YOU'LL DO NEXT</div>
+        <div style="display: flex; align-items: flex-start; gap: 14px; margin-bottom: 16px;">
+            <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
+            <div>
+                <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Notebook Entry 3.3, The Mirror Pair</strong></div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">Build a two-column comparison of photosynthesis and cellular respiration, then write a CER explaining why a plant needs to perform both processes.</div>
+            </div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 14px;">
+            <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
+            <div>
+                <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>VR Activity 3.3, The Instructions Inside Every Cell</strong></div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">Enter the Nucleus Chamber, examine a chromosome's DNA and genes, and record a 90-second explanation connecting DNA, genes, and chromosomes.</div>
+            </div>
+        </div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128170; BEFORE YOU MOVE ON</div>
+        <p style="font-size: 18px; color: #1a2340; line-height: 1.65; margin: 0;">Every cell you have, and every cell in every living thing you will ever study, runs on this same matched pair: build sugar, break sugar down, release energy. Next week you will follow that same carbon back out into the air through the carbon cycle, and follow the instructions inside every one of those cells back through generations.</p>
+    </div>
+
+</div>
+
+<div style="background: #0E1C42; border-top: 3px solid #55C8E8; padding: 18px 34px; text-align: center;">
+    <div style="font-size: 18px; color: #ffffff; margin-bottom: 6px;"><span style="color: #55c8e8;">Optima Academy Online</span> &middot; M/J COMPREHENSIVE SCIENCE 2 &middot; Quarter 2 &middot; Student Lesson Page</div>
+    <div style="font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 4px;">Lesson 3.3 &middot; Respiration: Photosynthesis in Reverse, and Why Every Cell Needs It</div>
+    <div style="font-size: 12px; color: rgba(255,255,255,0.4);">&copy; Optima Academy Online &middot; An Education Experience Company</div>
+</div>
+
+</div>
+
+<script>
+(function () {
+  document.addEventListener('click', function (e) {
+    var reset = e.target.closest('.widget-reset');
+    if (reset) {
+      var w = reset.closest('.optima-widget');
+      w.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected', 'correct', 'incorrect'); });
+      w.querySelectorAll('.widget-feedback').forEach(function (f) { f.classList.remove('show'); f.textContent = ''; });
+      w.querySelectorAll('.row-feedback').forEach(function (f) { f.remove(); });
+      w.querySelectorAll('.ow-flip.flipped').forEach(function (c) { c.classList.remove('flipped'); });
+      return;
+    }
+    var rBtn = e.target.closest('.ow-reflect .widget-options button');
+    if (rBtn) {
+      var rw = rBtn.closest('.optima-widget');
+      rw.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected'); });
+      rBtn.classList.add('selected');
+      var fb = rw.querySelector('.widget-feedback');
+      fb.textContent = rBtn.dataset.response || '';
+      fb.classList.add('show');
+      return;
+    }
+    var sBtn = e.target.closest('.ow-select .widget-row .widget-options button, .ow-scale .widget-row .widget-options button');
+    if (sBtn) {
+      var row = sBtn.closest('.widget-row');
+      var correct = row.dataset.correct;
+      row.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected', 'correct', 'incorrect'); });
+      var right = sBtn.dataset.choice === correct;
+      sBtn.classList.add(right ? 'correct' : 'incorrect');
+      var text = right ? (sBtn.dataset.fb || row.dataset.fb || 'Right.') : (sBtn.dataset.fb || row.dataset.hint || 'Not quite. Try again.');
+      var rf = row.querySelector('.row-feedback') || row.appendChild(document.createElement('div'));
+      rf.className = 'row-feedback ' + (right ? 'correct' : 'incorrect');
+      rf.textContent = text;
+      return;
+    }
+    var flip = e.target.closest('.ow-flip');
+    if (flip) { flip.classList.toggle('flipped'); return; }
+  });
+})();
+</script>
+
+</body>
+</html>
