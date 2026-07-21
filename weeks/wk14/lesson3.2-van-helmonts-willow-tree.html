@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>M/J Comprehensive Science 2 &mdash; Lesson 3.2</title>
+<style>
+    body { margin: 0; padding: 0; font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f4f6fa; }
+    .canvas-frame { max-width: 1100px; margin: 0 auto; background: #ffffff; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+
+    .optima-widget { background: linear-gradient(135deg, #E8F6FB 0%, #F4F9FC 100%); border: 1px solid #C5DCE5; border-left: 5px solid #2196D0; border-radius: 8px; padding: 18px 22px; margin: 18px 0; }
+    .widget-kicker { font-size: 11px; color: #1B6A94; margin-bottom: 10px; letter-spacing: 0.4px; }
+    .widget-question { font-size: 17px; color: #0E1C42; margin-bottom: 14px; line-height: 1.55; }
+    .widget-row { background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 6px; padding: 12px 14px; margin-bottom: 10px; }
+    .widget-row-prompt { font-size: 15px; color: #0E1C42; margin-bottom: 8px; line-height: 1.5; font-style: italic; }
+    .widget-options { display: flex; flex-wrap: wrap; gap: 8px; }
+    .widget-options button { background: #FFFFFF; border: 1.5px solid #D0D9E8; border-radius: 8px; padding: 8px 14px; font-size: 14px; color: #0E1C42; cursor: pointer; transition: all 0.15s; font-family: inherit; }
+    .widget-options button:hover { background: #F4F6FA; border-color: #55C8E8; }
+    .widget-options button.selected { background: #0E1C42; color: #FFFFFF; border-color: #0E1C42; }
+    .widget-options button.correct { background: #D8F0DD; border-color: #2A9D5C; color: #1A6B3D; }
+    .widget-options button.incorrect { background: #FDECEC; border-color: #C0392B; color: #8A1F16; }
+    .widget-feedback { background: #FFFFFF; border-left: 3px solid #C7922C; padding: 10px 14px; font-size: 15px; color: #1a2340; line-height: 1.55; margin: 10px 0; display: none; border-radius: 4px; }
+    .widget-feedback.show { display: block; }
+    .row-feedback { padding: 8px 12px; margin-top: 8px; font-size: 14px; border-radius: 4px; line-height: 1.5; }
+    .row-feedback.correct { background: #D8F0DD; border-left: 3px solid #2A9D5C; color: #1A6B3D; }
+    .row-feedback.incorrect { background: #FDECEC; border-left: 3px solid #C0392B; color: #8A1F16; }
+    .widget-reset { background: transparent; border: 1px solid #C7922C; color: #C7922C; border-radius: 6px; padding: 6px 12px; font-size: 12px; cursor: pointer; font-family: inherit; margin-top: 6px; }
+    .widget-reset:hover { background: #FDF3E3; }
+
+    .ps-slider-box label { font-size: 14px; color: #0e1c42; display: block; margin-bottom: 4px; }
+    .ps-slider-box input[type=range] { width: 100%; }
+    .ps-bubble { position: absolute; left: 50%; bottom: 0; width: 9px; height: 9px; border-radius: 50%; background: rgba(85,200,232,0.85); border: 1px solid #1B6A94; transform: translateX(-50%); animation: ps-rise 2.6s linear infinite; opacity: 0; }
+    @keyframes ps-rise { 0% { transform: translate(-50%, 0) scale(0.7); opacity: 0; } 15% { opacity: 0.9; } 90% { opacity: 0.5; } 100% { transform: translate(-50%, -120px) scale(1.05); opacity: 0; } }
+</style>
+</head>
+<body>
+<div class="canvas-frame">
+
+<div style="background: #0E1C42; border-bottom: 5px solid #55C8E8; padding: 22px 34px;">
+    <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 10px;">
+        <div style="width: 52px; height: 52px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt="Optima Academy" style="width: 50px; height: 40px; object-fit: contain;" /></div>
+        <div>
+            <div style="font-size: 28px; color: #ffffff; line-height: 1.2;">Optima Academy Online</div>
+            <div style="font-size: 12px; color: #55c8e8;">An Education Experience Company</div>
+        </div>
+    </div>
+    <div style="font-size: 36px; color: #ffffff; margin-bottom: 6px;">M/J COMPREHENSIVE SCIENCE 2</div>
+</div>
+
+<div style="background: #FFFFFF; border-bottom: 2px solid #D0D9E8; display: flex; flex-wrap: wrap;">
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Quarter / Unit</div>
+        <div style="font-size: 17px; color: #0e1c42;">Q2 &middot; Unit 3 &middot; Week 14</div>
+        <div style="font-size: 12px; color: #666;">Living Systems</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Lesson</div>
+        <div style="font-size: 17px; color: #0e1c42;">Lesson 3.2</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Topic</div>
+        <div style="font-size: 17px; color: #0e1c42; font-style: italic;">Van Helmont's Willow Tree and the Search for Where a Plant's Mass Comes From</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Unit Theme</div>
+        <div style="font-size: 16px; color: #0e1c42;">Matter and Energy in Living Systems</div>
+    </div>
+</div>
+
+<div style="padding: 24px 34px;">
+
+    <div style="background: #EEF1F8; border-left: 5px solid #0E1C42; border-radius: 7px; padding: 18px 22px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #0e1c42; margin-bottom: 6px;">Lesson 3.2</div>
+        <div style="font-size: 22px; color: #0e1c42; margin-bottom: 4px;">Photosynthesis: Building Matter from Light</div>
+        <div style="font-size: 16px; color: #666;">Lesson &middot; A Five-Year Experiment and the Gas Nobody Could See</div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128214; TODAY'S FOCUS</div>
+        <div style="font-size: 20px; color: #0e1c42; font-style: italic; margin-bottom: 10px;">A scientist in the 1600s planted a tree in weighed soil, watered it for five years, and weighed everything again. He was mostly wrong about why the tree got heavier, and figuring out exactly where he went wrong is how you learn what photosynthesis actually is.</div>
+        <div style="font-size: 18px; color: #1a2340; line-height: 1.65;">Today you will trace Jan Baptist van Helmont's willow tree investigation, learn what photosynthesis actually requires and produces, and use a live simulator to see why a plant needs all of its inputs at once, not just the one everybody thinks of first: sunlight.</div>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#127919; BY THE END OF THIS LESSON YOU WILL BE ABLE TO&hellip;</div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> explain the inputs, outputs, and basic function of photosynthesis.</div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> describe Van Helmont's willow tree investigation and explain both what it correctly ruled out and what it could not have detected.</div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">3</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> identify how a limiting factor, not an average of conditions, controls the rate of photosynthesis.</div>
+        </div>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128203; WHAT YOU NEED FOR THIS LESSON</div>
+        <div style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 8px; border-left: 3px solid #D0D9E8; padding-left: 14px;"><span style="color: #c7922c; font-size: 18px; flex-shrink: 0;">&#9654;</span>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.6;">Your science notebook, for sketches and short notes</div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 10px; border-left: 3px solid #D0D9E8; padding-left: 14px;"><span style="color: #c7922c; font-size: 18px; flex-shrink: 0;">&#9654;</span>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.6;">About 25 minutes to read, think, and try the widgets below</div>
+        </div>
+    </div>
+
+    <!-- PART 1 -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128218; PART 1 &middot; THE WILLOW TREE THAT TOOK FIVE YEARS TO ANSWER ONE QUESTION</div>
+
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">In the early 1600s, Jan Baptist van Helmont ran one of the most patient experiments in the history of science. He planted a five-pound willow tree sapling in exactly 200 pounds of dried soil, covered the soil to keep out dust, and watered it faithfully for five years. At the end, he weighed everything again: the tree had gained about 164 pounds, and the soil had lost only about two ounces. His conclusion was almost right and almost completely wrong at the same time &mdash; he reasoned that since the soil barely changed, the tree's added mass must have come entirely from the water he'd added. He had correctly ruled out soil as the main source of a plant's mass, a genuinely important result nobody had proven before, but he had no way to know about the gas in the air that plants actually build most of their mass from. That gas is carbon dioxide, and untangling its role took another century and a half of further experiments by other scientists.</p>
+
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;"><strong>Photosynthesis</strong> (from Greek: <em>photo</em>, "light," + <em>synthesis</em>, "putting together") is the process by which plants, algae, and some bacteria capture light energy and use it to build sugar out of carbon dioxide and water, releasing oxygen as a byproduct. The word itself tells you the whole story once you know the roots: light energy is literally what puts the sugar molecule together. This happens mainly in a plant's leaves, in structures called chloroplasts, using the green pigment chlorophyll to absorb light. The sugar produced is the plant's own food &mdash; the matter it uses to build new roots, stems, and leaves &mdash; which means Van Helmont wasn't entirely wrong that water mattered; he simply couldn't see the other half of the equation happening invisibly, drawn from the air.</p>
+
+        <div class="optima-widget ow-select" style="margin: 16px 0;">
+            <div class="widget-kicker">&#9889; QUICK CHECK, BEFORE WE GO FURTHER &middot; INPUT OR OUTPUT?</div>
+            <div class="widget-question">This is a warm up, not a test. Using only what Van Helmont observed and what you just read, sort each item below. Do not worry about getting every one right yet; the fuller check later in this lesson is the one that counts.</div>
+
+            <div class="widget-row" data-correct="0" data-fb="Right, and this is exactly the piece Van Helmont measured. Water is a genuine input; he was correct that it mattered, just not the whole story." data-hint="Van Helmont watered the tree for five years. Is water something the plant takes in, or something it gives off?">
+                <div class="widget-row-prompt">1. Water absorbed by the roots</div>
+                <div class="widget-options">
+                    <button data-choice="0">Input</button>
+                    <button data-choice="1">Output</button>
+                </div>
+            </div>
+
+            <div class="widget-row" data-correct="0" data-fb="Right. Sunlight is captured by the leaves, not given off by them." data-hint="Does a leaf capture sunlight or release it?">
+                <div class="widget-row-prompt">2. Sunlight striking the leaves</div>
+                <div class="widget-options">
+                    <button data-choice="0">Input</button>
+                    <button data-choice="1">Output</button>
+                </div>
+            </div>
+
+            <div class="widget-row" data-correct="1" data-fb="Right. New mass, like the 164 pounds the willow gained, is what photosynthesis produces over time, built from what the tree took in." data-hint="Van Helmont weighed the tree before and after. Is the tree's added mass something it took in, or something the process produced?">
+                <div class="widget-row-prompt">3. The willow tree's added mass after five years</div>
+                <div class="widget-options">
+                    <button data-choice="0">Input</button>
+                    <button data-choice="1">Output</button>
+                </div>
+            </div>
+
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <div class="callout callout-help" style="background: #E8F6FB; border-left: 5px solid #2196D0; border-top: 3px solid #55C8E8; border-radius: 6px; padding: 16px 20px; margin: 16px 0;">
+            <div class="callout-title" style="font-size: 11px; color: #1B6A94; margin-bottom: 10px;">&#128161; VISUAL &middot; PHOTOSYNTHESIS INPUT/OUTPUT DIAGRAM</div>
+            <svg viewBox="0 0 480 280" width="100%" height="260" style="max-width: 480px; display: block; margin: 0 auto;" role="img" aria-label="A leaf cross section with sunlight, carbon dioxide, and water entering, and oxygen and sugar leaving.">
+                <defs>
+                    <marker id="psArrowIn" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+                        <path d="M0,0 L8,4 L0,8 Z" fill="#C7922C"></path>
+                    </marker>
+                    <marker id="psArrowOut" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+                        <path d="M0,0 L8,4 L0,8 Z" fill="#2A9D5C"></path>
+                    </marker>
+                </defs>
+                <path d="M240,42 C328,42 384,108 384,148 C384,206 322,226 240,226 C158,226 96,206 96,148 C96,108 152,42 240,42 Z" fill="#8FCB8B" stroke="#2A9D5C" stroke-width="4"></path>
+                <line x1="240" y1="52" x2="240" y2="220" stroke="#2A9D5C" stroke-width="3"></line>
+                <circle cx="205" cy="212" r="4" fill="#0E1C42"></circle>
+                <circle cx="275" cy="212" r="4" fill="#0E1C42"></circle>
+                <text x="240" y="24" font-size="20" text-anchor="middle">&#9728;</text>
+                <line x1="240" y1="30" x2="240" y2="44" stroke="#C7922C" stroke-width="3" marker-end="url(#psArrowIn)"></line>
+                <text x="240" y="14" font-size="12" text-anchor="middle" fill="#0e1c42">Sunlight (light energy)</text>
+                <line x1="40" y1="130" x2="94" y2="140" stroke="#C7922C" stroke-width="3" marker-end="url(#psArrowIn)"></line>
+                <text x="14" y="112" font-size="12" fill="#0e1c42">Carbon dioxide</text>
+                <text x="14" y="126" font-size="12" fill="#0e1c42">(through stomata)</text>
+                <line x1="40" y1="210" x2="98" y2="200" stroke="#C7922C" stroke-width="3" marker-end="url(#psArrowIn)"></line>
+                <text x="14" y="228" font-size="12" fill="#0e1c42">Water</text>
+                <text x="14" y="242" font-size="12" fill="#0e1c42">(from roots)</text>
+                <line x1="285" y1="205" x2="425" y2="150" stroke="#2A9D5C" stroke-width="3" marker-end="url(#psArrowOut)"></line>
+                <text x="430" y="140" font-size="12" fill="#0e1c42">Oxygen released</text>
+                <text x="430" y="154" font-size="12" fill="#0e1c42">(through stomata)</text>
+                <line x1="285" y1="130" x2="425" y2="90" stroke="#2A9D5C" stroke-width="3" marker-end="url(#psArrowOut)"></line>
+                <text x="430" y="78" font-size="12" fill="#0e1c42">Sugar transported</text>
+                <text x="430" y="92" font-size="12" fill="#0e1c42">to rest of plant</text>
+            </svg>
+            <div style="text-align: center; font-size: 16px; color: #0e1c42; margin-top: 6px;">carbon dioxide + water + light energy &#8594; sugar + oxygen</div>
+        </div>
+    </div>
+
+    <!-- PART 2: simulator -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128218; PART 2 &middot; WHY "PLANTS NEED SUNLIGHT" IS ONLY ONE THIRD OF THE ANSWER</div>
+
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">It is tempting to think of photosynthesis as mainly a light problem: give a plant enough sun and it will thrive. Real plants do not work that way. Photosynthesis has three genuine requirements at once, light, carbon dioxide, and water, and all three have to be present for the reaction to run at all. The rate is not set by however much of the three inputs a plant has on average. It is set by whichever single input is scarcest at that moment, called the limiting factor. A greenhouse with brilliant light, plenty of water, but almost no carbon dioxide in the air will barely photosynthesize, no matter how bright the lamps are.</p>
+
+        <div class="optima-widget" id="ps-widget">
+            <div class="widget-kicker">&#9889; TRY IT &middot; PHOTOSYNTHESIS INPUT/OUTPUT SIMULATOR</div>
+            <div class="widget-question">Drag each slider to control what this plant receives. Watch the bubble stream (oxygen production, the classic way scientists measure this rate in real elodea-plant experiments) and the growth bar respond live. Try dragging just one slider all the way to zero, even with the other two maxed out.</div>
+
+            <div style="display: flex; flex-wrap: wrap; gap: 18px; margin-bottom: 16px;">
+                <div class="ps-slider-box" style="flex: 1; min-width: 170px;">
+                    <label for="psLight">Light intensity: <output id="psLightOut">50</output>%</label>
+                    <input type="range" id="psLight" min="0" max="100" value="50">
+                </div>
+                <div class="ps-slider-box" style="flex: 1; min-width: 170px;">
+                    <label for="psCo2">Carbon dioxide level: <output id="psCo2Out">50</output>%</label>
+                    <input type="range" id="psCo2" min="0" max="100" value="50">
+                </div>
+                <div class="ps-slider-box" style="flex: 1; min-width: 170px;">
+                    <label for="psWater">Water availability: <output id="psWaterOut">50</output>%</label>
+                    <input type="range" id="psWater" min="0" max="100" value="50">
+                </div>
+            </div>
+
+            <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 30px; margin: 10px 0 16px;">
+                <div style="position: relative; width: 100px; height: 160px; flex-shrink: 0;">
+                    <div style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 60px; height: 26px; background: #C7922C; border-radius: 6px 6px 3px 3px;"></div>
+                    <div style="position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%); width: 14px; height: 100px; background: #2A9D5C; border-radius: 6px;"></div>
+                    <div id="psBubbleTrack" style="position: absolute; bottom: 122px; left: 50%; width: 1px; height: 1px;">
+                        <span class="ps-bubble" style="animation-delay: 0s;"></span>
+                        <span class="ps-bubble" style="animation-delay: 0.9s;"></span>
+                        <span class="ps-bubble" style="animation-delay: 1.8s;"></span>
+                    </div>
+                </div>
+                <div style="flex: 1; min-width: 220px; max-width: 300px;">
+                    <div style="font-size: 13px; color: #0e1c42; margin-bottom: 4px;">Oxygen bubble rate</div>
+                    <div id="psRateLabel" style="font-size: 15px; color: #1a2340; margin-bottom: 12px; min-height: 40px;">Loading&hellip;</div>
+                    <div style="font-size: 13px; color: #0e1c42; margin-bottom: 4px;">Plant growth (Day <span id="psDayCount">0</span>)</div>
+                    <div style="background: #EEF1F8; border: 1px solid #D0D9E8; border-radius: 6px; height: 18px; overflow: hidden;">
+                        <div id="psGrowthBar" style="height: 100%; width: 0%; background: #2A9D5C; transition: width 0.4s;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="widget-feedback" id="psFeedback"></div>
+            <button class="widget-reset" id="psReset">Reset</button>
+        </div>
+
+        <div style="background: #E8F6FB; border-left: 5px solid #2196D0; border-top: 3px solid #55C8E8; border-radius: 6px; padding: 14px 20px; margin: 14px 0;">
+            <div style="font-size: 11px; color: #1B6A94; margin-bottom: 8px;">&#128161; WHAT THIS WIDGET IS SHOWING</div>
+            <div style="font-size: 17px; color: #0E1C42; line-height: 1.6;">Notice that raising the two inputs you did not touch never rescues the rate once one input hits zero. The process is not averaging three numbers together. It is being held back entirely by whichever single input is lowest, the limiting factor, the same idea you will see again later this unit when other systems depend on more than one resource at once.</div>
+        </div>
+
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 14px 0 0 0;">This gives you a fuller picture than "plants need sunlight." A plant with unlimited sunlight still cannot photosynthesize in a sealed jar with no carbon dioxide, and it still cannot photosynthesize in dry soil no matter how bright the day is. All three inputs have to show up together.</p>
+
+        <div class="optima-widget ow-select" style="margin-top: 18px;">
+            <div class="widget-kicker">&#9889; CHECK YOUR UNDERSTANDING &middot; INPUT OR OUTPUT?</div>
+            <div class="widget-question">Now that you have read the full explanation and tried the simulator, classify each item using the actual chemical equation for photosynthesis: carbon dioxide + water + light energy &#8594; sugar + oxygen.</div>
+
+            <div class="widget-row" data-correct="0" data-fb="Right. Carbon dioxide enters through the stomata and is one of the two raw materials the plant builds sugar from." data-hint="Look at the equation above. Is carbon dioxide on the arrow's left side or its right side?">
+                <div class="widget-row-prompt">1. Carbon dioxide entering through the stomata</div>
+                <div class="widget-options">
+                    <button data-choice="0">Input</button>
+                    <button data-choice="1">Output</button>
+                </div>
+            </div>
+
+            <div class="widget-row" data-correct="1" data-fb="Right. Oxygen is released as a byproduct once the reaction is complete, and it exits through the same stomata the carbon dioxide entered through." data-hint="Does oxygen go into the leaf to start the reaction, or come out of it once the reaction has run?">
+                <div class="widget-row-prompt">2. Oxygen released through the stomata</div>
+                <div class="widget-options">
+                    <button data-choice="0">Input</button>
+                    <button data-choice="1">Output</button>
+                </div>
+            </div>
+
+            <div class="widget-row" data-correct="0" data-fb="Right, and this is the input Van Helmont correctly identified as mattering, even though he thought it explained all of the tree's added mass by itself." data-hint="Water is one of the two raw materials on the left side of the equation. Where does the plant get it from?">
+                <div class="widget-row-prompt">3. Water absorbed by the roots</div>
+                <div class="widget-options">
+                    <button data-choice="0">Input</button>
+                    <button data-choice="1">Output</button>
+                </div>
+            </div>
+
+            <div class="widget-row" data-correct="1" data-fb="Right. Sugar is the product the plant builds and then transports to wherever it is needed for growth." data-hint="Sugar is what the plant makes, not what it starts with. Which side of the equation is that?">
+                <div class="widget-row-prompt">4. Sugar transported to the rest of the plant</div>
+                <div class="widget-options">
+                    <button data-choice="0">Input</button>
+                    <button data-choice="1">Output</button>
+                </div>
+            </div>
+
+            <div class="widget-row" data-correct="0" data-fb="Right. Light energy is what actually powers the reaction and is captured by chlorophyll in the chloroplasts before anything else can happen." data-hint="Without this, the reaction cannot start at all, no matter how much carbon dioxide and water are present. Which side of the equation does that put it on?">
+                <div class="widget-row-prompt">5. Light energy absorbed by chlorophyll</div>
+                <div class="widget-options">
+                    <button data-choice="0">Input</button>
+                    <button data-choice="1">Output</button>
+                </div>
+            </div>
+
+            <button class="widget-reset">Reset</button>
+        </div>
+    </div>
+
+    <!-- PART 3: assignment + VR bridge -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128218; PART 3 &middot; TESTING THE LIGHT REQUIREMENT WITH A REAL LEAF</div>
+
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">A classic plant investigation covers part of a leaf, waits for the plant to use up the starch already stored there, then tests both the covered and uncovered sections with iodine, which turns blue-black in the presence of starch, to show that light is required to make new starch. That iodine test needs a chemical most homes don't have and takes longer than a week to run properly, so this week's notebook entry has you analyze real results from this exact investigation instead of trying to run it at home.</p>
+    </div>
+
+    <div class="vr-card avoid-break" style="background: #FFFFFF; border-top: 3px solid #0E1C42; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #0e1c42; margin-bottom: 14px;">&#127919; VR ACTIVITY 3.2 &middot; INSIDE A CHLOROPLAST</div>
+        <div style="font-size: 15px; color: #666; margin-bottom: 10px;">Solo VR &middot; About 25 minutes</div>
+
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;"><strong>What you're doing:</strong> Standing inside a room-scale chloroplast to see photosynthesis happen at a scale no classroom microscope could ever show you.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;"><strong>How to join:</strong> Join this week's VR session using code <code style="background:#EEF1F8; padding: 2px 6px; border-radius: 4px;">CS2-PHOTO-14</code>, in the <em>Cellular Structures Hall &mdash; Chloroplast Chamber</em> location. You'll start at the membrane entrance.</p>
+
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 14px 0 6px 0;"><strong>What to do, in order:</strong></p>
+        <ol style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0; padding-left: 22px;">
+            <li>Enter the chloroplast chamber and locate the three input-delivery points: the light beam entering through the "membrane window," the carbon dioxide stream, and the water stream.</li>
+            <li>Trigger the reaction sequence and watch the animated sugar-molecule and oxygen-bubble outputs form and exit.</li>
+            <li>On the whiteboard, write the word equation for photosynthesis using your own labels for what you just watched enter and leave.</li>
+            <li>Walk to the comparison display showing Van Helmont's willow tree experiment timeline (5 years, 200 lbs soil, 164 lbs of new tree mass) and record a 90-second recording explaining what Van Helmont got right, what he couldn't have known, and what you now know that fills the gap in his conclusion.</li>
+        </ol>
+
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 10px 0;"><strong>What to submit:</strong> Your recording and a photo of your word equation.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 10px 0;"><strong>Time:</strong> About 25 minutes.</p>
+
+        <div style="background: #FDF3E3; border-left: 4px solid #C7922C; border-radius: 6px; padding: 12px 16px; margin: 14px 0;">
+            <div style="font-size: 11px; color: #8a6a1f; margin-bottom: 6px;">FACILITATOR NOTE</div>
+            <div style="font-size: 15px; color: #1a2340; line-height: 1.6;">The Van Helmont connection is the heart of this activity's historical thread. Make sure scholars articulate specifically what he missed (carbon dioxide from air) rather than just restating the modern equation.</div>
+        </div>
+
+        <div style="background: #E8F6FB; border-left: 5px solid #2196D0; border-radius: 6px; padding: 12px 16px; margin: 10px 0 0;">
+            <div style="font-size: 11px; color: #1B6A94; margin-bottom: 6px;">SUCCESS CRITERIA</div>
+            <div style="font-size: 15px; color: #0E1C42; line-height: 1.6;">Word equation correctly includes all three inputs and both outputs; recording correctly identifies water as Van Helmont's correct but incomplete answer.</div>
+        </div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #0E1C42; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 16px;">&#10145;&#65039; WHAT YOU'LL DO NEXT</div>
+        <div style="display: flex; align-items: flex-start; gap: 14px; margin-bottom: 16px;">
+            <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
+            <div>
+                <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Notebook Entry 3.2, Investigating Starch and Light</strong></div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">Analyze a real iodine starch test data set and explain what it shows about the light requirement for photosynthesis. See the Canvas assignment for full instructions.</div>
+            </div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 14px;">
+            <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
+            <div>
+                <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>VR Activity 3.2, Inside a Chloroplast</strong></div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">Stand inside a room-scale chloroplast and connect what you see back to Van Helmont's willow tree.</div>
+            </div>
+        </div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128170; BEFORE YOU MOVE ON</div>
+        <p style="font-size: 18px; color: #1a2340; line-height: 1.65; margin: 0;">Van Helmont spent five years being careful and still missed half the answer, not because he was careless, but because carbon dioxide is invisible and nobody in his century had a reason to suspect a gas could become a tree. That is worth remembering every time evidence seems to point somewhere: a careful conclusion can still be an incomplete one.</p>
+    </div>
+
+</div>
+
+<div style="background: #0E1C42; border-top: 3px solid #55C8E8; padding: 18px 34px; text-align: center;">
+    <div style="font-size: 18px; color: #ffffff; margin-bottom: 6px;"><span style="color: #55c8e8;">Optima Academy Online</span> &middot; M/J COMPREHENSIVE SCIENCE 2 &middot; Quarter 2 &middot; Student Lesson Page</div>
+    <div style="font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 4px;">Lesson 3.2 &middot; Photosynthesis: Building Matter from Light</div>
+    <div style="font-size: 12px; color: rgba(255,255,255,0.4);">&copy; Optima Academy Online &middot; An Education Experience Company</div>
+</div>
+
+</div>
+
+<script>
+(function () {
+  document.addEventListener('click', function (e) {
+    var reset = e.target.closest('.widget-reset');
+    if (reset && !reset.closest('#ps-widget')) {
+      var w = reset.closest('.optima-widget');
+      w.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected', 'correct', 'incorrect'); });
+      w.querySelectorAll('.widget-feedback').forEach(function (f) { f.classList.remove('show'); f.textContent = ''; });
+      w.querySelectorAll('.row-feedback').forEach(function (f) { f.remove(); });
+      return;
+    }
+    var sBtn = e.target.closest('.ow-select .widget-row .widget-options button');
+    if (sBtn) {
+      var row = sBtn.closest('.widget-row');
+      var correct = row.dataset.correct;
+      row.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected', 'correct', 'incorrect'); });
+      var right = sBtn.dataset.choice === correct;
+      sBtn.classList.add(right ? 'correct' : 'incorrect');
+      var text = right ? (sBtn.dataset.fb || row.dataset.fb || 'Right.') : (sBtn.dataset.fb || row.dataset.hint || 'Not quite. Try again.');
+      var rf = row.querySelector('.row-feedback') || row.appendChild(document.createElement('div'));
+      rf.className = 'row-feedback ' + (right ? 'correct' : 'incorrect');
+      rf.textContent = text;
+      return;
+    }
+  });
+})();
+</script>
+
+<script>
+(function () {
+  var lightEl = document.getElementById('psLight');
+  var co2El = document.getElementById('psCo2');
+  var waterEl = document.getElementById('psWater');
+  var lightOut = document.getElementById('psLightOut');
+  var co2Out = document.getElementById('psCo2Out');
+  var waterOut = document.getElementById('psWaterOut');
+  var rateLabel = document.getElementById('psRateLabel');
+  var dayCountEl = document.getElementById('psDayCount');
+  var growthBar = document.getElementById('psGrowthBar');
+  var bubbles = document.querySelectorAll('#psBubbleTrack .ps-bubble');
+  var feedback = document.getElementById('psFeedback');
+
+  var day = 0, growth = 0, timer = null;
+
+  function names() { return { light: 'light', co2: 'carbon dioxide', water: 'water' }; }
+
+  function currentRate() {
+    var light = +lightEl.value, co2 = +co2El.value, water = +waterEl.value;
+    if (light === 0 || co2 === 0 || water === 0) return { rate: 0, light: light, co2: co2, water: water };
+    var rate = Math.min(light, co2, water);
+    return { rate: rate, light: light, co2: co2, water: water };
+  }
+
+  function updateBubbles(rate) {
+    bubbles.forEach(function (b) {
+      if (rate <= 0) {
+        b.style.animationPlayState = 'paused';
+        b.style.opacity = '0';
+      } else {
+        var duration = Math.max(0.5, 3.2 - (rate / 100) * 2.6);
+        b.style.animationDuration = duration + 's';
+        b.style.animationPlayState = 'running';
+        b.style.opacity = '';
+      }
+    });
+  }
+
+  function updateLabel(state) {
+    var n = names();
+    if (state.rate <= 0) {
+      var zeroInputs = [];
+      if (state.light === 0) zeroInputs.push(n.light);
+      if (state.co2 === 0) zeroInputs.push(n.co2);
+      if (state.water === 0) zeroInputs.push(n.water);
+      rateLabel.textContent = 'Halted. No oxygen production, because ' + zeroInputs.join(' and ') + ' has dropped to zero. The other inputs cannot make up for a missing one.';
+      return;
+    }
+    var lowest = Math.min(state.light, state.co2, state.water);
+    var limiters = [];
+    if (state.light === lowest) limiters.push(n.light);
+    if (state.co2 === lowest) limiters.push(n.co2);
+    if (state.water === lowest) limiters.push(n.water);
+    if (limiters.length === 3) {
+      rateLabel.textContent = 'Running at ' + Math.round(state.rate) + '% of maximum. All three inputs are equal right now, so none of them alone is holding the rate back.';
+    } else {
+      rateLabel.textContent = 'Running at ' + Math.round(state.rate) + '% of maximum, limited by ' + limiters.join(' and ') + ', the lowest input at the moment. Raising the higher inputs will not speed this up further.';
+    }
+  }
+
+  function tick() {
+    var state = currentRate();
+    updateBubbles(state.rate);
+    updateLabel(state);
+    day += 1;
+    growth = Math.min(100, growth + (state.rate / 100) * 4);
+    dayCountEl.textContent = day;
+    growthBar.style.width = growth + '%';
+  }
+
+  lightEl.addEventListener('input', function () { lightOut.textContent = lightEl.value; var s = currentRate(); updateBubbles(s.rate); updateLabel(s); });
+  co2El.addEventListener('input', function () { co2Out.textContent = co2El.value; var s = currentRate(); updateBubbles(s.rate); updateLabel(s); });
+  waterEl.addEventListener('input', function () { waterOut.textContent = waterEl.value; var s = currentRate(); updateBubbles(s.rate); updateLabel(s); });
+
+  document.getElementById('psReset').addEventListener('click', function () {
+    lightEl.value = 50; co2El.value = 50; waterEl.value = 50;
+    lightOut.textContent = 50; co2Out.textContent = 50; waterOut.textContent = 50;
+    day = 0; growth = 0;
+    dayCountEl.textContent = 0;
+    growthBar.style.width = '0%';
+    feedback.classList.remove('show');
+    feedback.textContent = '';
+    var s = currentRate();
+    updateBubbles(s.rate);
+    updateLabel(s);
+  });
+
+  var initial = currentRate();
+  updateBubbles(initial.rate);
+  updateLabel(initial);
+  timer = setInterval(tick, 900);
+})();
+</script>
+
+</body>
+</html>
