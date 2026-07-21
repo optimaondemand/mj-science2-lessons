@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>M/J Comprehensive Science 2 &mdash; Lesson 3.5</title>
+<style>
+    body { margin: 0; padding: 0; font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f4f6fa; }
+    .canvas-frame { max-width: 1100px; margin: 0 auto; background: #ffffff; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+
+    .optima-widget { background: linear-gradient(135deg, #E8F6FB 0%, #F4F9FC 100%); border: 1px solid #C5DCE5; border-left: 5px solid #2196D0; border-radius: 8px; padding: 18px 22px; margin: 18px 0; }
+    .widget-kicker { font-size: 11px; color: #1B6A94; margin-bottom: 10px; letter-spacing: 0.4px; }
+    .widget-question { font-size: 17px; color: #0E1C42; margin-bottom: 14px; line-height: 1.55; }
+    .widget-row { background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 6px; padding: 12px 14px; margin-bottom: 10px; }
+    .widget-row-prompt { font-size: 15px; color: #0E1C42; margin-bottom: 8px; line-height: 1.5; font-style: italic; }
+    .widget-options { display: flex; flex-wrap: wrap; gap: 8px; }
+    .widget-options button { background: #FFFFFF; border: 1.5px solid #D0D9E8; border-radius: 8px; padding: 8px 14px; font-size: 14px; color: #0E1C42; cursor: pointer; transition: all 0.15s; font-family: inherit; }
+    .widget-options button:hover { background: #F4F6FA; border-color: #55C8E8; }
+    .widget-options button.selected { background: #0E1C42; color: #FFFFFF; border-color: #0E1C42; }
+    .widget-options button.correct { background: #D8F0DD; border-color: #2A9D5C; color: #1A6B3D; }
+    .widget-options button.incorrect { background: #FDECEC; border-color: #C0392B; color: #8A1F16; }
+    .widget-feedback { background: #FFFFFF; border-left: 3px solid #C7922C; padding: 10px 14px; font-size: 15px; color: #1a2340; line-height: 1.55; margin: 10px 0; display: none; border-radius: 4px; }
+    .widget-feedback.show { display: block; }
+    .row-feedback { padding: 8px 12px; margin-top: 8px; font-size: 14px; border-radius: 4px; line-height: 1.5; }
+    .row-feedback.correct { background: #D8F0DD; border-left: 3px solid #2A9D5C; color: #1A6B3D; }
+    .row-feedback.incorrect { background: #FDECEC; border-left: 3px solid #C0392B; color: #8A1F16; }
+    .widget-reset { background: transparent; border: 1px solid #C7922C; color: #C7922C; border-radius: 6px; padding: 6px 12px; font-size: 12px; cursor: pointer; font-family: inherit; margin-top: 6px; }
+    .widget-reset:hover { background: #FDF3E3; }
+
+    /* hero pill row */
+    .hero-pill { display: inline-block; background: #EEF1F8; color: #0E1C42; font-size: 12px; border-radius: 14px; padding: 4px 12px; margin: 2px 4px 2px 0; border: 1px solid #D0D9E8; }
+    .hero-pill.vr { background: #E8F6FB; color: #1B6A94; border-color: #C5DCE5; }
+    .hero-pill.widget { background: #FDF3E3; color: #7a5a10; border-color: #EAD9AE; }
+
+    /* VR / assignment cards */
+    .info-card { background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px; }
+    .info-card.vr { border-top: 3px solid #2196D0; }
+    .info-card.assign { border-top: 3px solid #6B8F3C; }
+    .info-card .kicker { font-size: 11px; color: #1B6A94; margin-bottom: 6px; letter-spacing: 0.4px; }
+    .info-card.assign .kicker { color: #4d6b28; }
+    .info-card h4 { font-size: 20px; color: #0e1c42; margin: 0 0 10px 0; }
+    .info-card .sub { font-size: 13px; color: #666; margin-bottom: 14px; }
+    .info-card p { font-size: 16px; color: #1a2340; line-height: 1.6; margin: 0 0 10px 0; }
+    .info-card ol { font-size: 16px; color: #1a2340; line-height: 1.65; margin: 0 0 12px 0; padding-left: 22px; }
+    .info-card ol li { margin-bottom: 8px; }
+    .note-box { background: #FDF3E3; border-left: 4px solid #C7922C; border-radius: 6px; padding: 10px 14px; font-size: 14px; color: #5c4713; margin: 12px 0; line-height: 1.55; }
+    .success-box { background: #EEF1F8; border-left: 4px solid #0E1C42; border-radius: 6px; padding: 10px 14px; font-size: 14px; color: #0e1c42; margin: 12px 0; line-height: 1.55; }
+    code.join-code { background: #0E1C42; color: #55C8E8; padding: 2px 8px; border-radius: 4px; font-size: 14px; }
+
+    /* Daphne Major chart */
+    .chart-wrap { display: flex; gap: 20px; flex-wrap: wrap; align-items: flex-start; margin: 10px 0; }
+    .chart-svg-box { flex: 2; min-width: 320px; }
+    .chart-note { flex: 1; min-width: 220px; background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 14px 16px; font-size: 14px; color: #1a2340; line-height: 1.6; }
+
+    /* Natural Selection Simulator (Engine 6) */
+    .ns-terrain { display: grid; grid-template-columns: repeat(10, 1fr); gap: 8px; padding: 18px; border-radius: 10px; transition: background 0.5s ease; margin-top: 4px; }
+    .ns-terrain.ns-light { background-color: #d9d2b8; background-image: radial-gradient(circle at 15% 25%, rgba(120,110,80,0.35) 0 3px, transparent 4px), radial-gradient(circle at 65% 70%, rgba(120,110,80,0.3) 0 3px, transparent 4px), radial-gradient(circle at 85% 20%, rgba(120,110,80,0.3) 0 3px, transparent 4px); }
+    .ns-terrain.ns-dark { background-color: #4b3621; background-image: radial-gradient(circle at 20% 30%, rgba(0,0,0,0.35) 0 3px, transparent 4px), radial-gradient(circle at 60% 65%, rgba(0,0,0,0.3) 0 3px, transparent 4px), radial-gradient(circle at 80% 15%, rgba(0,0,0,0.3) 0 3px, transparent 4px); }
+    .ns-dot-wrap { position: relative; display: flex; align-items: center; justify-content: center; height: 40px; }
+    .ns-dot { width: 26px; height: 26px; border-radius: 50%; border: 2px solid rgba(0,0,0,0.3); transition: opacity 0.5s ease, transform 0.5s ease; }
+    .ns-dot-wrap.eaten .ns-dot { opacity: 0; transform: scale(0.3); }
+    .ns-predator { position: absolute; top: -16px; left: 50%; transform: translateX(-50%); font-size: 16px; opacity: 0; transition: opacity 0.3s ease; pointer-events: none; }
+    .ns-dot-wrap.eaten .ns-predator { opacity: 1; }
+    .ns-swatch { display: inline-block; width: 22px; height: 22px; border-radius: 50%; border: 2px solid #0E1C42; vertical-align: middle; transition: background 0.5s ease; }
+    .ns-run-btn { background: #0E1C42; color: #fff; border: none; border-radius: 8px; padding: 10px 20px; font-size: 15px; cursor: pointer; font-family: inherit; }
+    .ns-run-btn:disabled { opacity: 0.5; cursor: default; }
+    #nsLight.selected, #nsDark.selected { background: #0E1C42; color: #fff; border-color: #0E1C42; }
+    .ns-readout { font-size: 14px; color: #555; margin-top: 10px; line-height: 1.55; }
+</style>
+</head>
+<body>
+<div class="canvas-frame">
+
+<div style="background: #0E1C42; border-bottom: 5px solid #55C8E8; padding: 22px 34px;">
+    <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 10px;">
+        <div style="width: 52px; height: 52px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt="Optima Academy" style="width: 50px; height: 40px; object-fit: contain;" /></div>
+        <div>
+            <div style="font-size: 28px; color: #ffffff; line-height: 1.2;">Optima Academy Online</div>
+            <div style="font-size: 12px; color: #55c8e8;">An Education Experience Company</div>
+        </div>
+    </div>
+    <div style="font-size: 36px; color: #ffffff; margin-bottom: 6px;">M/J COMPREHENSIVE SCIENCE 2</div>
+</div>
+
+<div style="background: #FFFFFF; border-bottom: 2px solid #D0D9E8; display: flex; flex-wrap: wrap;">
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Quarter / Unit</div>
+        <div style="font-size: 17px; color: #0e1c42;">Q2 &middot; Unit 3 &middot; Week 17</div>
+        <div style="font-size: 12px; color: #666;">Life Science</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Lesson</div>
+        <div style="font-size: 17px; color: #0e1c42;">Lesson 3.5</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Topic</div>
+        <div style="font-size: 17px; color: #0e1c42; font-style: italic;">The Finches That Changed Biology</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Unit Theme</div>
+        <div style="font-size: 16px; color: #0e1c42;">The Turn to Living Systems</div>
+    </div>
+</div>
+
+<div style="padding: 24px 34px;">
+
+    <div style="background: #EEF1F8; border-left: 5px solid #0E1C42; border-radius: 7px; padding: 18px 22px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #0e1c42; margin-bottom: 6px;">Lesson 3.5</div>
+        <div style="font-size: 22px; color: #0e1c42; margin-bottom: 4px;">The Finches That Changed Biology</div>
+        <div style="font-size: 16px; color: #666; margin-bottom: 10px;">Lesson &middot; Natural Selection, Extinction, and Life Together in an Ecosystem</div>
+        <span class="hero-pill">SC.7.L.15.2</span><span class="hero-pill">SC.7.L.15.3</span><span class="hero-pill">SC.7.L.17.2</span><span class="hero-pill">SC.7.L.17.3</span><span class="hero-pill vr">2 VR Activities</span><span class="hero-pill widget">Widget</span>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128214; TODAY'S FOCUS</div>
+        <div style="font-size: 20px; color: #0e1c42; font-style: italic; margin-bottom: 10px;">A drought on a tiny Gal&aacute;pagos island once shifted an entire finch population's beak size within a single generation, while scientists watched it happen.</div>
+        <div style="font-size: 18px; color: #1a2340; line-height: 1.65;">Today you'll learn the three ingredients natural selection needs to work, why it explains extinction as a mismatch between traits and a changing environment rather than a species "failing to try," and why the same finches that puzzled Darwin in 1835 are still teaching biologists new things nearly two centuries later.</div>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#127919; BY THE END OF THIS LESSON YOU WILL BE ABLE TO&hellip;</div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> explain how genetic variation and environmental pressure drive natural selection, and why it only shifts a population over generations, never an individual during its own lifetime.</div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> explain why an inability to adapt quickly enough to a changing environment can lead to extinction.</div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">3</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> classify mutualism, parasitism, predation, competition, and commensalism, and identify which specific piece of evidence supports a limiting-factor conclusion.</div>
+        </div>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128203; WHAT YOU NEED FOR THIS LESSON</div>
+        <div style="display: flex; align-items: flex-start; gap: 10px; padding-left: 14px; border-left: 3px solid #D0D9E8;"><span style="color: #c7922c; font-size: 18px; flex-shrink: 0;">&#9654;</span>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.6;">Your science notebook &middot; about 25 minutes to read, run the simulator, and try the practice widget below</div>
+        </div>
+    </div>
+
+    <!-- PART 1: Natural Selection and Extinction -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128218; PART 1 &middot; A MECHANISM CAUGHT IN THE ACT</div>
+
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">When Charles Darwin visited the Gal&aacute;pagos Islands in 1835, he collected finches from several different islands without initially realizing how significant their differences were &mdash; it was only later, when an ornithologist examined his specimens, that the pattern became clear: each island's finches had a beak shape closely matched to that island's available food. Decades later, biologists Peter and Rosemary Grant spent over forty years directly measuring these same finches on the island of Daphne Major, and during a severe drought they watched, in real time, the average beak size of an entire finch population shift within a single generation, because birds with slightly larger, stronger beaks were better able to crack the tough seeds that survived the drought. This is natural selection observed happening, not just inferred after the fact.</p>
+
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;"><strong>Natural selection</strong> requires three ingredients: genetic variation already existing within a population (not every finch has the exact same beak), an environmental pressure that makes some variations more useful than others (a drought that leaves only tough seeds), and a resulting difference in survival and reproduction (birds with the useful trait leave more offspring). Over many generations, this shifts the population's traits &mdash; it does not change any individual bird during its own lifetime. When an environment changes faster than a species can produce or select for useful variation, the population can shrink and eventually disappear entirely: <strong>extinction</strong>. The fossil record from last week and the mechanism you're learning this week fit together like a lock and its key &mdash; the fossil record shows <em>that</em> species changed over time, and natural selection is the best-supported explanation scientists have for <em>how</em>.</p>
+
+        <div style="background:#E8F6FB;border-left:5px solid #2196D0;border-top:3px solid #55C8E8;border-radius:6px;padding:16px 20px;margin:16px 0;">
+            <div style="font-size:11px;color:#1B6A94;margin-bottom:10px;">&#128161; VISUAL &middot; DAPHNE MAJOR BEAK-SIZE TIMELINE</div>
+            <div class="chart-wrap">
+                <div class="chart-svg-box">
+                    <svg viewBox="0 0 640 260" style="width:100%; height:auto; font-family:inherit;">
+                        <!-- y-axis gridlines and labels -->
+                        <line x1="40" y1="20" x2="40" y2="220" stroke="#0E1C42" stroke-width="1.5" />
+                        <line x1="40" y1="220" x2="600" y2="220" stroke="#0E1C42" stroke-width="1.5" />
+                        <text x="8" y="24" font-size="11" fill="#555">10.5</text>
+                        <line x1="40" y1="20" x2="600" y2="20" stroke="#D0D9E8" stroke-width="1" />
+                        <text x="8" y="90" font-size="11" fill="#555">10.0</text>
+                        <line x1="40" y1="86.7" x2="600" y2="86.7" stroke="#D0D9E8" stroke-width="1" />
+                        <text x="8" y="157" font-size="11" fill="#555">9.5</text>
+                        <line x1="40" y1="153.3" x2="600" y2="153.3" stroke="#D0D9E8" stroke-width="1" />
+                        <text x="10" y="224" font-size="11" fill="#555">9.0</text>
+                        <text x="-58" y="14" font-size="11" fill="#555" transform="rotate(-90)">Avg. beak depth (mm)</text>
+
+                        <!-- drought marker -->
+                        <line x1="360" y1="20" x2="360" y2="220" stroke="#C0392B" stroke-width="1.5" stroke-dasharray="5,4" />
+                        <text x="366" y="34" font-size="12" fill="#8A1F16">1977 drought</text>
+
+                        <!-- data line -->
+                        <polyline points="40,193.3 120,180 200,180 280,166.7 360,46.7 440,100 520,126.7 600,140" fill="none" stroke="#2196D0" stroke-width="3" />
+                        <circle cx="40" cy="193.3" r="4.5" fill="#0E1C42" />
+                        <circle cx="120" cy="180" r="4.5" fill="#0E1C42" />
+                        <circle cx="200" cy="180" r="4.5" fill="#0E1C42" />
+                        <circle cx="280" cy="166.7" r="4.5" fill="#0E1C42" />
+                        <circle cx="360" cy="46.7" r="6" fill="#C0392B" />
+                        <circle cx="440" cy="100" r="4.5" fill="#0E1C42" />
+                        <circle cx="520" cy="126.7" r="4.5" fill="#0E1C42" />
+                        <circle cx="600" cy="140" r="4.5" fill="#0E1C42" />
+
+                        <!-- x-axis year labels -->
+                        <text x="30" y="238" font-size="11" fill="#555">1973</text>
+                        <text x="110" y="238" font-size="11" fill="#555">1974</text>
+                        <text x="190" y="238" font-size="11" fill="#555">1975</text>
+                        <text x="270" y="238" font-size="11" fill="#555">1976</text>
+                        <text x="345" y="253" font-size="11" fill="#8A1F16">1977</text>
+                        <text x="428" y="238" font-size="11" fill="#555">1978</text>
+                        <text x="508" y="238" font-size="11" fill="#555">1979</text>
+                        <text x="585" y="238" font-size="11" fill="#555">1980</text>
+                    </svg>
+                </div>
+                <div class="chart-note"><strong style="color:#0E1C42;">Reading this graph</strong><br />Average finch beak depth jumps sharply during the labeled 1977 drought year, then eases back down over the following seasons as rainfall and seed supply recovered. The finches were not "trying" to evolve. The birds already born with slightly deeper, stronger beaks simply survived the drought better and left more offspring, and that is the whole mechanism.</div>
+            </div>
+        </div>
+
+        <div class="optima-widget" id="ns-widget" style="border-left-color:#6B8F3C;">
+            <div class="widget-kicker">&#9889; TRY IT &middot; NATURAL SELECTION SIMULATOR</div>
+            <div class="widget-question">This population of 40 organisms varies in color, a stand-in for a camouflage trait. Predators find whichever organisms stand out most against the current background. Toggle the background, then click "Run One Generation" to see which organisms survive, breed, and shift the population's average color over time.</div>
+
+            <div class="widget-options" style="margin-bottom: 14px;">
+                <button id="nsLight" type="button">Light Gravel</button>
+                <button id="nsDark" type="button">Dark Soil</button>
+            </div>
+
+            <div id="nsTerrain" class="ns-terrain ns-light"></div>
+
+            <div style="display:flex; flex-wrap:wrap; gap:22px; align-items:center; margin-top:16px;">
+                <button id="nsRun" type="button" class="ns-run-btn">Run One Generation</button>
+                <div style="font-size:15px;color:#0e1c42;">Generation: <strong id="nsGenOut">0</strong></div>
+                <div style="font-size:15px;color:#0e1c42;display:flex;align-items:center;gap:8px;">Population average color: <span id="nsAvgSwatch" class="ns-swatch"></span></div>
+            </div>
+            <div id="nsCamoReadout" class="ns-readout"></div>
+            <div id="nsFeedback" class="widget-feedback"></div>
+            <button class="widget-reset" id="nsReset">Reset</button>
+
+            <script>
+            (function () {
+                var terrain = document.getElementById('nsTerrain');
+                var lightBtn = document.getElementById('nsLight');
+                var darkBtn = document.getElementById('nsDark');
+                var runBtn = document.getElementById('nsRun');
+                var resetBtn = document.getElementById('nsReset');
+                var genOut = document.getElementById('nsGenOut');
+                var avgSwatch = document.getElementById('nsAvgSwatch');
+                var camoReadout = document.getElementById('nsCamoReadout');
+                var feedback = document.getElementById('nsFeedback');
+
+                var POP_SIZE = 40;
+                var REMOVE_COUNT = 20;
+                var population = [];
+                var generation = 0;
+                var bgMode = 'light';
+                var targetValue = 1.5;
+                var running = false;
+
+                function traitColor(t) {
+                    var lo = [232, 220, 192];
+                    var hi = [59, 42, 24];
+                    var f = t / 10;
+                    var r = Math.round(lo[0] + (hi[0] - lo[0]) * f);
+                    var g = Math.round(lo[1] + (hi[1] - lo[1]) * f);
+                    var b = Math.round(lo[2] + (hi[2] - lo[2]) * f);
+                    return 'rgb(' + r + ',' + g + ',' + b + ')';
+                }
+
+                function randomTrait() {
+                    return Math.random() * 10;
+                }
+
+                function initPopulation() {
+                    population = [];
+                    for (var i = 0; i < POP_SIZE; i++) population.push(randomTrait());
+                    generation = 0;
+                }
+
+                function average(arr) {
+                    var sum = 0;
+                    for (var i = 0; i < arr.length; i++) sum += arr[i];
+                    return sum / arr.length;
+                }
+
+                function camouflagedPercent() {
+                    var count = 0;
+                    for (var i = 0; i < population.length; i++) {
+                        if (Math.abs(population[i] - targetValue) <= 2.0) count++;
+                    }
+                    return Math.round((count / population.length) * 100);
+                }
+
+                function updateReadouts() {
+                    var avg = average(population);
+                    genOut.textContent = generation;
+                    avgSwatch.style.background = traitColor(avg);
+                    var pct = camouflagedPercent();
+                    var bgLabel = bgMode === 'light' ? 'light gravel' : 'dark soil';
+                    var shadeLabel = avg < 4 ? 'leaning light' : (avg > 6 ? 'leaning dark' : 'mixed, near the middle');
+                    camoReadout.textContent = 'Average camouflage shade: ' + avg.toFixed(1) + ' out of 10 (' + shadeLabel + '). Against the current ' + bgLabel + ' background, about ' + pct + '% of this population is well camouflaged right now.';
+                }
+
+                function render() {
+                    terrain.innerHTML = '';
+                    for (var i = 0; i < population.length; i++) {
+                        var wrap = document.createElement('div');
+                        wrap.className = 'ns-dot-wrap';
+                        var pred = document.createElement('span');
+                        pred.className = 'ns-predator';
+                        pred.textContent = '🦅';
+                        var dot = document.createElement('div');
+                        dot.className = 'ns-dot';
+                        dot.style.background = traitColor(population[i]);
+                        wrap.appendChild(pred);
+                        wrap.appendChild(dot);
+                        terrain.appendChild(wrap);
+                    }
+                    updateReadouts();
+                }
+
+                function setBackground(mode) {
+                    bgMode = mode;
+                    targetValue = mode === 'light' ? 1.5 : 8.5;
+                    terrain.className = 'ns-terrain ns-' + mode;
+                    lightBtn.classList.toggle('selected', mode === 'light');
+                    darkBtn.classList.toggle('selected', mode === 'dark');
+                    updateReadouts();
+                    feedback.className = 'widget-feedback show';
+                    feedback.textContent = 'Background switched. Nothing about the population changed yet, it still carries whatever colors survived the last environment. Click Run One Generation to see how it responds, and notice how far behind it starts.';
+                }
+
+                function runGeneration() {
+                    if (running) return;
+                    running = true;
+                    runBtn.disabled = true;
+
+                    var mismatches = population.map(function (t, i) {
+                        return { i: i, m: Math.abs(t - targetValue) };
+                    });
+                    mismatches.sort(function (a, b) { return b.m - a.m; });
+                    var eatenIndices = {};
+                    for (var k = 0; k < REMOVE_COUNT; k++) eatenIndices[mismatches[k].i] = true;
+
+                    var wraps = terrain.querySelectorAll('.ns-dot-wrap');
+                    for (var i = 0; i < wraps.length; i++) {
+                        if (eatenIndices[i]) wraps[i].classList.add('eaten');
+                    }
+                    feedback.className = 'widget-feedback show';
+                    feedback.textContent = 'A predator is checking the population against the background...';
+
+                    setTimeout(function () {
+                        var survivors = [];
+                        for (var i = 0; i < population.length; i++) {
+                            if (!eatenIndices[i]) survivors.push(population[i]);
+                        }
+                        var offspring = [];
+                        for (var n = 0; n < POP_SIZE; n++) {
+                            var pA = survivors[Math.floor(Math.random() * survivors.length)];
+                            var pB = survivors[Math.floor(Math.random() * survivors.length)];
+                            var child = (pA + pB) / 2 + (Math.random() * 2.4 - 1.2);
+                            if (child < 0) child = 0;
+                            if (child > 10) child = 10;
+                            offspring.push(child);
+                        }
+                        population = offspring;
+                        generation++;
+                        render();
+                        feedback.className = 'widget-feedback show';
+                        feedback.textContent = 'Generation ' + generation + ' complete. ' + REMOVE_COUNT + ' of ' + POP_SIZE + ' organisms did not survive predation this round, and the next generation was bred from the ' + (POP_SIZE - REMOVE_COUNT) + ' that did.';
+                        runBtn.disabled = false;
+                        running = false;
+                    }, 700);
+                }
+
+                lightBtn.addEventListener('click', function () { setBackground('light'); });
+                darkBtn.addEventListener('click', function () { setBackground('dark'); });
+                runBtn.addEventListener('click', runGeneration);
+                resetBtn.addEventListener('click', function () {
+                    initPopulation();
+                    setBackground('light');
+                    feedback.classList.remove('show');
+                    feedback.textContent = '';
+                    render();
+                });
+
+                initPopulation();
+                lightBtn.classList.add('selected');
+                render();
+            })();
+            </script>
+        </div>
+
+        <div class="success-box">This is the exact process behind the Daphne Major graph above: no organism decided anything, and no organism changed during its own lifetime. Survival and reproduction did all the work, generation after generation. Notice, too, what happens if you switch the background right after running several generations: the population does not catch up instantly. That lag is the seed of extinction risk, if an environment keeps changing faster than a population can catch up, the population shrinks instead of shifting.</div>
+    </div>
+
+    <!-- VR Activity 3.5a -->
+    <div class="info-card vr">
+        <div class="kicker">&#127760; SOLO VR ACTIVITY 3.5a &middot; ~25 MIN</div>
+        <h4>Survive the Drought</h4>
+        <div class="sub">SC.7.L.15.2, SC.7.L.15.3</div>
+        <p><strong>What you're doing:</strong> Role-playing one feeding round of Gal&aacute;pagos finches to feel, rather than just read about, why variation and environmental pressure together produce differential survival &mdash; the raw material natural selection is built from. This single round shows survival advantage in one generation; the notebook assignment right after this activity extends the reasoning across multiple generations, which is where natural selection actually happens.</p>
+        <p><strong>How to join:</strong> Join this week's VR session using code <code class="join-code">CS2-SELECT-17A</code>, in the <em>Gal&aacute;pagos Island Simulation</em> location. You'll start at the finch aviary.</p>
+        <p><strong>What to do, in order:</strong></p>
+        <ol>
+            <li>Choose one of five finch avatars, each with a different beak-size label, and use it to "collect" seeds scattered around the terrain within a two-minute timer (small, easy seeds and large, tough seeds are both present).</li>
+            <li>Check your score against the placed results board showing how each beak size performed during the drought scenario (large-beak finches scored highest, because most remaining seeds were tough).</li>
+            <li>Walk to the Extinction Case Wall and read the placed case card on the dodo, noting the environmental change (introduced predators, habitat loss) it could not adapt to quickly enough.</li>
+            <li>Record a 90-second recording explaining your one-round result and the dodo's extinction in terms of a mismatch between traits and a changing environment.</li>
+        </ol>
+        <p><strong>What to submit:</strong> Your recording. <strong>Time:</strong> About 25 minutes.</p>
+        <div class="note-box"><strong>Facilitator note:</strong> Some scholars will describe their finch as "trying" to grow a bigger beak. Redirect firmly: the beak size was fixed before the drought; only survival and reproduction changed. Also be clear that this one round shows differential survival, not natural selection itself &mdash; natural selection is what happens when that survival advantage plays out across generations, which is what Assignment 3.5a asks scholars to reason through.</div>
+        <div class="success-box"><strong>Success criteria:</strong> Recording correctly explains why large-beak finches survived better this round and connects extinction to inability to adapt in time.</div>
+    </div>
+
+    <div class="success-box" style="margin-bottom:20px;"><strong>Right after this VR session:</strong> Assignment 3.5a, "Across Generations, Not Just One Round," asks you to sketch how the population's beak sizes would shift over three generations if the large-beak survivors were the only finches that reproduced, and to explain why that shift happens at the population level, not inside any one bird.</div>
+
+    <!-- PART 2: Living together bridge -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128218; PART 2 &middot; LIFE TOGETHER IN AN ECOSYSTEM</div>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Extinction is not the only way organisms shape each other's survival. Long before a population disappears, it is already tangled up in relationships with the other organisms around it, some helpful, some harmful, and some that barely register at all. This week's second VR activity sends you back into the Ecosystem Gallery to sort five of the most common relationship types found in almost any ecosystem, and to practice something scientists have to do constantly: pointing to the specific piece of evidence that actually explains a pattern, rather than settling for the pattern by itself. Try sorting these five examples yourself before you go.</p>
+
+        <div class="optima-widget ow-select">
+            <div class="widget-kicker">&#9889; TRY IT &middot; MUTUALISM, PARASITISM, PREDATION, COMPETITION, OR COMMENSALISM?</div>
+            <div class="widget-question">Read each example and classify the relationship between the two organisms.</div>
+
+            <div class="widget-row" data-correct="0" data-fb="Right. Both organisms benefit here: the bee gets nectar, and the flower gets pollinated." data-hint="Does the flower gain anything from the bee's visit, or is it only the bee that benefits?">
+                <div class="widget-row-prompt">1. A bee collects nectar from a flower while pollinating it in the process.</div>
+                <div class="widget-options">
+                    <button data-choice="0">Mutualism</button>
+                    <button data-choice="1">Parasitism</button>
+                    <button data-choice="2">Predation</button>
+                    <button data-choice="3">Competition</button>
+                    <button data-choice="4">Commensalism</button>
+                </div>
+            </div>
+
+            <div class="widget-row" data-correct="1" data-fb="Right. The tick benefits while feeding, and the deer is harmed by the blood loss and possible disease. One side gains at the other's direct expense, without killing it outright." data-hint="One organism benefits while feeding directly off the other, which is harmed but not killed outright. What does that combination point to?">
+                <div class="widget-row-prompt">2. A tick attaches to a deer and feeds on its blood, causing the deer harm.</div>
+                <div class="widget-options">
+                    <button data-choice="0">Mutualism</button>
+                    <button data-choice="1">Parasitism</button>
+                    <button data-choice="2">Predation</button>
+                    <button data-choice="3">Competition</button>
+                    <button data-choice="4">Commensalism</button>
+                </div>
+            </div>
+
+            <div class="widget-row" data-correct="2" data-fb="Right. One organism kills and eats the other outright, in a single event, rather than feeding on it gradually over time." data-hint="Does this end in one organism being killed and eaten outright, or fed on gradually while it stays alive?">
+                <div class="widget-row-prompt">3. A lion chases down and kills a zebra for food.</div>
+                <div class="widget-options">
+                    <button data-choice="0">Mutualism</button>
+                    <button data-choice="1">Parasitism</button>
+                    <button data-choice="2">Predation</button>
+                    <button data-choice="3">Competition</button>
+                    <button data-choice="4">Commensalism</button>
+                </div>
+            </div>
+
+            <div class="widget-row" data-correct="3" data-fb="Right. Both wolves want the exact same limited resource, the rabbit, and only one can have it. Neither organism is feeding on the other; they are both after the same third thing." data-hint="Are the two wolves feeding on each other, or are they both after the exact same limited resource?">
+                <div class="widget-row-prompt">4. Two wolves in the same pack both try to catch the same rabbit, and only one succeeds.</div>
+                <div class="widget-options">
+                    <button data-choice="0">Mutualism</button>
+                    <button data-choice="1">Parasitism</button>
+                    <button data-choice="2">Predation</button>
+                    <button data-choice="3">Competition</button>
+                    <button data-choice="4">Commensalism</button>
+                </div>
+            </div>
+
+            <div class="widget-row" data-correct="4" data-fb="Right. The bird benefits from the easy meal, and the grazing animal is not helped or harmed either way. Only one side's outcome changes." data-hint="Does the grazing animal actually benefit from the bird's presence, or is it simply unaffected either way?">
+                <div class="widget-row-prompt">5. A small bird rides on the back of a grazing animal, eating insects stirred up by its movement, without helping or harming the grazer.</div>
+                <div class="widget-options">
+                    <button data-choice="0">Mutualism</button>
+                    <button data-choice="1">Parasitism</button>
+                    <button data-choice="2">Predation</button>
+                    <button data-choice="3">Competition</button>
+                    <button data-choice="4">Commensalism</button>
+                </div>
+            </div>
+
+            <button class="widget-reset">Reset</button>
+        </div>
+    </div>
+
+    <!-- VR Activity 3.5b -->
+    <div class="info-card vr">
+        <div class="kicker">&#127760; SOLO VR ACTIVITY 3.5b &middot; ~25 MIN</div>
+        <h4>Living Together: Symbiosis and Limiting Factors</h4>
+        <div class="sub">SC.7.L.17.2, SC.7.L.17.3</div>
+        <p><strong>What you're doing:</strong> Returning to the Ecosystem Gallery from Week 13 to examine the relationships between organisms beyond "who eats whom," and the factors that limit how large a population can grow.</p>
+        <p><strong>How to join:</strong> Join this week's VR session using code <code class="join-code">CS2-SYMBIOSIS-17B</code>, in the <em>Ecosystem Gallery &mdash; Grassland</em> location. You'll start at the relationship exhibit.</p>
+        <p><strong>What to do, in order:</strong></p>
+        <ol>
+            <li>Walk through five paired-organism displays (a bee and a flower; a tick and a deer; a lion and a zebra; two wolves competing for the same rabbit; a bird and a grazing animal it rides on). At each, read the note card description and sort the pair into the correct labeled bin: mutualism, parasitism, predation, competition, or commensalism.</li>
+            <li>Move to the Limiting Factors Table and examine a population graph for a rabbit population that grows quickly, then flattens out, alongside four additional placed data panels showing that same time period's food-supply levels, disease-case counts, rainfall, and available shelter for this population. Identify which of the four accompanying data panels actually changes in a way that lines up with where the population graph flattens &mdash; the population graph by itself only shows that the population hit a carrying-capacity limit, not which specific factor caused it.</li>
+            <li>On the whiteboard, write one sentence for each of the five relationship types, using an example from the exhibit.</li>
+            <li>Record a 90-second recording explaining your five sorting decisions and which data panel's pattern actually supports your limiting-factor conclusion.</li>
+        </ol>
+        <p><strong>What to submit:</strong> Your recording and whiteboard photo. <strong>Time:</strong> About 25 minutes.</p>
+        <div class="note-box"><strong>Facilitator note:</strong> Commensalism is consistently the hardest of the five to distinguish from mutualism &mdash; the key question to prompt with is "does the second organism actually benefit, or is it just unaffected?" On the limiting-factor task, make sure scholars point to the specific data panel that actually changed at the right time, not just their favorite guess among the five general categories &mdash; the population graph alone doesn't determine which factor was responsible.</div>
+        <div class="success-box"><strong>Success criteria:</strong> At least 4 of 5 pairs correctly classified; limiting-factor conclusion is tied to a specific supporting data panel, not just to the shape of the population graph alone.</div>
+    </div>
+
+    <div class="success-box" style="margin-bottom:20px;"><strong>Before the Fall Semester Cumulative Exam:</strong> Assignment 3.5b, "Synthesis Notebook: Selection, Extinction &amp; Ecosystem Relationships," asks you to apply this week's four ideas, trait-frequency data, extinction reasoning, comparing two relationship types, and identifying a limiting factor with evidence, independently in writing.</div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #0E1C42; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 16px;">&#10145;&#65039; WHAT YOU'LL DO NEXT</div>
+        <div style="display: flex; align-items: flex-start; gap: 14px; margin-bottom: 16px;">
+            <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
+            <div>
+                <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>VR Activity 3.5a &mdash; Survive the Drought</strong></div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">Feel one round of differential survival firsthand, then connect it to the dodo's extinction.</div>
+            </div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 14px; margin-bottom: 16px;">
+            <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
+            <div>
+                <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Assignment 3.5a &mdash; Notebook: Across Generations, Not Just One Round</strong></div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">Sketch and explain how beak size shifts across three generations of continued drought.</div>
+            </div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 14px; margin-bottom: 16px;">
+            <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">3</div>
+            <div>
+                <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>VR Activity 3.5b &mdash; Living Together: Symbiosis and Limiting Factors</strong></div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">Sort five relationship types and trace a limiting factor to specific supporting evidence.</div>
+            </div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 14px;">
+            <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">4</div>
+            <div>
+                <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Assignment 3.5b &mdash; Synthesis Notebook: Selection, Extinction &amp; Ecosystem Relationships</strong></div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">Apply all four of this week's ideas independently before the Fall Semester Cumulative Exam.</div>
+            </div>
+        </div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128170; BEFORE YOU MOVE ON</div>
+        <p style="font-size: 18px; color: #1a2340; line-height: 1.65; margin: 0;">No finch ever decided to grow a bigger beak, and no dodo failed to try hard enough. Populations shift because some individuals already carried a useful trait and survived to pass it on; species vanish when the environment changes faster than that shifting can keep up. Carry that same habit of mind into this week's ecosystem relationships: name the mechanism, and point to the specific evidence, rather than settling for a story that only sounds right.</p>
+    </div>
+
+</div>
+
+<div style="background: #0E1C42; border-top: 3px solid #55C8E8; padding: 18px 34px; text-align: center;">
+    <div style="font-size: 18px; color: #ffffff; margin-bottom: 6px;"><span style="color: #55c8e8;">Optima Academy Online</span> &middot; M/J COMPREHENSIVE SCIENCE 2 &middot; Quarter 2 &middot; Student Lesson Page</div>
+    <div style="font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 4px;">Lesson 3.5 &middot; Natural Selection, Extinction, and Life Together in an Ecosystem</div>
+    <div style="font-size: 12px; color: rgba(255,255,255,0.4);">&copy; Optima Academy Online &middot; An Education Experience Company</div>
+</div>
+
+</div>
+
+<script>
+(function () {
+  document.addEventListener('click', function (e) {
+    var reset = e.target.closest('.widget-reset');
+    if (reset) {
+      var w = reset.closest('.optima-widget');
+      w.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected', 'correct', 'incorrect'); });
+      w.querySelectorAll('.widget-feedback').forEach(function (f) { f.classList.remove('show'); f.textContent = ''; });
+      w.querySelectorAll('.row-feedback').forEach(function (f) { f.remove(); });
+      return;
+    }
+    var sBtn = e.target.closest('.ow-select .widget-row .widget-options button');
+    if (sBtn) {
+      var row = sBtn.closest('.widget-row');
+      var correct = row.dataset.correct;
+      row.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected', 'correct', 'incorrect'); });
+      var right = sBtn.dataset.choice === correct;
+      sBtn.classList.add(right ? 'correct' : 'incorrect');
+      var text = right ? (sBtn.dataset.fb || row.dataset.fb || 'Right.') : (sBtn.dataset.fb || row.dataset.hint || 'Not quite. Try again.');
+      var rf = row.querySelector('.row-feedback') || row.appendChild(document.createElement('div'));
+      rf.className = 'row-feedback ' + (right ? 'correct' : 'incorrect');
+      rf.textContent = text;
+      return;
+    }
+  });
+})();
+</script>
+
+</body>
+</html>
