@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>M/J Comprehensive Science 2 &mdash; Lesson 2.5</title>
+<style>
+    body { margin: 0; padding: 0; font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f4f6fa; }
+    .canvas-frame { max-width: 1100px; margin: 0 auto; background: #ffffff; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+
+    .optima-widget { background: linear-gradient(135deg, #E8F6FB 0%, #F4F9FC 100%); border: 1px solid #C5DCE5; border-left: 5px solid #2196D0; border-radius: 8px; padding: 18px 22px; margin: 18px 0; }
+    .widget-kicker { font-size: 11px; color: #1B6A94; margin-bottom: 10px; letter-spacing: 0.4px; }
+    .widget-question { font-size: 17px; color: #0E1C42; margin-bottom: 14px; line-height: 1.55; }
+    .widget-row { background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 6px; padding: 12px 14px; margin-bottom: 10px; }
+    .widget-row-prompt { font-size: 15px; color: #0E1C42; margin-bottom: 8px; line-height: 1.5; font-style: italic; }
+    .widget-options { display: flex; flex-wrap: wrap; gap: 8px; }
+    .widget-options button { background: #FFFFFF; border: 1.5px solid #D0D9E8; border-radius: 8px; padding: 8px 14px; font-size: 14px; color: #0E1C42; cursor: pointer; transition: all 0.15s; font-family: inherit; }
+    .widget-options button:hover { background: #F4F6FA; border-color: #55C8E8; }
+    .widget-options button.selected { background: #0E1C42; color: #FFFFFF; border-color: #0E1C42; }
+    .widget-options button.correct { background: #D8F0DD; border-color: #2A9D5C; color: #1A6B3D; }
+    .widget-options button.incorrect { background: #FDECEC; border-color: #C0392B; color: #8A1F16; }
+    .widget-feedback { background: #FFFFFF; border-left: 3px solid #C7922C; padding: 10px 14px; font-size: 15px; color: #1a2340; line-height: 1.55; margin: 10px 0; display: none; border-radius: 4px; }
+    .widget-feedback.show { display: block; }
+    .row-feedback { padding: 8px 12px; margin-top: 8px; font-size: 14px; border-radius: 4px; line-height: 1.5; }
+    .row-feedback.correct { background: #D8F0DD; border-left: 3px solid #2A9D5C; color: #1A6B3D; }
+    .row-feedback.incorrect { background: #FDECEC; border-left: 3px solid #C0392B; color: #8A1F16; }
+    .widget-reset { background: transparent; border: 1px solid #C7922C; color: #C7922C; border-radius: 6px; padding: 6px 12px; font-size: 12px; cursor: pointer; font-family: inherit; margin-top: 6px; }
+    .widget-reset:hover { background: #FDF3E3; }
+    .ow-scale .widget-options { justify-content: space-between; }
+    .ow-scale .widget-options button { flex: 1; text-align: center; }
+
+    /* pH scale visual */
+    .ph-bar-wrap { margin: 16px 0; }
+    .ph-bar { position: relative; height: 34px; border-radius: 8px; border: 2px solid #0E1C42;
+      background: linear-gradient(90deg, #c0392b 0%, #e67e22 21%, #e0c22a 36%, #2ecc71 50%, #27ae60 57%, #2980b9 78%, #1b4f8a 100%); }
+    .ph-tick { position: absolute; top: -20px; font-size: 11px; color: #0E1C42; transform: translateX(-50%); }
+    .ph-item { position: absolute; top: 40px; transform: translateX(-50%); text-align: center; font-size: 11px; color: #1a2340; width: 92px; }
+    .ph-item .dot { width: 10px; height: 10px; border-radius: 50%; background: #0E1C42; margin: 0 auto 4px auto; border: 2px solid #fff; box-shadow: 0 0 0 1px #0E1C42; }
+    .ph-scale-frame { position: relative; padding-bottom: 100px; }
+
+    /* pH Slider & Neutralization Mixer (Engine 6) */
+    .ph-mixer-wrap { display: flex; gap: 24px; flex-wrap: wrap; align-items: center; margin-top: 14px; }
+    .ph-beaker { width: 150px; height: 190px; border: 3px solid #0E1C42; border-top: none; border-radius: 0 0 16px 16px; position: relative; background: #F4F9FC; flex-shrink: 0; overflow: hidden; }
+    .ph-beaker-liquid { position: absolute; left: 0; right: 0; bottom: 0; height: 88%; background: hsl(0, 70%, 55%); transition: background 0.25s ease; }
+    .ph-readout { flex: 1; min-width: 240px; }
+    .ph-readout .big-num { font-size: 34px; color: #0E1C42; font-weight: 700; }
+    .ph-readout .verdict { font-size: 16px; margin-top: 6px; padding: 8px 12px; border-radius: 6px; display: inline-block; }
+    .verdict.acidic { background: #FDECEC; color: #8A1F16; }
+    .verdict.basic { background: #E8F0FB; color: #1B3E8A; }
+    .verdict.neutral { background: #D8F0DD; color: #1A6B3D; }
+    .slider-row { margin: 14px 0; }
+    .slider-row label { font-size: 14px; color: #0E1C42; display: block; margin-bottom: 4px; }
+    input[type="range"] { width: 100%; }
+</style>
+</head>
+<body>
+<div class="canvas-frame">
+
+<div style="background: #0E1C42; border-bottom: 5px solid #55C8E8; padding: 22px 34px;">
+    <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 10px;">
+        <div style="width: 52px; height: 52px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt="Optima Academy" style="width: 50px; height: 40px; object-fit: contain;" /></div>
+        <div>
+            <div style="font-size: 28px; color: #ffffff; line-height: 1.2;">Optima Academy Online</div>
+            <div style="font-size: 12px; color: #55c8e8;">An Education Experience Company</div>
+        </div>
+    </div>
+    <div style="font-size: 36px; color: #ffffff; margin-bottom: 6px;">M/J COMPREHENSIVE SCIENCE 2</div>
+</div>
+
+<div style="background: #FFFFFF; border-bottom: 2px solid #D0D9E8; display: flex; flex-wrap: wrap;">
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Quarter / Unit</div>
+        <div style="font-size: 17px; color: #0e1c42;">Q1 &middot; Unit 2 &middot; Week 10</div>
+        <div style="font-size: 12px; color: #666;">Physical Science &middot; Four-Day Week (Columbus Day, Oct. 12)</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Lesson</div>
+        <div style="font-size: 17px; color: #0e1c42;">Lesson 2.5</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Topic</div>
+        <div style="font-size: 17px; color: #0e1c42; font-style: italic;">Mixed Together but Not Changed: Mixtures, Solutions, and the Acid-Base Spectrum</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Unit Theme</div>
+        <div style="font-size: 16px; color: #0e1c42;">Physical Science</div>
+    </div>
+</div>
+
+<div style="padding: 24px 34px;">
+
+    <div style="background: #EEF1F8; border-left: 5px solid #0E1C42; border-radius: 7px; padding: 18px 22px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #0e1c42; margin-bottom: 6px;">Lesson 2.5</div>
+        <div style="font-size: 22px; color: #0e1c42; margin-bottom: 4px;">Mixed Together but Not Changed: Mixtures, Solutions, and the Acid-Base Spectrum</div>
+        <div style="font-size: 16px; color: #666;">Lesson &middot; A Short Week, the Same Standard</div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128214; TODAY'S FOCUS</div>
+        <div style="font-size: 20px; color: #0e1c42; font-style: italic; margin-bottom: 10px;">Stir sand into water and you can filter it back out unchanged. Mix an acid and a base and you get something you'd put on your food. Both are mixtures, or reactions, of matter, but they don't work the same way at all.</div>
+        <div style="font-size: 18px; color: #1a2340; line-height: 1.65;">This week runs four instructional days because of the Columbus Day holiday, so the lesson stays focused on one core idea cluster: how to classify matter as a pure substance or a mixture, what makes a solution different from other mixtures, and how the pH scale describes acids, bases, and salts. One investigation and one VR activity this week, not two.</div>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#127919; BY THE END OF THIS LESSON YOU WILL BE ABLE TO&hellip;</div>
+        <div style="display: flex; align-items: flex-start; gap: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> classify matter as a pure substance or a mixture, distinguish solutions from other mixtures, and describe acids, bases, and salts using the pH scale and everyday examples.</div>
+        </div>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128203; WHAT YOU NEED FOR THIS LESSON</div>
+        <div style="display: flex; align-items: flex-start; gap: 10px; padding-left: 14px; border-left: 3px solid #D0D9E8;"><span style="color: #c7922c; font-size: 18px; flex-shrink: 0;">&#9654;</span>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.6;">Your science notebook &middot; red cabbage and the approved safe household liquids for this week's investigation (see Assignment 2.6 for the full safe list)</div>
+        </div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128218; PART 1 &middot; MIXTURES, SOLUTIONS, AND WHAT STAYS THE SAME</div>
+
+        <div class="optima-widget ow-reflect">
+          <div class="widget-kicker">&#9889; QUICK CHECK-IN</div>
+          <div class="widget-question">Before you read on: stir salt into water until it disappears, and stir sand into water until it turns cloudy. Are these two mixtures the same kind of thing? (No wrong answer &mdash; just check in with yourself.)</div>
+          <div class="widget-options">
+            <button data-response="It's a natural first guess, since both look like something disappearing or blending into water. But there's a real difference underneath: the salt actually disperses at the particle level and will never settle back out on its own, while the sand is just suspended and will eventually settle. Read on to see exactly what separates the two.">&#129485; Yes, both are just "mixed with water"</button>
+            <button data-response="You're onto something. Keep reading to pin down exactly what makes salt water a true solution while sand water is just a mixture, not a solution.">&#128269; No, I think they're different</button>
+            <button data-response="Fair enough. This lesson gives you the exact test: does the substance disperse evenly at the particle level and stay that way, or does it eventually settle back out? Keep that question in mind as you read.">&#129300; Not sure yet</button>
+          </div>
+          <div class="widget-feedback"></div>
+          <button class="widget-reset">Reset</button>
+        </div>
+
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 14px 0 10px 0;">Stir sand into water and you can filter it back out unchanged &mdash; nothing about the sand or the water was altered, they were just combined. That is the defining feature of a <strong>mixture</strong>: the substances keep their own identities and can, at least in principle, be separated back out. A <strong>solution</strong> is a special, thoroughly mixed kind of mixture where one substance (the solute) disperses evenly into another (the solvent) at the particle level. Salt fully dissolved in water is a solution; sand suspended in water is not, because the sand particles are far larger and will eventually settle.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0;">This is different again from a <strong>compound</strong> like water itself, where hydrogen and oxygen have chemically combined into something with entirely new properties that no amount of filtering will ever separate back into the original elements. A mixture (sand and water) can be pulled apart by physical means; a compound (water) cannot &mdash; only a chemical reaction breaks it back into hydrogen and oxygen.</p>
+
+        <div style="background: #E8F6FB; border-left: 5px solid #2196D0; border-top: 3px solid #55C8E8; border-radius: 6px; padding: 14px 20px; margin: 14px 0;">
+            <div style="font-size: 11px; color: #1B6A94; margin-bottom: 8px;">&#128161; HELPFUL TO KNOW</div>
+            <div style="font-size: 17px; color: #0E1C42; line-height: 1.6;">Muddy water and sugar water look similarly cloudy or clear at a glance, but only one is a true solution. Muddy water is a suspension of large particles that will settle if you let it sit; sugar water is a solution all the way down to the particle level and will never settle out on its own. This is the exact distinction this week's VR sorting activity will ask you to make.</div>
+        </div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128218; PART 2 &middot; ACIDS, BASES, SALTS, AND THE pH SCALE</div>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Acids, bases, and salts are a special case of this classification that matters for everyday life as much as for chemistry class. An <strong>acid</strong> (lemon juice, vinegar, stomach acid) is often described as tasting sour, and a <strong>base</strong> (baking soda solution, soap, ammonia) as feeling slippery &mdash; but those descriptions are for recognizing acids and bases you already know are safe household foods, never instructions for identifying an unknown substance. Scientists and students alike use indicators and pH meters for exactly that reason, never taste, smell, or touch.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 14px 0;">The <strong>pH scale</strong> runs from 0 (strongly acidic) through 7 (neutral, like pure water) to 14 (strongly basic), and it's a logarithmic scale &mdash; each whole step is a tenfold change in acidity, not a small one. When an acid and a base react completely, they <strong>neutralize</strong> each other and produce a <strong>salt</strong> plus, often, water: table salt itself is the product of hydrochloric acid reacting with sodium hydroxide, two substances you would not want to touch directly, combining into something you put on your food.</p>
+
+        <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 16px 20px;">
+          <div style="font-size:11px;color:#1B6A94;margin-bottom:10px;">&#128161; VISUAL &middot; pH SCALE WITH HOUSEHOLD EXAMPLES</div>
+          <div class="ph-scale-frame">
+            <div class="ph-bar-wrap">
+              <div class="ph-bar">
+                <div class="ph-tick" style="left:0%;">0</div>
+                <div class="ph-tick" style="left:50%;">7</div>
+                <div class="ph-tick" style="left:100%;">14</div>
+              </div>
+            </div>
+            <div class="ph-item" style="left:7%;"><div class="dot"></div>Battery acid (~1)<br><span style="color:#9c2f3a;">Scale only &mdash; never test</span></div>
+            <div class="ph-item" style="left:22%;"><div class="dot"></div>Lemon juice (~2)</div>
+            <div class="ph-item" style="left:37%;"><div class="dot"></div>Black coffee (~5)</div>
+            <div class="ph-item" style="left:50%;"><div class="dot"></div>Pure water (7)</div>
+            <div class="ph-item" style="left:64%;"><div class="dot"></div>Baking soda (~9)</div>
+            <div class="ph-item" style="left:79%;"><div class="dot"></div>Ammonia (~11)</div>
+            <div class="ph-item" style="left:93%;"><div class="dot"></div>Drain cleaner (~13)<br><span style="color:#9c2f3a;">Scale only &mdash; never test</span></div>
+          </div>
+        </div>
+
+        <div class="optima-widget ow-slider" style="margin-top:24px;">
+          <div class="widget-kicker">&#9889; TRY IT &middot; pH SLIDER &amp; NEUTRALIZATION MIXER</div>
+          <div class="widget-question">The beaker starts strongly acidic. Drag the slider to add drops of base and watch the indicator color and the calculated pH change. Watch closely near the middle of the slider: neutralization is a tipping point, not a steady crawl.</div>
+          <div class="ph-mixer-wrap">
+            <div class="ph-beaker">
+              <div class="ph-beaker-liquid" id="ph-liquid"></div>
+            </div>
+            <div class="ph-readout">
+              <div class="slider-row">
+                <label for="ph-drops">Drops of base added: <output id="ph-drops-out"></output></label>
+                <input type="range" min="0" max="160" value="0" step="1" id="ph-drops" />
+              </div>
+              <div class="big-num">pH: <span id="ph-value-out"></span></div>
+              <div id="ph-verdict" class="verdict acidic">Acidic</div>
+            </div>
+          </div>
+          <div style="font-size:13px;color:#555;margin-top:10px;">Neutral zone: pH 6.5&ndash;7.5. Notice how many drops it takes to move the pH just a little near the start, and how few it takes to swing sharply through the neutral zone. Keep adding base past neutral and the beaker just becomes strongly basic instead, it never gets "extra neutral."</div>
+          <script>
+          (function () {
+            var d = document.getElementById('ph-drops'), dOut = document.getElementById('ph-drops-out');
+            var phOut = document.getElementById('ph-value-out'), liquid = document.getElementById('ph-liquid'), verdict = document.getElementById('ph-verdict');
+            var Va = 50, Ca = 0.01, Cb = 0.01, dropVol = 0.5;
+            var initialMolesAcid = Ca * Va;
+            function render() {
+              var drops = parseFloat(d.value);
+              var Vb = drops * dropVol;
+              var molesBase = Cb * Vb;
+              var totalVol = Va + Vb;
+              var diff = initialMolesAcid - molesBase;
+              var pH;
+              if (Math.abs(diff) < 0.00001) {
+                pH = 7;
+              } else if (diff > 0) {
+                pH = -Math.log(diff / totalVol) / Math.LN10;
+              } else {
+                var pOH = -Math.log((-diff) / totalVol) / Math.LN10;
+                pH = 14 - pOH;
+              }
+              if (pH < 0) pH = 0;
+              if (pH > 14) pH = 14;
+              dOut.textContent = drops;
+              phOut.textContent = pH.toFixed(2);
+              var hue = (pH / 14) * 240;
+              liquid.style.background = 'hsl(' + hue.toFixed(0) + ', 70%, 55%)';
+              if (pH < 6.5) { verdict.textContent = 'Acidic'; verdict.className = 'verdict acidic'; }
+              else if (pH > 7.5) { verdict.textContent = 'Basic'; verdict.className = 'verdict basic'; }
+              else { verdict.textContent = 'Neutral zone!'; verdict.className = 'verdict neutral'; }
+            }
+            d.addEventListener('input', render); render();
+          })();
+          </script>
+        </div>
+
+        <div style="background: #FDECEC; border-left: 5px solid #C0392B; border-top: 3px solid #E74C3C; border-radius: 6px; padding: 14px 20px; margin: 18px 0;">
+            <div style="font-size: 11px; color: #8A1F16; margin-bottom: 8px;">&#9888;&#65039; SAFETY FIRST</div>
+            <div style="font-size: 17px; color: #0E1C42; line-height: 1.6;">Never taste, directly smell, or touch an unknown substance to test its pH. This week's home investigation only ever uses a short, teacher-supplied list of safe household liquids. Never test drain cleaner, bleach, ammonia, or anything unlabeled, and never mix cleaning products together.</div>
+        </div>
+
+        <div style="background: #E8F6FB; border-left: 5px solid #2196D0; border-top: 3px solid #55C8E8; border-radius: 6px; padding: 14px 20px; margin: 14px 0;">
+            <div style="font-size: 11px; color: #1B6A94; margin-bottom: 8px;">&#128161; CONNECTION</div>
+            <div style="font-size: 17px; color: #0E1C42; line-height: 1.6;">This is the same color-change logic your red cabbage indicator uses in Assignment 2.6, and the same acid/neutral/base sorting you'll do with virtual indicator strips in this week's VR activity.</div>
+        </div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #0E1C42; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 16px;">&#10145;&#65039; WHAT YOU'LL DO NEXT</div>
+        <div style="display: flex; align-items: flex-start; gap: 14px; margin-bottom: 16px;">
+            <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
+            <div>
+                <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Assignment 2.6 &mdash; At-Home Investigation: Household pH Detective</strong></div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">Make a red cabbage indicator, test five approved household liquids, and classify each as acidic, neutral, or basic.</div>
+            </div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 14px;">
+            <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
+            <div>
+                <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>VR Activity 2.6 &mdash; Sort the Substances</strong></div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">Sort twelve virtual substances into pure substances, mixtures, and solutions, then use virtual indicator strips to sort six liquids into acid, neutral, and base.</div>
+            </div>
+        </div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128170; ONE IDEA TO CARRY FORWARD</div>
+        <p style="font-size: 18px; color: #1a2340; line-height: 1.65; margin: 0;">A mixture keeps its ingredients' own identities, no matter how thoroughly they're stirred together. A solution is the most thoroughly mixed case of that; a compound is a different thing entirely, changed at the chemical level. Acids and bases sit on the same pH scale, and neutralizing them doesn't erase them, it builds something new: a salt.</p>
+    </div>
+
+</div>
+
+<div style="background: #0E1C42; border-top: 3px solid #55C8E8; padding: 18px 34px; text-align: center;">
+    <div style="font-size: 18px; color: #ffffff; margin-bottom: 6px;"><span style="color: #55c8e8;">Optima Academy Online</span> &middot; M/J COMPREHENSIVE SCIENCE 2 &middot; Quarter 1 &middot; Student Lesson Page</div>
+    <div style="font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 4px;">Lesson 2.5 &middot; Mixed Together but Not Changed: Mixtures, Solutions, and the Acid-Base Spectrum</div>
+    <div style="font-size: 12px; color: rgba(255,255,255,0.4);">&copy; Optima Academy Online &middot; An Education Experience Company</div>
+</div>
+
+</div>
+
+<script>
+(function () {
+  document.addEventListener('click', function (e) {
+    var reset = e.target.closest('.widget-reset');
+    if (reset) {
+      var w = reset.closest('.optima-widget');
+      w.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected', 'correct', 'incorrect'); });
+      w.querySelectorAll('.widget-feedback').forEach(function (f) { f.classList.remove('show'); f.textContent = ''; });
+      w.querySelectorAll('.row-feedback').forEach(function (f) { f.remove(); });
+      return;
+    }
+    var rBtn = e.target.closest('.ow-reflect .widget-options button');
+    if (rBtn) {
+      var rw = rBtn.closest('.optima-widget');
+      rw.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected'); });
+      rBtn.classList.add('selected');
+      var fb = rw.querySelector('.widget-feedback');
+      fb.textContent = rBtn.dataset.response || '';
+      fb.classList.add('show');
+      return;
+    }
+    var sBtn = e.target.closest('.ow-select .widget-row .widget-options button, .ow-scale .widget-row .widget-options button');
+    if (sBtn) {
+      var row = sBtn.closest('.widget-row');
+      var correct = row.dataset.correct;
+      row.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected', 'correct', 'incorrect'); });
+      var right = sBtn.dataset.choice === correct;
+      sBtn.classList.add(right ? 'correct' : 'incorrect');
+      var text = right ? (sBtn.dataset.fb || row.dataset.fb || 'Right.') : (sBtn.dataset.fb || row.dataset.hint || 'Not quite. Try again.');
+      var rf = row.querySelector('.row-feedback') || row.appendChild(document.createElement('div'));
+      rf.className = 'row-feedback ' + (right ? 'correct' : 'incorrect');
+      rf.textContent = text;
+      return;
+    }
+  });
+})();
+</script>
+
+</body>
+</html>
