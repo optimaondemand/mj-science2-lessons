@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>M/J Comprehensive Science 2 &mdash; Lesson 2.6</title>
+<style>
+    body { margin: 0; padding: 0; font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f4f6fa; }
+    .canvas-frame { max-width: 1100px; margin: 0 auto; background: #ffffff; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+
+    .optima-widget { background: linear-gradient(135deg, #E8F6FB 0%, #F4F9FC 100%); border: 1px solid #C5DCE5; border-left: 5px solid #2196D0; border-radius: 8px; padding: 18px 22px; margin: 18px 0; }
+    .widget-kicker { font-size: 11px; color: #1B6A94; margin-bottom: 10px; letter-spacing: 0.4px; }
+    .widget-question { font-size: 17px; color: #0E1C42; margin-bottom: 14px; line-height: 1.55; }
+    .widget-row { background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 6px; padding: 12px 14px; margin-bottom: 10px; }
+    .widget-row-prompt { font-size: 15px; color: #0E1C42; margin-bottom: 8px; line-height: 1.5; font-style: italic; }
+    .widget-options { display: flex; flex-wrap: wrap; gap: 8px; }
+    .widget-options button { background: #FFFFFF; border: 1.5px solid #D0D9E8; border-radius: 8px; padding: 8px 14px; font-size: 14px; color: #0E1C42; cursor: pointer; transition: all 0.15s; font-family: inherit; }
+    .widget-options button:hover { background: #F4F6FA; border-color: #55C8E8; }
+    .widget-options button.selected { background: #0E1C42; color: #FFFFFF; border-color: #0E1C42; }
+    .widget-options button.correct { background: #D8F0DD; border-color: #2A9D5C; color: #1A6B3D; }
+    .widget-options button.incorrect { background: #FDECEC; border-color: #C0392B; color: #8A1F16; }
+    .widget-feedback { background: #FFFFFF; border-left: 3px solid #C7922C; padding: 10px 14px; font-size: 15px; color: #1a2340; line-height: 1.55; margin: 10px 0; display: none; border-radius: 4px; }
+    .widget-feedback.show { display: block; }
+    .row-feedback { padding: 8px 12px; margin-top: 8px; font-size: 14px; border-radius: 4px; line-height: 1.5; }
+    .row-feedback.correct { background: #D8F0DD; border-left: 3px solid #2A9D5C; color: #1A6B3D; }
+    .row-feedback.incorrect { background: #FDECEC; border-left: 3px solid #C0392B; color: #8A1F16; }
+    .widget-reset { background: transparent; border: 1px solid #C7922C; color: #C7922C; border-radius: 6px; padding: 6px 12px; font-size: 12px; cursor: pointer; font-family: inherit; margin-top: 6px; }
+    .widget-reset:hover { background: #FDF3E3; }
+</style>
+</head>
+<body>
+<div class="canvas-frame">
+
+<div style="background: #0E1C42; border-bottom: 5px solid #55C8E8; padding: 22px 34px;">
+    <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 10px;">
+        <div style="width: 52px; height: 52px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt="Optima Academy" style="width: 50px; height: 40px; object-fit: contain;" /></div>
+        <div>
+            <div style="font-size: 28px; color: #ffffff; line-height: 1.2;">Optima Academy Online</div>
+            <div style="font-size: 12px; color: #55c8e8;">An Education Experience Company</div>
+        </div>
+    </div>
+    <div style="font-size: 36px; color: #ffffff; margin-bottom: 6px;">M/J COMPREHENSIVE SCIENCE 2</div>
+</div>
+
+<div style="background: #FFFFFF; border-bottom: 2px solid #D0D9E8; display: flex; flex-wrap: wrap;">
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Quarter / Unit</div>
+        <div style="font-size: 17px; color: #0e1c42;">Q1 &middot; Unit 2 &middot; Week 11</div>
+        <div style="font-size: 12px; color: #666;">Physical Science</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Lesson</div>
+        <div style="font-size: 17px; color: #0e1c42;">Lesson 2.6</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Topic</div>
+        <div style="font-size: 17px; color: #0e1c42; font-style: italic;">Lavoisier's Scale: Proving Mass Is Conserved</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Unit Theme</div>
+        <div style="font-size: 16px; color: #0e1c42;">Physical Science</div>
+    </div>
+</div>
+
+<div style="padding: 24px 34px;">
+
+    <div style="background: #EEF1F8; border-left: 5px solid #0E1C42; border-radius: 7px; padding: 18px 22px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #0e1c42; margin-bottom: 6px;">Lesson 2.6</div>
+        <div style="font-size: 22px; color: #0e1c42; margin-bottom: 4px;">Physical and Chemical Change, and the Conservation of Mass</div>
+        <div style="font-size: 16px; color: #666;">Lesson &middot; Evidence, Change, and What Never Disappears</div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128214; TODAY'S FOCUS</div>
+        <div style="font-size: 20px; color: #0e1c42; font-style: italic; margin-bottom: 10px;">In the 1770s, a chemist in Paris proved something true by refusing to guess: he weighed everything, before and after every reaction.</div>
+        <div style="font-size: 18px; color: #1a2340; line-height: 1.65;">Today you will use the same evidence Antoine Lavoisier used to tell a physical change from a chemical change, and to show that matter is never destroyed, only rearranged, even when part of it seems to vanish into thin air.</div>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#127919; BY THE END OF THIS LESSON YOU WILL BE ABLE TO&hellip;</div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> distinguish a physical change from a chemical change using observable evidence, not just appearance.</div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> explain the Law of Conservation of Mass and show why an open container that seems to lose mass is not actually breaking the law.</div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">3</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> preview how heat moves between objects and how energy transforms from one form to another, the two ideas you will test firsthand in this week's VR sessions.</div>
+        </div>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128203; WHAT YOU NEED FOR THIS LESSON</div>
+        <div style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 8px; border-left: 3px solid #D0D9E8; padding-left: 14px;"><span style="color: #c7922c; font-size: 18px; flex-shrink: 0;">&#9654;</span>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.6;">Your science notebook, for sketches and short notes</div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 10px; border-left: 3px solid #D0D9E8; padding-left: 14px;"><span style="color: #c7922c; font-size: 18px; flex-shrink: 0;">&#9654;</span>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.6;">About 20 minutes to read, think, and try the two widgets below</div>
+        </div>
+    </div>
+
+    <!-- PART 1 -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128218; PART 1 &middot; A WEIGHT THAT TOLD THE TRUTH</div>
+
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Antoine Lavoisier worked in Paris in the 1770s, and he did something almost no chemist before him had done systematically: he weighed everything, before and after every reaction, using some of the most precise balances ever built. Chemists before him believed that when something burned, it lost a mysterious fire substance called phlogiston. Lavoisier's scale told a different story. When metals burned inside a sealed container, the total mass of everything inside, container included, never changed, even though the metal itself gained mass as it turned to ash. The burning metal was not losing something. It was combining with a gas from the air: oxygen.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Lavoisier's careful weighing did more than explain one reaction. It overturned phlogiston theory completely and established one of the most important ideas in all of science: matter is neither created nor destroyed in an ordinary physical or chemical change. It only rearranges.</p>
+
+        <div style="background: #E8F6FB; border-left: 5px solid #2196D0; border-top: 3px solid #55C8E8; border-radius: 6px; padding: 16px 20px; margin: 16px 0;">
+            <div style="font-size: 11px; color: #1B6A94; margin-bottom: 10px;">&#128161; VISUAL &middot; LAVOISIER'S SEALED JAR</div>
+            <div style="display: flex; align-items: flex-end; justify-content: center; gap: 22px; flex-wrap: wrap; margin: 6px 0 10px;">
+                <div style="text-align: center;">
+                    <div style="width: 110px; height: 140px; border: 3px solid #0E1C42; border-radius: 12px 12px 4px 4px; position: relative; margin: 0 auto; background: #FFFFFF;">
+                        <div style="position: absolute; bottom: 14px; left: 50%; transform: translateX(-50%); width: 8px; height: 34px; background: #C7922C; border-radius: 2px;"></div>
+                        <div style="position: absolute; bottom: 46px; left: 50%; transform: translateX(-50%); width: 14px; height: 18px; background: radial-gradient(circle at 50% 30%, #FFD86B, #E9762B 75%); border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;"></div>
+                    </div>
+                    <div style="font-size: 13px; color: #0e1c42; margin-top: 8px; max-width: 150px;">BEFORE: sealed jar, candle burning, air inside</div>
+                    <div style="font-size: 15px; color: #1a2340; font-weight: bold;">Total mass: X grams</div>
+                </div>
+                <div style="font-size: 34px; color: #0E1C42; padding-bottom: 40px;">=</div>
+                <div style="text-align: center;">
+                    <div style="width: 110px; height: 120px; border: 3px solid #0E1C42; border-radius: 12px 12px 4px 4px; position: relative; margin: 0 auto; background: #FFFFFF;">
+                        <div style="position: absolute; bottom: 14px; left: 50%; transform: translateX(-50%); width: 8px; height: 18px; background: #C7922C; border-radius: 2px;"></div>
+                    </div>
+                    <div style="font-size: 13px; color: #0e1c42; margin-top: 8px; max-width: 150px;">AFTER: shorter candle, less oxygen, more carbon dioxide and water vapor</div>
+                    <div style="font-size: 15px; color: #1a2340; font-weight: bold;">Total mass: X grams, still</div>
+                </div>
+            </div>
+            <div style="font-size: 13px; color: #555;">The candle got shorter and the air inside changed completely, but the jar as a whole never got lighter or heavier. Every atom that left the candle is still somewhere inside the jar.</div>
+        </div>
+
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">A physical change alters an object's form without changing what it is actually made of: ice melting, paper tearing, sugar dissolving. You can usually reverse it. A chemical change produces a genuinely new substance with different properties: wood burning to ash and smoke, iron rusting, an egg cooking. It is typically much harder, or impossible, to reverse. The reliable evidence of a chemical change includes a color change, gas production (bubbling), a temperature change that is not just from mixing hot and cold, a new odor, or a permanent change in properties. No single sign proves it by itself (whipping cream changes texture but stays cream), which is why scientists look for a pattern of evidence together, not just one clue.</p>
+
+        <div class="optima-widget ow-select">
+            <div class="widget-kicker">&#9889; TRY IT &middot; PHYSICAL CHANGE OR CHEMICAL CHANGE?</div>
+            <div class="widget-question">Use the evidence in Part 1 to classify each change. Look for the pattern of evidence, not just one clue.</div>
+
+            <div class="widget-row" data-correct="0" data-fb="Right. Whipped cream is still cream: texture changed, but no new substance formed. Texture alone is not proof of a chemical change." data-hint="Is the cream still cream afterward, just a different texture, or has it turned into something new?">
+                <div class="widget-row-prompt">1. Heavy cream, whipped until it holds stiff peaks</div>
+                <div class="widget-options">
+                    <button data-choice="0">Physical change</button>
+                    <button data-choice="1">Chemical change</button>
+                </div>
+            </div>
+
+            <div class="widget-row" data-correct="1" data-fb="Right. Rust is a new substance, iron oxide, with a different color and texture from the metal it came from. It will not turn back into bare iron on its own." data-hint="Is the reddish-brown coating on the metal the same substance as the metal, or is it something new?">
+                <div class="widget-row-prompt">2. An iron gate left out in the rain develops a reddish-brown coating</div>
+                <div class="widget-options">
+                    <button data-choice="0">Physical change</button>
+                    <button data-choice="1">Chemical change</button>
+                </div>
+            </div>
+
+            <div class="widget-row" data-correct="0" data-fb="Right. It is still paper, just in smaller pieces. Nothing new formed, and in principle you could tape it back together." data-hint="Did tearing turn the paper into a different substance, or is it still paper?">
+                <div class="widget-row-prompt">3. Paper torn into small pieces</div>
+                <div class="widget-options">
+                    <button data-choice="0">Physical change</button>
+                    <button data-choice="1">Chemical change</button>
+                </div>
+            </div>
+
+            <div class="widget-row" data-correct="1" data-fb="Right. Wood cannot un-burn. Ash and smoke are new substances with completely different properties from wood, and the change is permanent." data-hint="Can you turn the ash and smoke back into wood? What does that tell you about whether something new formed?">
+                <div class="widget-row-prompt">4. Wood burning in a campfire, leaving ash and smoke</div>
+                <div class="widget-options">
+                    <button data-choice="0">Physical change</button>
+                    <button data-choice="1">Chemical change</button>
+                </div>
+            </div>
+
+            <div class="widget-row" data-correct="0" data-fb="Right. The sugar is still sugar, just spread out through the tea. Let the water evaporate and the sugar is still there." data-hint="If you let the tea evaporate, would you get plain sugar back, or something new?">
+                <div class="widget-row-prompt">5. Sugar dissolving completely into a cup of warm tea</div>
+                <div class="widget-options">
+                    <button data-choice="0">Physical change</button>
+                    <button data-choice="1">Chemical change</button>
+                </div>
+            </div>
+
+            <button class="widget-reset">Reset</button>
+        </div>
+    </div>
+
+    <!-- PART 2 -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128218; PART 2 &middot; CHECKING THE LAW YOURSELF</div>
+
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Lavoisier's law makes a specific, checkable claim: in a closed system, the mass you start with equals the mass you end with, no matter what reaction happens in between. That is not a vague rule. It is strict enough to test on a virtual balance, using a reaction you already know: baking soda and vinegar.</p>
+
+        <div class="optima-widget" id="cm-widget">
+            <div class="widget-kicker">&#9889; TRY IT &middot; CONSERVATION OF MASS BALANCE</div>
+            <div class="widget-question">A beaker of baking soda and vinegar, unreacted, weighs 250 g on the left pan. Pick a container, click React, and read what the scale shows afterward. Then decide: did the reaction destroy mass, or did something just leave the container?</div>
+
+            <div class="widget-options" style="margin-bottom: 16px;">
+                <button id="cmSealed" type="button">Sealed bottle, balloon on top</button>
+                <button id="cmOpen" type="button">Open cup</button>
+            </div>
+
+            <div style="position: relative; height: 170px; width: 100%; max-width: 300px; margin: 0 auto 10px;">
+                <div style="position: absolute; left: 50%; bottom: 0; transform: translateX(-50%); width: 0; height: 0; border-left: 16px solid transparent; border-right: 16px solid transparent; border-bottom: 40px solid #0E1C42;"></div>
+                <div id="cmBeam" style="position: absolute; left: 50%; bottom: 38px; width: 260px; height: 6px; background: #0E1C42; border-radius: 3px; transform: translateX(-50%) rotate(0deg); transition: transform 0.5s ease;">
+                    <div style="position: absolute; left: -6px; top: 6px; width: 76px; height: 54px; border: 2px solid #0E1C42; border-top: none; border-radius: 0 0 10px 10px; background: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 12px; color: #0e1c42; text-align: center; line-height: 1.3;">Before<br>250 g</div>
+                    <div id="cmRightPan" style="position: absolute; right: -6px; top: 6px; width: 76px; height: 54px; border: 2px solid #0E1C42; border-top: none; border-radius: 0 0 10px 10px; background: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 12px; color: #0e1c42; text-align: center; line-height: 1.3;">After<br>?</div>
+                </div>
+            </div>
+
+            <div style="text-align: center; min-height: 24px; font-size: 15px; color: #0e1c42; margin-bottom: 8px;" id="cmFizz"></div>
+
+            <div style="text-align: center; margin-bottom: 14px;">
+                <button id="cmReact" type="button" style="background: #0E1C42; color: #fff; border: none; border-radius: 8px; padding: 10px 22px; font-size: 15px; cursor: pointer; font-family: inherit;">React</button>
+            </div>
+
+            <div id="cmGasRow" style="display: none; margin-bottom: 10px; text-align: center;">
+                <label style="font-size: 15px; color: #0e1c42;">Escaped carbon dioxide you are accounting for: <input type="range" id="cmSlider" min="0" max="5" step="0.5" value="0" style="width: 55%; vertical-align: middle;" /> <output id="cmSliderOut">0</output> g</label>
+            </div>
+
+            <div class="widget-feedback" id="cmFeedback"></div>
+            <button class="widget-reset" id="cmReset">Reset</button>
+        </div>
+
+        <div style="background: #E8F6FB; border-left: 5px solid #2196D0; border-top: 3px solid #55C8E8; border-radius: 6px; padding: 14px 20px; margin: 14px 0;">
+            <div style="font-size: 11px; color: #1B6A94; margin-bottom: 8px;">&#128161; WHAT THIS WIDGET IS SHOWING</div>
+            <div style="font-size: 17px; color: #0E1C42; line-height: 1.6;">An open container that seems to lose mass has not broken the Law of Conservation of Mass. Carbon dioxide gas escaped into the air the moment the reaction fizzed, and once you count that gas, the two totals match exactly. The same lesson applies to this week's at-home investigation: a scale can only weigh what stays inside the container, so the setup you choose changes what the scale can tell you, even when the underlying law never changes.</div>
+        </div>
+    </div>
+
+    <!-- PART 3: bridge to heat and energy -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128218; PART 3 &middot; WHERE THE MATTER, AND THE ENERGY, GOES NEXT</div>
+
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Physical and chemical changes are not the only place this idea, that nothing simply disappears, shows up. The same logic applies to energy. When you touch something hot, heat does not appear from nowhere, and it does not vanish when things cool down. Heat always flows from a warmer object to a cooler one, never the other way, until both reach the same temperature. When a solid changes into a liquid, the energy you keep adding does not always raise the temperature. Sometimes it goes into changing how the particles are arranged instead, which is why temperature holds steady for a while during melting even though heat is still flowing in.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">The same is true when a machine runs, from a falling domino to a spring launcher. The energy involved does not run out. It transforms: stored energy becomes motion, motion becomes more motion at a collision, and eventually motion becomes thermal energy and sound at friction and impact, always accounted for, never destroyed. This week's two VR sessions let you test both ideas directly, with your own hands and your own data, before you ever see them written as a rule in a textbook.</div>
+
+        <div style="background: #EEF1F8; border-left: 5px solid #0E1C42; border-radius: 7px; padding: 16px 20px; margin: 14px 0;">
+            <div style="font-size: 11px; color: #0e1c42; margin-bottom: 10px;">&#127919; THIS WEEK'S TWO VR SESSIONS</div>
+            <div style="font-size: 16px; color: #1a2340; line-height: 1.6; margin-bottom: 8px;"><strong>VR 2.7a, Heat Flows Downhill:</strong> bring two objects at different temperatures together and track which way heat actually moves, then heat a solid past its melting point and watch what temperature does during the change.</div>
+            <div style="font-size: 16px; color: #1a2340; line-height: 1.6;"><strong>VR 2.7b, The Energy Relay:</strong> build a short chain-reaction machine and label each energy transformation as it happens, from the first release to the final stop.</div>
+        </div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #0E1C42; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 16px;">&#10145;&#65039; WHAT YOU'LL DO NEXT</div>
+        <div style="display: flex; align-items: flex-start; gap: 14px; margin-bottom: 16px;">
+            <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
+            <div>
+                <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Assignment 2.7, At-Home Investigation: Sealed vs. Open Reaction</strong></div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">Run the real reaction at home and test the Law of Conservation of Mass yourself.</div>
+            </div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 14px; margin-bottom: 16px;">
+            <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
+            <div>
+                <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Discussion: Physical or Chemical Change?</strong></div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">Classify a real example from your own life and defend it with evidence, then respond to a classmate.</div>
+            </div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 14px; margin-bottom: 16px;">
+            <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">3</div>
+            <div>
+                <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>VR Activity 2.7a, Heat Flows Downhill</strong></div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">Track temperature as two objects meet, and as a solid melts.</div>
+            </div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 14px;">
+            <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">4</div>
+            <div>
+                <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>VR Activity 2.7b, The Energy Relay</strong></div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">Build a chain-reaction machine and account for every energy transformation.</div>
+            </div>
+        </div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128170; BEFORE YOU MOVE ON</div>
+        <p style="font-size: 18px; color: #1a2340; line-height: 1.65; margin: 0;">Lavoisier's whole discovery came from refusing to guess. He weighed, he measured, and he let the balance argue for itself. That is the same habit this week asks of you: before you decide whether a change is physical or chemical, or whether a reaction really lost mass, check the evidence first.</p>
+    </div>
+
+</div>
+
+<div style="background: #0E1C42; border-top: 3px solid #55C8E8; padding: 18px 34px; text-align: center;">
+    <div style="font-size: 18px; color: #ffffff; margin-bottom: 6px;"><span style="color: #55c8e8;">Optima Academy Online</span> &middot; M/J COMPREHENSIVE SCIENCE 2 &middot; Quarter 1 &middot; Student Lesson Page</div>
+    <div style="font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 4px;">Lesson 2.6 &middot; Physical and Chemical Change, and the Conservation of Mass</div>
+    <div style="font-size: 12px; color: rgba(255,255,255,0.4);">&copy; Optima Academy Online &middot; An Education Experience Company</div>
+</div>
+
+</div>
+
+<script>
+(function () {
+  document.addEventListener('click', function (e) {
+    var reset = e.target.closest('.widget-reset');
+    if (reset) {
+      var w = reset.closest('.optima-widget');
+      w.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected', 'correct', 'incorrect'); });
+      w.querySelectorAll('.widget-feedback').forEach(function (f) { f.classList.remove('show'); f.textContent = ''; });
+      w.querySelectorAll('.row-feedback').forEach(function (f) { f.remove(); });
+      return;
+    }
+    var sBtn = e.target.closest('.ow-select .widget-row .widget-options button');
+    if (sBtn) {
+      var row = sBtn.closest('.widget-row');
+      var correct = row.dataset.correct;
+      row.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected', 'correct', 'incorrect'); });
+      var right = sBtn.dataset.choice === correct;
+      sBtn.classList.add(right ? 'correct' : 'incorrect');
+      var text = right ? (sBtn.dataset.fb || row.dataset.fb || 'Right.') : (sBtn.dataset.fb || row.dataset.hint || 'Not quite. Try again.');
+      var rf = row.querySelector('.row-feedback') || row.appendChild(document.createElement('div'));
+      rf.className = 'row-feedback ' + (right ? 'correct' : 'incorrect');
+      rf.textContent = text;
+      return;
+    }
+  });
+})();
+</script>
+
+<script>
+(function () {
+  var mode = null, reacted = false;
+  var sealedBtn = document.getElementById('cmSealed');
+  var openBtn = document.getElementById('cmOpen');
+  var reactBtn = document.getElementById('cmReact');
+  var beam = document.getElementById('cmBeam');
+  var rightPan = document.getElementById('cmRightPan');
+  var fizz = document.getElementById('cmFizz');
+  var gasRow = document.getElementById('cmGasRow');
+  var slider = document.getElementById('cmSlider');
+  var sliderOut = document.getElementById('cmSliderOut');
+  var feedback = document.getElementById('cmFeedback');
+
+  function tilt(rightTotal) {
+    var diff = rightTotal - 250;
+    var angle = Math.max(-9, Math.min(9, diff * 1.8));
+    beam.style.transform = 'translateX(-50%) rotate(' + (-angle) + 'deg)';
+    rightPan.innerHTML = 'After<br>' + rightTotal + ' g';
+  }
+
+  function selectMode(m) {
+    mode = m;
+    reacted = false;
+    sealedBtn.classList.toggle('selected', m === 'sealed');
+    openBtn.classList.toggle('selected', m === 'open');
+    fizz.textContent = '';
+    gasRow.style.display = 'none';
+    slider.value = 0;
+    sliderOut.textContent = '0';
+    feedback.classList.remove('show');
+    feedback.textContent = '';
+    tilt(250);
+  }
+
+  sealedBtn.addEventListener('click', function () { selectMode('sealed'); });
+  openBtn.addEventListener('click', function () { selectMode('open'); });
+
+  reactBtn.addEventListener('click', function () {
+    if (!mode) {
+      feedback.textContent = 'Pick a container first: sealed bottle or open cup.';
+      feedback.classList.add('show');
+      return;
+    }
+    fizz.textContent = 'Fizzing...';
+    setTimeout(function () {
+      reacted = true;
+      if (mode === 'sealed') {
+        fizz.textContent = 'Reaction finished. The balloon caught the gas.';
+        tilt(250);
+        feedback.textContent = 'The scale still reads 250 g. Nothing left the bottle: the carbon dioxide gas is stretching the balloon instead of the air, so every atom that started inside is still inside.';
+        feedback.classList.add('show');
+      } else {
+        fizz.textContent = 'Reaction finished. The cup was open the whole time.';
+        tilt(245);
+        gasRow.style.display = 'block';
+        feedback.textContent = 'The open cup now reads 245 g, five grams lighter than before. Slide the control below to add back the gas that escaped and see what the scale should really show.';
+        feedback.classList.add('show');
+      }
+    }, 1100);
+  });
+
+  slider.addEventListener('input', function () {
+    sliderOut.textContent = slider.value;
+    if (mode === 'open' && reacted) {
+      var total = 245 + parseFloat(slider.value);
+      tilt(total);
+      if (parseFloat(slider.value) >= 5) {
+        feedback.textContent = 'Balanced at 250 g. Those five grams were never destroyed. They left as carbon dioxide gas the moment the cup was open, and the Law of Conservation of Mass held true the entire time, in both containers.';
+        feedback.classList.add('show');
+      }
+    }
+  });
+
+  document.getElementById('cmReset').addEventListener('click', function () {
+    mode = null; reacted = false;
+    sealedBtn.classList.remove('selected');
+    openBtn.classList.remove('selected');
+    fizz.textContent = '';
+    gasRow.style.display = 'none';
+    slider.value = 0;
+    sliderOut.textContent = '0';
+    feedback.classList.remove('show');
+    feedback.textContent = '';
+    tilt(250);
+  });
+
+  tilt(250);
+})();
+</script>
+
+</body>
+</html>
